@@ -5,6 +5,10 @@
     programs.home-manager.enable = true;
     targets.genericLinux.enable = true;
 
+    home.packages = [
+        pkgs.neofetch
+    ];
+
     programs.git = {
         enable = true;
         userName = "poopsicles";
