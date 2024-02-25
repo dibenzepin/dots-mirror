@@ -9,3 +9,6 @@ currently has:
 - [X] git (basic)
 - [ ] git (advanced - authentication, maintenance etc.)
 - [X] neofetch
+- [X] python helpers
+  - [X] pyenv
+  - [X] poetry

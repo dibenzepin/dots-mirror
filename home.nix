@@ -7,6 +7,8 @@
 
     home.packages = [
         pkgs.neofetch
+        pkgs.pyenv
+        pkgs.poetry
     ];
 
     programs.git = {
