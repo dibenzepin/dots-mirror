@@ -15,7 +15,12 @@
         enable = true;
         userName = "poopsicles";
         userEmail = "87488715+poopsicles@users.noreply.github.com";
-
+        aliases = {
+          co = "checkout";
+          st = "status";
+          br = "branch";
+          ci = "commit";   
+        };
         extraConfig = {
             init.defaultBranch = "main";
         };
