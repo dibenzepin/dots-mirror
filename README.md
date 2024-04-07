@@ -12,3 +12,8 @@ currently has:
 - [X] python helpers
   - [X] pyenv
   - [X] poetry
+- [ ] shell helpers
+  - [ ] zshrc
+  - [X] starship
+  - [X] zoxide, fzf
+  - [X] atuin
