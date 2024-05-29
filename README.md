@@ -1,19 +1,31 @@
-# fumnanya's ~
+# ~
 
-currently on fedora, wanted to have a dotfiles repo
+my dotfiles, with home-manager
 
-and well, it was between chezmoi and home-manager...so lets see how nix is, shall we?
+## to use
 
-currently has:
+- install nix
+- for first run, run `nix run . switch --flake` (at least, i think so, else follow [these steps](https://nix-community.github.io/home-manager/index.xhtml#sec-flakes-standalone))
+- consequently, `make switch` works
 
-- [X] git (basic)
-- [ ] git (advanced - authentication, maintenance etc.)
-- [X] neofetch
-- [X] python helpers
-  - [X] pyenv
-  - [X] poetry
-- [ ] shell helpers
-  - [ ] zshrc
-  - [X] starship
-  - [X] zoxide, fzf
-  - [X] atuin
+## packages
+
+- [x] git (basic)
+- [ ] git (advanced: auth, signing, etc.)
+- [x] starship
+- [ ] neofetch
+- [x] zoxide (+ fzf)
+- [x] atuin
+- [x] typst
+- [x] rye
+
+## fonts
+
+- [x] code new roman NF
+- [x] fira code NF
+- [x] inter
+
+## todo
+
+- [ ] add neofetch config
+- [ ] add .zshrc
