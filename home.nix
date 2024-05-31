@@ -6,6 +6,12 @@
   home.username = "fumnanya";
   home.homeDirectory = "/home/fumnanya";
 
+  # make home manager work better on non-nixos
+  targets.genericLinux.enable = true;
+
+  # make fonts actually work
+  fonts.fontconfig.enable = true;
+
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -83,12 +89,10 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  # make home manager work better on non-nixos
-  targets.genericLinux.enable = true;
+  # copy font prefs
+  xdg.configFile."fontconfig/fonts.conf".source = ./fonts.conf;
 
-  # make fonts actually work
-  fonts.fontconfig.enable = true;
-
+  # other prefs
   programs.git = {
         enable = true;
         userName = "fumnanya";

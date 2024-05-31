@@ -21,8 +21,9 @@ my dotfiles, with home-manager
 
 ## fonts
 
-- [x] code new roman NF
-- [x] fira code NF
+- [x] fontconfig
+- [x] code new roman nerd font
+- [x] fira code nerd font
 - [x] inter
 
 ## todo
