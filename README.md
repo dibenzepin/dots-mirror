@@ -37,11 +37,11 @@ my dotfiles, with home-manager (+ extra config stuff)
 
 ## ff `about:config` extras
 
-- `browser.tabs.insertAfterCurrent`: `true` [^1]
-- `apz.fling_min_velocity_threshold`: `2` [^3]
-- `apz.gtk.pangesture.page_delta_mode_multiplier`: `0.5` [^3]
-- `apz.overscroll.enabled`: [^3]
-- `apz.touch_acceleration_factor_y`: [^3]
+- `browser.tabs.insertAfterCurrent`: true [^1]
+- `apz.fling_min_velocity_threshold`: 2 [^3]
+- `apz.gtk.pangesture.page_delta_mode_multiplier`: 0.5 [^3]
+- `apz.overscroll.enabled`: true [^3]
+- `apz.touch_acceleration_factor_y`: 0.5 [^3]
 
 [^1]: cos i like having it not thrown to the end: [https://support.mozilla.org/en-US/questions/1348563](https://support.mozilla.org/en-US/questions/1348563) ([archive](https://web.archive.org/web/20240531224738/https://support.mozilla.org/en-US/questions/1348563))
 [^2]: no moar captive portals: [https://unix.stackexchange.com/a/423708](https://support.mozilla.org/en-US/questions/1348563) ([archive](https://web.archive.org/web/20240531224903/https://unix.stackexchange.com/questions/419422/wifi-disable-hotspot-login-screen))
