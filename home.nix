@@ -66,7 +66,7 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
 
-    # stuff to be sourced in .zshrc `. ./.nix-zshrc`
+    # stuff to be sourced in .zshrc (. "$HOME/.nix-zshrc")
     ".nix-zshrc".source = ./configs/zshrc;
   };
 
