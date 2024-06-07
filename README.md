@@ -2,9 +2,13 @@
 
 my dotfiles, with home-manager (+ extra config stuff)
 
+||
+|:-:|
+|![a terminal showing neofetch output with ascii art](sample.png)|
+
 ## to use
 
-- install nix
+- install nix (with the determinate sytems [installer](https://github.com/DeterminateSystems/nix-installer))
 - for first run, run `nix run . switch --flake` (at least, i think so, else follow [these steps](https://nix-community.github.io/home-manager/index.xhtml#sec-flakes-standalone))
 - consequently, `make switch` works
 
@@ -29,11 +33,13 @@ my dotfiles, with home-manager (+ extra config stuff)
 
 ### files
 
-- .zshrc (source ~/.nix-zshrc)
+- [ ] `.zshrc` (source ~/.nix-zshrc)
 
 ### todo
 
 - [ ] add other fonts
+- [ ] add kitty (+ config)
+- [ ] look int [lix](https://lix.systems)
 - [x] add neofetch config
 - [x] add .zshrc
 
