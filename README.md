@@ -13,11 +13,12 @@ my dotfiles, with home-manager (+ extra config stuff)
 - [x] git (basic)
 - [ ] git (advanced: auth, signing, etc.)
 - [x] starship
-- [ ] neofetch
+- [x] neofetch
 - [x] zoxide (+ fzf)
 - [x] atuin
 - [x] typst
 - [x] rye
+- [x] neovim
 
 ### fonts
 
@@ -26,10 +27,15 @@ my dotfiles, with home-manager (+ extra config stuff)
 - [x] fira code nerd font
 - [x] inter
 
+### files
+
+- .zshrc (source ~/.nix-zshrc)
+
 ### todo
 
-- [ ] add neofetch config
-- [ ] add .zshrc
+- [ ] add other fonts
+- [x] add neofetch config
+- [x] add .zshrc
 
 ### random commands
 

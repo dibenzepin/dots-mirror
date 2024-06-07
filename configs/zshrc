@@ -1,0 +1,42 @@
+# Download Znap, if it's not there yet.
+[[ -r ~/znap-repos/znap/znap.zsh ]] ||
+    git clone --depth 1 -- \
+        https://github.com/marlonrichert/zsh-snap.git ~/znap-repos/znap
+source ~/znap-repos/znap/znap.zsh  # Start Znap
+
+# prompt first
+znap eval starship 'starship init zsh'
+znap prompt
+
+# some settings and vars
+# EDITOR=/usr/bin/hx
+# VISUAL=/usr/bin/hx
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt autocd beep extendedglob nomatch notify
+bindkey -e
+bindkey "^[[3~" delete-char
+
+# evals
+znap eval zoxide "zoxide init zsh"
+
+# completions
+znap install zsh-users/zsh-completions
+znap fpath _rustup "rustup completions zsh"
+znap fpath _cargo "rustup completions zsh cargo"
+znap fpath _starship "starship completions zsh"
+znap fpath _atuin "atuin gen-completions --shell zsh"
+znap fpath _rye "rye self completion -s zsh"
+# znap fpath _trash "trash --print-completion zsh" 
+
+# plugins
+znap source marlonrichert/zsh-autocomplete
+znap source zsh-users/zsh-autosuggestions
+znap source atuinsh/atuin
+
+# settings for marlonrichert/zsh-autocomplete
+zstyle ':autocomplete:*complete*:*' insert-unambiguous yes # insert common substring
+# zstyle ':completion:*:*' matcher-list 'm:{[:lower:]-}={[:upper:]_}' '+r:|[.]=**'
+bindkey '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete # use tab/shift-tab to cycle completions
+

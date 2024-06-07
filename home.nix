@@ -29,8 +29,9 @@
     pkgs.zoxide
     pkgs.fzf
     pkgs.atuin
-	  pkgs.typst
-	  pkgs.rye
+    pkgs.typst
+    pkgs.rye
+    pkgs.neovim
 
     pkgs.inter
     (pkgs.nerdfonts.override {
@@ -64,6 +65,9 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+
+    # stuff to be sourced in .zshrc `. ./.nix-zshrc`
+    ".nix-zshrc".source = ./configs/zshrc;
   };
 
   # Home Manager can also manage your environment variables through
@@ -90,7 +94,11 @@
   programs.home-manager.enable = true;
 
   # copy font prefs
-  xdg.configFile."fontconfig/fonts.conf".source = ./fonts.conf;
+  xdg.configFile."fontconfig/fonts.conf".source = ./configs/fonts.conf;
+
+  # neofetch
+  xdg.configFile."neofetch/config.conf".source = ./configs/neofetch/config.conf;
+  xdg.configFile."neofetch/img/ascii_art_anime.txt".source = ./configs/neofetch/ascii_art_anime.txt;
 
   # other prefs
   programs.git = {
