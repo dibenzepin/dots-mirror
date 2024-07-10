@@ -31,8 +31,7 @@
     pkgs.atuin
     pkgs.typst
     pkgs.rye
-    pkgs.neovim
-
+    
     pkgs.inter
     (pkgs.nerdfonts.override {
         fonts = ["CodeNewRoman" "FiraCode"];
@@ -113,6 +112,7 @@
         };
         extraConfig = {
             init.defaultBranch = "main";
+            pull.rebase = true
         };
     };
 
