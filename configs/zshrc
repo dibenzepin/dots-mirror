@@ -1,3 +1,8 @@
+# zsh settings
+setopt autocd beep extendedglob nomatch notify interactivecomments
+bindkey -e
+bindkey "^[[3~" delete-char
+
 # Download Znap, if it's not there yet.
 [[ -r ~/znap-repos/znap/znap.zsh ]] ||
     git clone --depth 1 -- \
@@ -8,16 +13,6 @@ source ~/znap-repos/znap/znap.zsh  # Start Znap
 znap eval starship 'starship init zsh'
 znap prompt
 
-# some settings and vars
-# EDITOR=/usr/bin/hx
-# VISUAL=/usr/bin/hx
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-setopt autocd beep extendedglob nomatch notify
-bindkey -e
-bindkey "^[[3~" delete-char
-
 # evals
 znap eval zoxide "zoxide init zsh"
 
@@ -27,16 +22,24 @@ znap fpath _rustup "rustup completions zsh"
 znap fpath _cargo "rustup completions zsh cargo"
 znap fpath _starship "starship completions zsh"
 znap fpath _atuin "atuin gen-completions --shell zsh"
-znap fpath _rye "rye self completion -s zsh"
-# znap fpath _trash "trash --print-completion zsh" 
+znap fpath _jj "jj util completion zsh"
 
 # plugins
 znap source marlonrichert/zsh-autocomplete
 znap source zsh-users/zsh-autosuggestions
-znap source atuinsh/atuin
+znap source MichaelAquilina/zsh-auto-notify
+znap source zsh-users/zsh-syntax-highlighting
 
 # settings for marlonrichert/zsh-autocomplete
 zstyle ':autocomplete:*complete*:*' insert-unambiguous yes # insert common substring
-# zstyle ':completion:*:*' matcher-list 'm:{[:lower:]-}={[:upper:]_}' '+r:|[.]=**'
 bindkey '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete # use tab/shift-tab to cycle completions
 
+# settings for zsh-syntax-highlighting
+ZSH_HIGHLIGHT_STYLES[path]='fg=cyan' # make paths blue
+ZSH_HIGHLIGHT_STYLES[precommand]='none' # stop sudo from being underlined
+
+# settings for zsh-auto-notify
+AUTO_NOTIFY_IGNORE+=("hx")
+
+# need atuin to be last
+znap eval atuin "atuin init zsh"

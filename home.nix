@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, apple-emoji, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -31,7 +31,10 @@
     pkgs.atuin
     pkgs.typst
     pkgs.rye
-    
+    pkgs.jujutsu
+    pkgs.delta
+
+    apple-emoji
     pkgs.inter
     (pkgs.nerdfonts.override {
         fonts = ["CodeNewRoman" "FiraCode"];
@@ -99,6 +102,12 @@
   xdg.configFile."neofetch/config.conf".source = ./configs/neofetch/config.conf;
   xdg.configFile."neofetch/img/ascii_art_anime.txt".source = ./configs/neofetch/ascii_art_anime.txt;
 
+  # wezterm
+  xdg.configFile."wezterm/wezterm.lua".source = ./configs/wezterm.lua;
+
+  # run-or-raise
+  xdg.configFile."run-or-raise/shortcuts.conf".source = ./configs/run-or-raise.conf;
+
   # other prefs
   programs.git = {
         enable = true;
@@ -110,9 +119,18 @@
           br = "branch";
           ci = "commit";   
         };
+        delta.enable = true;
+        delta.options = {
+            line-numbers = true;
+        };
         extraConfig = {
             init.defaultBranch = "main";
-            pull.rebase = true
+            pull.rebase = true;
+            url = {
+                "git@github.com:" = {
+                insteadOf = "https://github.com/";
+                };
+            };
         };
     };
 
@@ -122,7 +140,7 @@
         settings = {
             character = {
                 success_symbol = "[➜](bold green)";
-                error_symbol = "[✗](bold red)";
+                error_symbol = "[✖](bold red)";
             };
             hostname = {
                 ssh_only = false;
