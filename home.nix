@@ -10,7 +10,15 @@
   targets.genericLinux.enable = true;
 
   # make fonts actually work
-  fonts.fontconfig.enable = true;
+  fonts.fontconfig = {
+    enable = true; # make fonts actually work
+    defaultFonts = {
+        emoji = ["Apple Color Emoji"];
+        monospace = ["FiraCode Nerd Font Mono"];
+        sansSerif = ["Inter"];
+        serif = ["Noto Serif"];
+    };
+  };
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -36,9 +44,11 @@
 
     apple-emoji
     pkgs.inter
-    (pkgs.nerdfonts.override {
-        fonts = ["CodeNewRoman" "FiraCode"];
-    })
+    pkgs.nerd-fonts.fira-mono
+    pkgs.nerd-fonts.code-new-roman
+    # (pkgs.nerdfonts.override {
+    #     fonts = ["CodeNewRoman" "FiraCode"];
+    # })
     
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -102,8 +112,9 @@
   xdg.configFile."neofetch/config.conf".source = ./configs/neofetch/config.conf;
   xdg.configFile."neofetch/img/ascii_art_anime.txt".source = ./configs/neofetch/ascii_art_anime.txt;
 
-  # wezterm
-  xdg.configFile."wezterm/wezterm.lua".source = ./configs/wezterm.lua;
+  # kitty
+  # xdg.configFile."kitty/kitty.conf".source = ./configs/kitty/kitty.conf;
+  # xdg.configFile."kitty/catppuccin-mocha.conf".source = ./configs/kitty/catppuccin-mocha.conf;
 
   # run-or-raise
   xdg.configFile."run-or-raise/shortcuts.conf".source = ./configs/run-or-raise.conf;
@@ -128,7 +139,7 @@
             pull.rebase = true;
             url = {
                 "git@github.com:" = {
-                insteadOf = "https://github.com/";
+                    insteadOf = "https://github.com/";
                 };
             };
         };
@@ -138,6 +149,7 @@
         enable = true;
 
         settings = {
+            add_newline = false;
             character = {
                 success_symbol = "[➜](bold green)";
                 error_symbol = "[✖](bold red)";
@@ -162,6 +174,24 @@
             sync = {
                 records = true;
             };
+        };
+    };
+
+    programs.kitty = {
+        enable = true;
+        package = pkgs.emptyDirectory; # we install kitty with the system package manager
+        themeFile = "Catppuccin-Mocha";
+        settings = {        
+            tab_bar_min_tabs = 1;
+            tab_bar_edge = "bottom";
+            tab_bar_style = "powerline";
+            tab_powerline_style = "slanted";
+            tab_title_template = "{title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}";
+            window_padding_width = 10;
+            background_opacity = "0.95";
+        };
+        keybindings = {
+            "ctrl+," = "edit_config_file";
         };
     };
 }

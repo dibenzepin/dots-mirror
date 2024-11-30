@@ -35,16 +35,20 @@ my dotfiles, with home-manager (+ extra config stuff)
 
 - [x] `.zshrc` (source ~/.nix-zshrc)
 - [x] `run-or-raise`
+- [x] `kitty`
 
 ### todo
 
 - [ ] look into [lix](https://lix.systems)
 - [ ] add helix config
+- [ ] add [nautilus-open-any-terminal](https://github.com/Stunkymonkey/nautilus-open-any-terminal)
+- [ ] look into [nixGL](https://github.com/nix-community/nixGL/issues/114) for kitty (so that dep. on system package is removed)
+- [ ] replace kitty symlink with xdg-terminal-exec https://new.reddit.com/r/Fedora/comments/zgds3i/how_do_i_set_default_terminal/
 
 ### random commands
 
 - `sudo touch /etc/NetworkManager/conf.d/20-connectivity-fedora.conf` [^2]
-- `sudo ln -s /usr/bin/wezterm /usr/bin/gnome-terminal` [^4]
+- `sudo ln -s /usr/bin/kitty /usr/bin/gnome-terminal` [^4]
 
 #### ff `about:config` extras
 

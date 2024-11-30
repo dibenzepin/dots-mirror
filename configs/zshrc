@@ -32,6 +32,7 @@ znap source zsh-users/zsh-syntax-highlighting
 
 # settings for marlonrichert/zsh-autocomplete
 zstyle ':autocomplete:*complete*:*' insert-unambiguous yes # insert common substring
+zstyle ':completion:*:*' matcher-list 'm:{[:lower:]-}={[:upper:]_}' '+r:|[.]=**' # use prefix as substring
 bindkey '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete # use tab/shift-tab to cycle completions
 
 # settings for zsh-syntax-highlighting
@@ -43,3 +44,8 @@ AUTO_NOTIFY_IGNORE+=("hx")
 
 # need atuin to be last
 znap eval atuin "atuin init zsh"
+
+# add a blank line between prompts because starship's add_newline is annoying on first open
+precmd() { precmd() { echo "" } }
+alias clear='precmd() { precmd() { echo "" } } && clear'
+alias reset='precmd() { precmd() { echo "" } } && reset'
