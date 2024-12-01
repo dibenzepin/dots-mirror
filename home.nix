@@ -44,7 +44,7 @@
 
     apple-emoji
     pkgs.inter
-    pkgs.nerd-fonts.fira-mono
+    pkgs.nerd-fonts.fira-code
     pkgs.nerd-fonts.code-new-roman
     # (pkgs.nerdfonts.override {
     #     fonts = ["CodeNewRoman" "FiraCode"];
