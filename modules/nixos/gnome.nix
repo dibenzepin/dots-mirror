@@ -205,6 +205,7 @@ with lib;
       ];
     };
 
+    # TODO: home-manager abuse!
     # this is me being lazy and assuming hm exists
     home-manager.users.${uname} = {
       gtk = {

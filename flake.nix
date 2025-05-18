@@ -59,18 +59,7 @@
       ...
     }@inputs:
     let
-      eachSystem =
-        f:
-        nixpkgs.lib.genAttrs (import systems) (
-          # system:
-          # f (
-          #   import nixpkgs {
-          #     inherit system;
-          #     # config.allowUnfree = true;
-          #   }
-          # )
-          system: f nixpkgs.legacyPackages.${system}
-        );
+      eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
       treefmtConfig = import ./treefmt.nix;
     in
     {

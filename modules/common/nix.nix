@@ -44,5 +44,9 @@
         bash-prompt-prefix = (nix:$name)\040
       '';
     };
+
+    # TODO: home-manager abuse!
+    home-manager.users.${config.my.username}.xdg.configFile."nixpkgs/config.nix".text =
+      "{ allowUnfree = true; }";
   };
 }
