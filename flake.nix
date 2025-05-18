@@ -84,15 +84,13 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.fumnanya = {
-              imports = [
-                ./hosts/antikythera/home.nix
-
-                catppuccin.homeModules.catppuccin
-                spicetify-nix.homeManagerModules.spicetify
-              ];
-            };
+            home-manager.sharedModules = [
+              catppuccin.homeModules.catppuccin
+              spicetify-nix.homeManagerModules.spicetify
+            ];
             home-manager.extraSpecialArgs = { inherit inputs; };
+
+            home-manager.users.fumnanya = ./hosts/antikythera/home.nix;
           }
         ];
       };
