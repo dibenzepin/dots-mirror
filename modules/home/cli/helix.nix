@@ -107,6 +107,7 @@ with lib;
         ]
         ++ lib.optionals (elem "nix" cfg.langs) [
           nil
+          nixd
           nixfmt-rfc-style
         ];
 
@@ -121,7 +122,10 @@ with lib;
           lib.optional (elem "nix" cfg.langs) {
             name = "nix";
             auto-format = true;
-            language-servers = [ "nil" ];
+            language-servers = [
+              "nil"
+              "nixd"
+            ];
             formatter.command = "nixfmt";
           }
 

@@ -95,7 +95,7 @@ with lib;
             # https://superuser.com/a/1186161
             "font.name-list.emoji" = "Apple Color Emoji";
 
-            "signon.rememberSignons" = false;            
+            "signon.rememberSignons" = false;
           };
         };
       };
