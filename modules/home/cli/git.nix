@@ -15,10 +15,6 @@
       pkgs.jujutsu
     ];
 
-    # delta pulls bat in and it complains about Catppuccin not being available
-    # so we add it to our config so the theme gets written
-    programs.bat.enable = true;
-
     programs.git = {
       enable = true;
       userName = "fumnanya";
