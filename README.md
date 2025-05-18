@@ -6,7 +6,8 @@ you might also be interested in my [packages](https://codeberg.com/fumnanya/flak
 
 ||
 |:-:|
-|![a terminal showing neofetch output with ascii art](sample.png)|
+|![a terminal showing neofetch output with ascii art, and a popup asking for touch id to run a command](./sample.png)|
+|![a terminal showing the contents of this repository open in kitty](./sample2.png)|
 
 ## to use
 
