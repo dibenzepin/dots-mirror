@@ -2,6 +2,7 @@
   description = "starter nixos config flake";
 
   inputs = {
+    # https://github.com/tgirlcloud/lix-diff/issues/1
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
     systems.url = "github:nix-systems/default";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
