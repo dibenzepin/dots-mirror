@@ -1,6 +1,5 @@
 { pkgs, inputs, ... }:
 
-
 {
   imports = [
     ../../modules/home
@@ -30,15 +29,18 @@
     # bitwarden-desktop # replaced with app store version
   ];
 
+  catppuccin.enable = true;
+  catppuccin.flavor = "mocha";
+
   my.username = "fum";
   my.zsh.enable = true;
   my.git.enable = true;
   my.helix.enable = true;
-my.helix.langs = [
-      # "rust"
-      "nix"
-      # "python"
-    ];
+  my.helix.langs = [
+    # "rust"
+    "nix"
+    # "python"
+  ];
 
   home.sessionVariables = {
     # SSH_AUTH_SOCK = "$HOME/.bitwarden-ssh-agent.sock";
