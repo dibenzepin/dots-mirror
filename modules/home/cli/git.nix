@@ -15,6 +15,10 @@
       pkgs.jujutsu
     ];
 
+    # delta pulls in bat
+    # bat complains about not seeing catppuccin mocha
+    programs.bat.enable = true;
+
     programs.git = {
       enable = true;
       userName = "fumnanya";

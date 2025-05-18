@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -18,6 +18,36 @@
   # Let Home Manager install and manage itself.
   # programs.home-manager.enable = true;
 
+  my.username = "fum";
+
+  programs.zoxide.enable = true;
+
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
+
+  catppuccin.enable = true;
+  catppuccin.flavor = "mocha";
+
+  my = {
+    git.enable = true;
+    kitty.enable = true;
+    neofetch.enable = true;
+    atuin.enable = true;
+    zsh.enable = true;
+    starship.enable = true;
+    spotify.enable = true;
+
+    helix.enable = true;
+    helix.langs = [
+      "rust"
+      "nix"
+      "python"
+    ];
+
+    # firefox.enable = true;
+    # firefox.package = inputs.firefox-nightly.packages.${pkgs.system}.firefox-nightly-bin;
+  };
+
   home.packages = with pkgs; [
     mosh
     zed-editor
@@ -27,19 +57,6 @@
     appcleaner
     # tableplus
     # bitwarden-desktop # replaced with app store version
-  ];
-
-  catppuccin.enable = true;
-  catppuccin.flavor = "mocha";
-
-  my.username = "fum";
-  my.zsh.enable = true;
-  my.git.enable = true;
-  my.helix.enable = true;
-  my.helix.langs = [
-    # "rust"
-    "nix"
-    # "python"
   ];
 
   home.sessionVariables = {

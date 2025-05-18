@@ -12,7 +12,6 @@
 
   my.username = "fum";
   system.primaryUser = "fum";
-  my.nix.enable = true;
 
   # Set Git commit hash for darwin-version.
   system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
@@ -40,7 +39,6 @@
       "orbstack"
       "keepingyouawake"
       "zen"
-      "ghostty"
       "cloudflare-warp"
       "lulu"
       # "kdeconnect" # go and automate it
@@ -49,6 +47,21 @@
       Bitwarden = 1352778147;
       Telegram = 747648890;
     };
+  };
+
+  my.nix.enable = true;
+  my.fonts = {
+    enable = true;
+
+    packages =
+      with pkgs.nerd-fonts;
+      [
+        fira-code
+        code-new-roman
+      ]
+      ++ (with pkgs; [
+        inter
+      ]);
   };
 
   system = {
@@ -81,7 +94,7 @@
   system.activationScripts = {
     preActivation.text = ''
       # reset launchpad
-      # echo "resetting launchpad prefs"
+      echo "resetting launchpad prefs"
       rm -rf "/private$(getconf DARWIN_USER_DIR)com.apple.dock.launchpad"
     '';
 

@@ -10,6 +10,8 @@
       enable = true;
       shellIntegration.enableZshIntegration = true;
       settings = {
+        font_family = "FiraCode Nerd Font Mono";
+        font_size = 13;
         tab_bar_min_tabs = 1;
         tab_bar_edge = "bottom";
         tab_bar_style = "powerline";
