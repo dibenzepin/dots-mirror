@@ -1,9 +1,10 @@
 { ... }:
 {
   imports = [
+    ./nix.nix
     ./gnome.nix
     ./fonts.nix
-    ./nix.nix
+    ./helix.nix
     ./goldwarden.nix
   ];
 }

@@ -49,6 +49,8 @@
       initContent = ''
         setopt nomatch notify interactivecomments
 
+        bindkey '^[[3~' delete-char
+
         # settings for marlonrichert/zsh-autocomplete
         zstyle ':autocomplete:*complete*:*' insert-unambiguous yes # insert common substring
         zstyle ':completion:*:*' matcher-list 'm:{[:lower:]-}={[:upper:]_}' '+r:|[.]=**' # use prefix as substring

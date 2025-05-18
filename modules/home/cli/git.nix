@@ -30,7 +30,7 @@
         line-numbers = true;
       };
       signing = {
-        key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOiGSjQcRY0rXoi9dRT4dZygGo8vjB/NYJXrAhnZ46NX";
+        key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILj80AhtIADDRd2rz66ejlDD4P80I5p9zpxNwcqFsOhz";
         format = "ssh";
       };
       extraConfig = {

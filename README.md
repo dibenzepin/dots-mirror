@@ -18,6 +18,7 @@ you might also be interested in my [packages](https://codeberg.com/fumnanya/flak
 - [`docs/`](./docs) &mdash; documentation for future-me
 - [`hosts/`](./hosts) &mdash; per-machine configurations
   - [`hosts/antikythera/`](./hosts/noctis) &mdash; **antikythera**: Lenovo ThinkPad T480s (Intel i7-8650U)
+  - [`hosts/lumi`](./hosts/lumi) &mdash; **lumi**: Apple MacBook Air (M1)
 - [`modules/`](./modules) &mdash; modules used by system configurations
   - [`modules/common`](./modules/common) &mdash; modules used by both NixOS and macOS
   - [`modules/nixos`](./modules/nixos) &mdash; NixOS-specific modules

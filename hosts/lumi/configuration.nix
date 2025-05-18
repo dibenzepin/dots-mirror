@@ -1,0 +1,100 @@
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}:
+{
+  imports = [
+    ../../modules/common
+    ../../modules/darwin
+  ];
+
+  my.username = "fum";
+  system.primaryUser = "fum";
+  my.nix.enable = true;
+
+  # Set Git commit hash for darwin-version.
+  system.configurationRevision = inputs.self.rev or inputs.self.dirtyRev or null;
+
+  # Used for backwards compatibility, please read the changelog before changing.
+  # $ darwin-rebuild changelog
+  system.stateVersion = 6;
+
+  # The platform the configuration will be used on.
+  nixpkgs.hostPlatform = "aarch64-darwin";
+
+  # Set sudo to use touch id
+  security.pam.services.sudo_local.touchIdAuth = true;
+
+  homebrew = {
+    enable = true;
+    onActivation.cleanup = "zap";
+    # so that nix-darwin knows about the taps nix-homebrew brings in
+    taps = builtins.attrNames config.nix-homebrew.taps;
+    brews = [
+      "mas" # stop uninstalling it lol
+      "garden-cli@0.13"
+    ];
+    casks = [
+      "orbstack"
+      "keepingyouawake"
+      "zen"
+      "ghostty"
+      "cloudflare-warp"
+      "lulu"
+      # "kdeconnect" # go and automate it
+    ];
+    masApps = {
+      Bitwarden = 1352778147;
+      Telegram = 747648890;
+    };
+  };
+
+  system = {
+    defaults = {
+      SoftwareUpdate.AutomaticallyInstallMacOSUpdates = false;
+
+      WindowManager.EnableStandardClickToShowDesktop = false;
+      NSGlobalDomain.AppleShowAllExtensions = true;
+      NSGlobalDomain.AppleInterfaceStyle = "Dark";
+      NSGlobalDomain.AppleSpacesSwitchOnActivate = false;
+
+      dock.magnification = true;
+      dock.orientation = "left";
+      dock.largesize = 95;
+      dock.tilesize = 25;
+      dock.mru-spaces = false;
+
+      CustomSystemPreferences = {
+        # "com.apple.SoftwareUpdate" = {
+        #   "MajorOSUserNotificationDate" = "2030-02-07 23:22:47 +0000";
+        #   "UserNotificationDate" = "2030-02-07 23:22:47 +0000";
+        # };
+      };
+    };
+
+    keyboard.enableKeyMapping = true;
+    keyboard.remapCapsLockToEscape = true;
+  };
+
+  system.activationScripts = {
+    preActivation.text = ''
+      # reset launchpad
+      # echo "resetting launchpad prefs"
+      rm -rf "/private$(getconf DARWIN_USER_DIR)com.apple.dock.launchpad"
+    '';
+
+    postActivation.text = ''
+      # Following line should allow us to avoid a logout/login cycle
+      # /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+
+      # set zen as default browser: https://tommorris.org/posts/2024/til-setting-default-browser-on-macos-using-nix/
+      ${pkgs.defaultbrowser}/bin/defaultbrowser zen
+
+      # stop update notis: https://discussions.apple.com/thread/255859390
+      # defaults write com.apple.SoftwareUpdate MajorOSUserNotificationDate -date "2030-02-07 23:22:47 +0000"
+      # defaults write com.apple.SoftwareUpdate UserNotificationDate -date "2030-02-07 23:22:47 +0000"
+    '';
+  };
+}
