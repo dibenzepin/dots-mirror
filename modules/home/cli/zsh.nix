@@ -51,6 +51,10 @@
 
         bindkey '^[[3~' delete-char
 
+        # https://michaelheap.com/kubectl-alias-autocomplete/
+        alias k=kubectl
+        compdef k='kubectl'
+
         # settings for marlonrichert/zsh-autocomplete
         zstyle ':autocomplete:*complete*:*' insert-unambiguous yes # insert common substring
         zstyle ':completion:*:*' matcher-list 'm:{[:lower:]-}={[:upper:]_}' '+r:|[.]=**' # use prefix as substring

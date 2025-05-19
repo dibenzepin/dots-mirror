@@ -72,12 +72,41 @@
       NSGlobalDomain.AppleShowAllExtensions = true;
       NSGlobalDomain.AppleInterfaceStyle = "Dark";
       NSGlobalDomain.AppleSpacesSwitchOnActivate = false;
+      NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;
+      NSGlobalDomain.NSAutomaticInlinePredictionEnabled = false;
+      NSGlobalDomain.NSAutomaticPeriodSubstitutionEnabled = false;
+      NSGlobalDomain.NSAutomaticSpellingCorrectionEnabled = false;
 
       dock.magnification = true;
       dock.orientation = "left";
       dock.largesize = 95;
       dock.tilesize = 25;
       dock.mru-spaces = false;
+      dock.persistent-apps = [
+        {
+          app = "/System/Applications/Launchpad.app";
+        }
+        {
+          app = "/System/Applications/Mail.app";
+        }
+        {
+          app = "/Applications/Zen.app";
+        }
+        {
+          app = "/Users/fum/Applications/Home Manager Trampolines/Spotify.app";
+        }
+        {
+          app = "/Users/fum/Applications/Home Manager Trampolines/kitty.app";
+        }
+        {
+          app = "/Users/fum/Applications/Home Manager Trampolines/Zed.app";
+        }
+      ];
+      dock.persistent-others = [
+        "/Users/fum/Downloads"
+      ];
+
+      finder.ShowPathbar = true;
 
       CustomSystemPreferences = {
         # "com.apple.SoftwareUpdate" = {

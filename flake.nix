@@ -26,7 +26,7 @@
     nix-homebrew.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.inputs.nix-darwin.follows = "nix-darwin";
 
-    mac-app-util.url = "github:hraban/mac-app-util";
+    mac-app-util.url = "github:hraban/mac-app-util/link-contents";
     mac-app-util.inputs.nixpkgs.follows = "nixpkgs";
 
     flake-utils.url = "github:numtide/flake-utils";

@@ -24,6 +24,22 @@
           show_always = true;
           format = "[$user](bold lavender)[@](bold yellow)";
         };
+        kubernetes = {
+          disabled = false;
+          detect_files = [ "release.garden.yml" ];
+          contexts = [
+            {
+              context_pattern = "lumiquote-dev";
+              style = "green";
+              context_alias = "Luminovo Azure (Dev)";
+            }
+            {
+              context_pattern = "lumiquote-prod-germanywestcentral";
+              style = "bold red";
+              context_alias = "Luminovo Azure (Prod)";
+            }
+          ];
+        };
       };
     };
 
