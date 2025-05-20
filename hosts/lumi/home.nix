@@ -55,6 +55,7 @@
     dbeaver-bin
     aider-chat
     appcleaner
+    iina
     # tableplus
     # bitwarden-desktop # replaced with app store version
   ];

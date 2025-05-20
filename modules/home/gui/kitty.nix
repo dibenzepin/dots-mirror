@@ -24,6 +24,7 @@
         input_delay = 0;
         repaint_delay = 0;
         sync_to_monitor = "no";
+        macos_option_as_alt = "yes";
       };
       # todo: adapt for darwin
       keybindings = {
