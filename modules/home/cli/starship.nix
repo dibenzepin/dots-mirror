@@ -26,7 +26,7 @@
         };
         kubernetes = {
           disabled = false;
-          detect_files = [ "release.garden.yml" ];
+          detect_env_vars = [ "LUMINOVO_NUM_CPUS" ];
           contexts = [
             {
               context_pattern = "lumiquote-dev";
