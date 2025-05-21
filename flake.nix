@@ -83,8 +83,6 @@
       nix-darwin,
       mac-app-util,
       nix-homebrew,
-      homebrew-core,
-      homebrew-cask,
       ...
     }@inputs:
     let
@@ -135,11 +133,11 @@
               user = "fum";
 
               # Optional: Declarative tap management
-              taps = {
+              taps = with inputs; {
                 "homebrew/homebrew-core" = homebrew-core;
                 "homebrew/homebrew-cask" = homebrew-cask;
-                "garden-io/homebrew-garden" = inputs.homebrew-garden;
-                "KDE/homebrew-kde" = inputs.homebrew-kde;
+                "garden-io/homebrew-garden" = homebrew-garden;
+                "KDE/homebrew-kde" = homebrew-kde;
               };
 
               # Optional: Enable fully-declarative tap management

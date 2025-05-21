@@ -93,17 +93,17 @@
           app = "/Applications/Zen.app";
         }
         {
-          app = "/Users/fum/Applications/Home Manager Trampolines/Spotify.app";
+          app = "/Users/${config.my.username}/Applications/Home Manager Trampolines/Spotify.app";
         }
         {
-          app = "/Users/fum/Applications/Home Manager Trampolines/kitty.app";
+          app = "/Users/${config.my.username}/Applications/Home Manager Trampolines/kitty.app";
         }
         {
-          app = "/Users/fum/Applications/Home Manager Trampolines/Zed.app";
+          app = "/Users/${config.my.username}/Applications/Home Manager Trampolines/Zed.app";
         }
       ];
       dock.persistent-others = [
-        "/Users/fum/Downloads"
+        "/Users/${config.my.username}/Downloads"
       ];
 
       finder.ShowPathbar = true;
