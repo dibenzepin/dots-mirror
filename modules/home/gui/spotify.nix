@@ -5,10 +5,6 @@
   pkgs,
   ...
 }:
-let
-  # https://wiki.nixos.org/wiki/Spicetify-Nix
-  spice = inputs.spicetify-nix.legacyPackages.${pkgs.system};
-in
 {
   options = {
     my.spotify = {
@@ -17,10 +13,15 @@ in
   };
 
   config = lib.mkIf config.my.spotify.enable {
-    programs.spicetify = {
-      enable = true;
-      theme = spice.themes.catppuccin;
-      colorScheme = "mocha";
-    };
+    programs.spicetify =
+      let
+        # https://wiki.nixos.org/wiki/Spicetify-Nix
+        spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+      in
+      {
+        enable = true;
+        theme = spicePkgs.themes.catppuccin;
+        colorScheme = "mocha";
+      };
   };
 }
