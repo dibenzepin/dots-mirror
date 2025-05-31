@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports = [
@@ -56,6 +56,10 @@
     aider-chat
     appcleaner
     iina
+    qbittorrent
+    vesktop
+    inputs.fum.packages.${pkgs.system}.switcheroo
+    # rquickshare
     # tableplus
     # bitwarden-desktop # replaced with app store version
   ];

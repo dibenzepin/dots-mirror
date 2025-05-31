@@ -19,6 +19,7 @@
         experimental-features = [
           "nix-command"
           "flakes"
+          "lix-custom-sub-commands"
         ];
         substituters = [ "https://cache.lix.systems" ];
         trusted-public-keys = [
