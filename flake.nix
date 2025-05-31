@@ -8,7 +8,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     fum.url = "git+https://codeberg.org/fumnanya/flakes";
 
-    lix.url = "https://git.lix.systems/lix-project/lix/archive/main.tar.gz";
+    lix.url = "https://git.lix.systems/lix-project/lix/archive/main.zip";
     lix.flake = false;
 
     lix-module.url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
@@ -23,8 +23,6 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
-    nix-homebrew.inputs.nixpkgs.follows = "nixpkgs";
-    nix-homebrew.inputs.nix-darwin.follows = "nix-darwin";
 
     mac-app-util.url = "github:hraban/mac-app-util/link-contents";
     mac-app-util.inputs.nixpkgs.follows = "nixpkgs";
