@@ -26,28 +26,40 @@
   # Set sudo to use touch id
   security.pam.services.sudo_local.touchIdAuth = true;
 
-  homebrew = {
-    enable = true;
-    onActivation.cleanup = "zap";
-    # so that nix-darwin knows about the taps nix-homebrew brings in
-    taps = builtins.attrNames config.nix-homebrew.taps;
-    brews = [
-      "mas" # stop uninstalling it lol
-      "garden-cli@0.13"
-    ];
-    casks = [
-      "orbstack"
-      "keepingyouawake"
-      "zen"
-      "cloudflare-warp"
-      "lulu"
-      # "kdeconnect" # go and automate it
-    ];
-    masApps = {
-      Bitwarden = 1352778147;
-      Telegram = 747648890;
+  homebrew =
+    # stolen from https://github.com/nix-darwin/nix-darwin/issues/935#issuecomment-2096813988
+    let
+      mkGreedy = caskName: {
+        name = caskName;
+        greedy = true;
+      };
+    in
+    {
+      enable = true;
+      onActivation = {
+        cleanup = "zap";
+        autoUpdate = true;
+        upgrade = true;
+      };
+      # so that nix-darwin knows about the taps nix-homebrew brings in
+      taps = builtins.attrNames config.nix-homebrew.taps;
+      brews = [
+        "mas" # stop uninstalling it lol
+        "garden-cli@0.13"
+      ];
+      casks = map mkGreedy [
+        "orbstack"
+        "keepingyouawake"
+        "zen"
+        "cloudflare-warp"
+        "lulu"
+        # "kdeconnect" # go and automate it
+      ];
+      masApps = {
+        Bitwarden = 1352778147;
+        Telegram = 747648890;
+      };
     };
-  };
 
   my.nix.enable = true;
   my.fonts = {
