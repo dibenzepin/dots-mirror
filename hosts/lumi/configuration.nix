@@ -134,9 +134,9 @@
 
   system.activationScripts = {
     preActivation.text = ''
-      # reset launchpad
-      echo "resetting launchpad prefs"
-      rm -rf "/private$(getconf DARWIN_USER_DIR)com.apple.dock.launchpad"
+      # reset launchpad, root doesn't have the folder, so we execute it as our user
+      echo "resetting launchpad prefs..."
+      su -- ${config.my.username} -c 'rm -rf "/private$(getconf DARWIN_USER_DIR)com.apple.dock.launchpad"'
     '';
 
     postActivation.text = ''
