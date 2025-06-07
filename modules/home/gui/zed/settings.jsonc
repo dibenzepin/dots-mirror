@@ -1,0 +1,83 @@
+{
+  "ssh_connections": [
+    {
+      "host": "compiler1",
+      "projects": [
+        {
+          "paths": ["/home/fumnanya/epibator"]
+        },
+        {
+          "paths": ["/home/fumnanya/lumiquote"]
+        }
+      ]
+    },
+    {
+      "host": "compiler3",
+      "projects": [
+        {
+          "paths": ["/home/fumnanya/epibator"]
+        }
+      ]
+    },
+    {
+      "host": "10.100.50.149",
+      "username": "fumnanya",
+      "projects": [
+        {
+          "paths": ["/home/fumnanya"]
+        },
+        {
+          "paths": ["/home/fumnanya/VerrakiProject-main"]
+        }
+      ]
+    }
+  ],
+  "ui_font_size": 15,
+  "buffer_font_size": 14,
+  "terminal": { "blinking": "on" },
+  "buffer_font_family": "TX-02",
+  "buffer_font_features": { "calt": true },
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Catppuccin Mocha"
+  },
+  "agent": {
+    "default_model": {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-thinking-latest"
+    },
+    "version": "2"
+  },
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+  "vim": { "default_mode": "helix_normal" },
+  "vim_mode": true,
+  "restore_on_startup": "none",
+  "languages": {
+    "YAML": {
+      "format_on_save": "off"
+    }
+  },
+  "lsp": {
+    "nil": {
+      "initialization_options": {
+        "formatting": {
+          "command": ["nixfmt"]
+        }
+      }
+    },
+    "yaml-language-server": {
+      "settings": {
+        "yaml": {
+          "customTags": ["!reference sequence"]
+        }
+      }
+    }
+  },
+  "auto_install_extensions": {
+    "catppuccin-icons": true
+  },
+  "icon_theme": "Catppuccin Mocha"
+}
