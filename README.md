@@ -36,6 +36,7 @@ you might also be interested in my [packages](https://codeberg.com/fumnanya/flak
 - improve goldwarden, add gpg, add config https://github.com/quexten/goldwarden/wiki/Configuring-the-Daemon
 - add celluloid options `hw-dec=auto`
 - setup [fingerprint](https://github.com/ahbnr/nixos-06cb-009a-fingerprint-sensor/blob/24.11/SETUP-24.11.md)
+- add getting started with mac docs: need to allow noti access for script editor, install rosetta
 
 ## acknowledgements
 
