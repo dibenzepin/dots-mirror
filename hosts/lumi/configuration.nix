@@ -45,7 +45,6 @@
       taps = builtins.attrNames config.nix-homebrew.taps;
       brews = [
         "mas" # stop uninstalling it lol
-        "garden-cli@0.13"
       ];
       casks = map mkGreedy [
         "orbstack"
