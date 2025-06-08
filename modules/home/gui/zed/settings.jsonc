@@ -4,10 +4,14 @@
       "host": "compiler1",
       "projects": [
         {
-          "paths": ["/home/fumnanya/epibator"]
+          "paths": [
+            "/home/fumnanya/epibator"
+          ]
         },
         {
-          "paths": ["/home/fumnanya/lumiquote"]
+          "paths": [
+            "/home/fumnanya/lumiquote"
+          ]
         }
       ]
     },
@@ -15,7 +19,9 @@
       "host": "compiler3",
       "projects": [
         {
-          "paths": ["/home/fumnanya/epibator"]
+          "paths": [
+            "/home/fumnanya/epibator"
+          ]
         }
       ]
     },
@@ -24,19 +30,27 @@
       "username": "fumnanya",
       "projects": [
         {
-          "paths": ["/home/fumnanya"]
+          "paths": [
+            "/home/fumnanya"
+          ]
         },
         {
-          "paths": ["/home/fumnanya/VerrakiProject-main"]
+          "paths": [
+            "/home/fumnanya/VerrakiProject-main"
+          ]
         }
       ]
     }
   ],
   "ui_font_size": 15,
   "buffer_font_size": 14,
-  "terminal": { "blinking": "on" },
+  "terminal": {
+    "blinking": "on"
+  },
   "buffer_font_family": "TX-02",
-  "buffer_font_features": { "calt": true },
+  "buffer_font_features": {
+    "calt": true
+  },
   "theme": {
     "mode": "system",
     "light": "One Light",
@@ -52,7 +66,9 @@
   "features": {
     "edit_prediction_provider": "zed"
   },
-  "vim": { "default_mode": "helix_normal" },
+  "vim": {
+    "default_mode": "helix_normal"
+  },
   "vim_mode": true,
   "restore_on_startup": "none",
   "languages": {
@@ -62,16 +78,28 @@
   },
   "lsp": {
     "nil": {
+      "binary": {
+        "path": "/nix/store/ifh4iwsqkym06cnz2y383qajgrcmm4ii-nil-2024-08-06/bin/nil"
+      },
       "initialization_options": {
         "formatting": {
-          "command": ["nixfmt"]
+          "command": [
+            "/nix/store/r1630if1xipdb4bzyibs8pb6g134laz5-nixfmt-unstable-2025-04-04/bin/nixfmt"
+          ]
         }
+      }
+    },
+    "nixd": {
+      "binary": {
+        "path": "/nix/store/9wygk4wvwpb8n7pjrakx2f5sid8x7rwf-nixd-2.6.4/bin/nixd"
       }
     },
     "yaml-language-server": {
       "settings": {
         "yaml": {
-          "customTags": ["!reference sequence"]
+          "customTags": [
+            "!reference sequence"
+          ]
         }
       }
     }
