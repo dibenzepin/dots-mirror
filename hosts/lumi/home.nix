@@ -61,7 +61,6 @@
     mosh
     aldente
     dbeaver-bin
-    aider-chat
     appcleaner
     iina
     qbittorrent
