@@ -71,18 +71,30 @@
 
         # https://michaelheap.com/kubectl-alias-autocomplete/
         alias k=kubectl
-        compdef k='kubectl'
-
-        # settings for marlonrichert/zsh-autocomplete
-        zstyle ':autocomplete:*complete*:*' insert-unambiguous yes # insert common substring
-        zstyle ':completion:*:*' matcher-list 'm:{[:lower:]-}={[:upper:]_}' '+r:|[.]=**' # use prefix as substring
-        bindkey '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete # use tab/shift-tab to cycle completions
+        # compdef k='kubectl'
 
         # settings for zsh-auto-notify
         AUTO_NOTIFY_IGNORE+=("hx" "fg")
         AUTO_NOTIFY_URGENCY_ON_ERROR="normal"
         AUTO_NOTIFY_TITLE="\"%command\" completed"
         AUTO_NOTIFY_BODY="Total time: %elapsed seconds, Exit code: %exit_code"
+
+        # this is slow and sad :(
+        # but you gotta do what you gotta do for those completions
+        reload_autocomplete_and_atuin() {
+          source $HOME/.zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+          
+          # settings for marlonrichert/zsh-autocomplete
+          zstyle ':autocomplete:*complete*:*' insert-unambiguous yes # insert common substring
+          zstyle ':completion:*:*' matcher-list 'm:{[:lower:]-}={[:upper:]_}' '+r:|[.]=**' # use prefix as substring
+          bindkey '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete # use tab/shift-tab to cycle completions
+
+          eval "$(${pkgs.atuin}/bin/atuin init zsh)"
+        }
+
+        # settings for zsh-completion-sync
+        zstyle ':completion-sync:compinit:custom' enabled true
+        zstyle ':completion-sync:compinit:custom' command reload_autocomplete_and_atuin
       '';
     };
   };
