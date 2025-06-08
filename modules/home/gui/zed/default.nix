@@ -19,21 +19,31 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.zed-editor.enable = true;
+    programs.zed-editor = {
+      enable = true;
 
-    catppuccin.zed.enable = false; # we handle this already
-    xdg.configFile."zed/settings.json".source = config.lib.file.mkOutOfStoreSymlink cfg.path;
+      # currently this is in a weird state, with https://github.com/nix-community/home-manager/issues/6835#issuecomment-2951299487
+      # right now i'm just doing this to see how it's like
+      # to revert back to the tried and tested mode, check https://codeberg.org/fumnanya/dots/commit/d5f4affd964a95deaceff92f87487608ea3dca3c
+      userSettings = {
+        ui_font_size = 15;
+        buffer_font_size = 14;
+        buffer_font_family = "TX-02";
 
-    # we'd use extraPackages, but then the GUI launcher wouldn't see them
-    home.activation.updateZedLSPs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      if [ -n "${cfg.path}" ] && [ -f "${cfg.path}" ]; then
-        run ${pkgs.jq}/bin/jq \
-          '.lsp.nil.binary.path = "${pkgs.nil}/bin/nil" |
-           .lsp.nixd.binary.path = "${pkgs.nixd}/bin/nixd" |
-           .lsp.nil.initialization_options.formatting.command = ["${pkgs.nixfmt-rfc-style}/bin/nixfmt"]' \
-          "${cfg.path}" > "${cfg.path}.tmp" && \
-          run mv "${cfg.path}.tmp" "${cfg.path}"
-      fi
-    '';
+        vim_mode = true;
+        vim.default_mode = "helix_normal";
+
+        terminal.blinking = "on";
+        restore_on_startup = "none";
+
+        languages.YAML.format_on_save = "off";
+        lsp = {
+          nixd.binary.path = "${pkgs.nixd}/bin/nixd";
+          yaml-language-server.settings.yaml.customTags = [ "!reference sequence" ];
+          nil.binary.path = "${pkgs.nil}/bin/nil";
+          nil.initialization_options.formatting.command = [ "${pkgs.nixfmt-rfc-style}/bin/nixfmt" ];
+        };
+      };
+    };
   };
 }
