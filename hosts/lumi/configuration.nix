@@ -52,6 +52,7 @@
         "zen"
         "cloudflare-warp"
         "lulu"
+        "container"
         # "kdeconnect" # go and automate it
       ];
       masApps = {
@@ -95,7 +96,7 @@
       dock.mru-spaces = false;
       dock.persistent-apps = [
         {
-          app = "/System/Applications/Launchpad.app";
+          app = "/System/Applications/Apps.app";
         }
         {
           app = "/System/Applications/Mail.app";
@@ -132,12 +133,6 @@
   };
 
   system.activationScripts = {
-    preActivation.text = ''
-      # reset launchpad, root doesn't have the folder, so we execute it as our user
-      echo "resetting launchpad prefs..."
-      su -- ${config.my.username} -c 'rm -rf "/private$(getconf DARWIN_USER_DIR)com.apple.dock.launchpad"'
-    '';
-
     postActivation.text = ''
       # Following line should allow us to avoid a logout/login cycle
       # /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
