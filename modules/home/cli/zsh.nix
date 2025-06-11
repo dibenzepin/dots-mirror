@@ -31,6 +31,12 @@
         };
       };
 
+      shellAliases = {
+        j = "just";
+        k = "kubectl";
+        s = "kitten ssh";
+      };
+
       plugins = [
         {
           # workaround for https://github.com/marlonrichert/zsh-autocomplete/issues/741
@@ -70,7 +76,8 @@
         bindkey '^[[3~' delete-char
 
         # https://michaelheap.com/kubectl-alias-autocomplete/
-        alias k=kubectl
+        # i don't need this anymore, but just leaving it in here because why not
+        # alias k=kubectl
         # compdef k='kubectl'
 
         # settings for zsh-auto-notify
