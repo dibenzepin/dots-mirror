@@ -50,6 +50,8 @@
       "python"
     ];
 
+    luminovo.enable = true;
+
     # firefox.enable = true;
     # firefox.package = inputs.firefox-nightly.packages.${pkgs.system}.firefox-nightly-bin;
   };

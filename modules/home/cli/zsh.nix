@@ -32,8 +32,6 @@
       };
 
       shellAliases = {
-        j = "just";
-        k = "kubectl";
         s = "kitten ssh";
       };
 

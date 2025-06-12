@@ -12,6 +12,7 @@
       settings = {
         add_newline = false;
         command_timeout = 1000;
+        nix_shell.symbol = "❄️ "; # there's two spaces after by default
         character = {
           success_symbol = "[➜](bold green)";
           error_symbol = "[✖](bold red)";
@@ -23,28 +24,6 @@
         username = {
           show_always = true;
           format = "[$user](bold lavender)[@](bold yellow)";
-        };
-        nix_shell.symbol = "❄️ "; # there's two spaces after by default
-        kubernetes = {
-          disabled = false;
-          detect_env_vars = [ "LUMINOVO_REPO" ];
-          contexts = [
-            {
-              context_pattern = "lumiquote-dev";
-              style = "green";
-              context_alias = "Luminovo Azure (Dev)";
-            }
-            {
-              context_pattern = "lumiquote-prod-germanywestcentral";
-              style = "bold red";
-              context_alias = "Luminovo Azure (Prod)";
-            }
-            {
-              context_pattern = "lumiquote-staging-germanywestcentral";
-              style = "bold red";
-              context_alias = "Luminovo Azure (Staging)";
-            }
-          ];
         };
       };
     };
