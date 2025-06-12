@@ -22,6 +22,14 @@ in
     programs.zed-editor = {
       enable = true;
 
+      # we don't need them in here...
+      # ...but just so that the gc doesn't think they're unneeded
+      extraPackages = with pkgs; [
+        nixd
+        nil
+        nixfmt-rfc-style
+      ];
+
       # currently this is in a weird state, with https://github.com/nix-community/home-manager/issues/6835#issuecomment-2951299487
       # right now i'm just doing this to see how it's like
       # to revert back to the tried and tested mode, check https://codeberg.org/fumnanya/dots/commit/d5f4affd964a95deaceff92f87487608ea3dca3c
