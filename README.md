@@ -2,7 +2,7 @@
 
 my dotfiles, managed with nix + home-manager
 
-you might also be interested in my [packages](https://codeberg.com/fumnanya/flakes) flake.
+you might also be interested in my [packages](https://codeberg.org/fumnanya/flakes) flake.
 
 ||
 |:-:|
@@ -36,7 +36,7 @@ you might also be interested in my [packages](https://codeberg.com/fumnanya/flak
 - improve goldwarden, add gpg, add config https://github.com/quexten/goldwarden/wiki/Configuring-the-Daemon
 - add celluloid options `hw-dec=auto`
 - setup [fingerprint](https://github.com/ahbnr/nixos-06cb-009a-fingerprint-sensor/blob/24.11/SETUP-24.11.md)
-- add getting started with mac docs: need to allow noti access for script editor, install rosetta
+- figure out how to add this: [Set Word-wrap on as default in DBeaver - Super User](https://superuser.com/questions/1714584/set-word-wrap-on-as-default-in-dbeaver)
 
 ## acknowledgements
 
