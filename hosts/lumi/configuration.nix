@@ -52,7 +52,6 @@
         "zen"
         "cloudflare-warp"
         "lulu"
-        "container"
         # "kdeconnect" # go and automate it
       ];
       masApps = {
