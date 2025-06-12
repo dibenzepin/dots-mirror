@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ./zed
+    ./zed.nix
     ./kitty.nix
     ./spotify.nix
     ./firefox.nix
