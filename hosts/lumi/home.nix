@@ -41,10 +41,7 @@
     zsh.enable = true;
     starship.enable = true;
     spotify.enable = true;
-
-    # right now you have to open zed from the cli for it to catch `nil` and `nixd`:
     zed.enable = true;
-    zed.path = "${config.home.homeDirectory}/dots/modules/home/gui/zed/settings.jsonc";
 
     helix.enable = true;
     helix.langs = [

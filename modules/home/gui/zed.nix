@@ -11,10 +11,6 @@ in
   options = {
     my.zed = {
       enable = lib.mkEnableOption "zed with extra packages, but not home-manager managed";
-      path = lib.mkOption {
-        type = lib.types.str;
-        default = "";
-      };
     };
   };
 
