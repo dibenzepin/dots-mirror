@@ -16,7 +16,7 @@
     lix-module.inputs.nixpkgs.follows = "nixpkgs";
     lix-module.inputs.flake-utils.follows = "flake-utils";
 
-    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
+    nix-darwin.url = "github:nix-darwin/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager.url = "github:nix-community/home-manager";
