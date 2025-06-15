@@ -34,7 +34,7 @@
 
   my = {
     git.enable = true;
-    kitty.enable = true;
+    ghostty.enable = true;
     neofetch.enable = true;
     atuin.enable = true;
     zsh.enable = true;

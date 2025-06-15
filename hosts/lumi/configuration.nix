@@ -52,6 +52,7 @@
         "zen"
         "cloudflare-warp"
         "lulu"
+        "ghostty@tip"
         # "kdeconnect" # go and automate it
       ];
       masApps = {

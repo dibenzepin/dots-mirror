@@ -5,5 +5,6 @@
     ./kitty.nix
     ./spotify.nix
     ./firefox.nix
+    ./ghostty.nix
   ];
 }

@@ -8,7 +8,6 @@
   config = lib.mkIf config.my.kitty.enable {
     programs.kitty = {
       enable = true;
-      shellIntegration.enableZshIntegration = true;
       settings = {
         font_family = "FiraCode Nerd Font Mono";
         font_size = 13;
@@ -18,12 +17,9 @@
         tab_powerline_style = "slanted";
         tab_title_template = "{title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}";
         window_padding_width = 10;
-        background_opacity = "0.95";
+        background_opacity = 0.95;
         cursor_trail = 3;
         scrollback_lines = 10000;
-        input_delay = 0;
-        repaint_delay = 0;
-        sync_to_monitor = "no";
         macos_option_as_alt = "yes";
       };
       # todo: adapt for darwin
