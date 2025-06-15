@@ -108,7 +108,7 @@
           app = "/Users/${config.my.username}/Applications/Home Manager Trampolines/Spotify.app";
         }
         {
-          app = "/Users/${config.my.username}/Applications/Home Manager Trampolines/kitty.app";
+          app = "/Applications/Ghostty.app";
         }
         {
           app = "/Users/${config.my.username}/Applications/Home Manager Trampolines/Zed.app";
