@@ -38,7 +38,6 @@
       enable = true;
       onActivation = {
         cleanup = "zap";
-        autoUpdate = true;
         upgrade = true;
       };
       # so that nix-darwin knows about the taps nix-homebrew brings in
@@ -147,6 +146,11 @@
   ];
 
   system.activationScripts = {
+    # preActivation.text = ''
+    # homebrew doesn't understand that there's updates sometimes
+    # rm -r /opt/homebrew/Caskroom/*
+    # '';
+
     postActivation.text = ''
       # Following line should allow us to avoid a logout/login cycle
       # /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
