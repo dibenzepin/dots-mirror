@@ -48,6 +48,24 @@ in
           nil.initialization_options.formatting.command = [ "${pkgs.nixfmt-rfc-style}/bin/nixfmt" ];
         };
       };
+
+      userKeymaps = [
+        # tab to cycle through completions: https://github.com/zed-industries/zed/discussions/11474
+        {
+          context = "Editor && showing_completions";
+          bindings = {
+            tab = "editor::ContextMenuNext";
+            shift-tab = "editor::ContextMenuPrevious";
+          };
+        }
+        # https://github.com/zed-industries/zed/issues/34111
+        {
+          context = "vim_mode == helix_normal && !menu";
+          bindings = {
+            ";" = "editor::Cancel";
+          };
+        }
+      ];
     };
   };
 }
