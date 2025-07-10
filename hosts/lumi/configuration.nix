@@ -132,6 +132,20 @@
     keyboard.remapCapsLockToEscape = true;
   };
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      lix = prev.lix.overrideAttrs {
+        doCheck = false;
+        doInstallCheck = false;
+      };
+
+      nil = prev.nil.overrideAttrs {
+        doCheck = false;
+        doInstallCheck = false;
+      };
+    })
+  ];
+
   system.activationScripts = {
     postActivation.text = ''
       # Following line should allow us to avoid a logout/login cycle
