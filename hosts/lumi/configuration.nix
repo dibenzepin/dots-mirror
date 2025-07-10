@@ -52,6 +52,7 @@
         "cloudflare-warp"
         "lulu"
         "ghostty@tip"
+        "calibre"
         # "kdeconnect" # go and automate it
       ];
       masApps = {
@@ -119,7 +120,8 @@
 
       finder.ShowPathbar = true;
 
-      CustomSystemPreferences = {
+      CustomUserPreferences = {
+        NSGlobalDomain.AppleIconAppearanceTheme = "ClearAutomatic"; # liquid glass!!!
         # "com.apple.SoftwareUpdate" = {
         #   "MajorOSUserNotificationDate" = "2030-02-07 23:22:47 +0000";
         #   "UserNotificationDate" = "2030-02-07 23:22:47 +0000";

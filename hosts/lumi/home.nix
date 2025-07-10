@@ -63,8 +63,9 @@
     iina
     qbittorrent
     vesktop
+    yaak
     inputs.fum.packages.${pkgs.system}.switcheroo
-    # rquickshare
+    rquickshare
     # tableplus
     # bitwarden-desktop # replaced with app store version
   ];
