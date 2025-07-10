@@ -31,10 +31,6 @@
         };
       };
 
-      shellAliases = {
-        s = "kitten ssh";
-      };
-
       plugins = [
         {
           # workaround for https://github.com/marlonrichert/zsh-autocomplete/issues/741

@@ -16,6 +16,8 @@
       package = if pkgs.stdenv.isDarwin then null else pkgs.ghostty;
       settings = {
         font-family = "FiraCode Nerd Font Mono";
+        working-directory = "home";
+        window-save-state = "never";
         font-thicken = true;
         background-opacity = 0.95;
         window-padding-x = 15;

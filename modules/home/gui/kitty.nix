@@ -6,6 +6,10 @@
   };
 
   config = lib.mkIf config.my.kitty.enable {
+    home.shellAliases = {
+      s = "kitten ssh";
+    };
+
     programs.kitty = {
       enable = true;
       settings = {
