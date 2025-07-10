@@ -36,10 +36,10 @@
           # workaround for https://github.com/marlonrichert/zsh-autocomplete/issues/741
           name = "zsh-autocomplete";
           src = pkgs.fetchFromGitHub {
-            owner = "aaronkollasch";
+            owner = "marlonrichert";
             repo = "zsh-autocomplete";
-            rev = "d53d90dd205b3ef66101d4cf8692c8518d4daf61";
-            hash = "sha256-kUQ1N/XJqn0y8ZHWWeo3PNoD0G6NZyx30YW9Pf5rAv4=";
+            rev = "316c588a92e3444e919ca9a341fc8894c82800a2";
+            hash = "sha256-7v8dkrwhEszl8mVIMe8oJdaqK0ZZtODdWaaO1Z4Ldhk=";
           };
         }
         {
