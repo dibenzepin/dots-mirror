@@ -25,6 +25,7 @@
         macos-option-as-alt = true;
         macos-titlebar-style = "tabs";
         auto-update = "off";
+        keybind = [ ''shift+enter=text:\n'' ];
       };
     };
   };
