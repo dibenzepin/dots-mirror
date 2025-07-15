@@ -40,10 +40,8 @@ in
         terminal.blinking = "on";
         restore_on_startup = "none";
 
-        languages.YAML.format_on_save = "off";
         lsp = {
           nixd.binary.path = "${pkgs.nixd}/bin/nixd";
-          yaml-language-server.settings.yaml.customTags = [ "!reference sequence" ];
           nil.binary.path = "${pkgs.nil}/bin/nil";
           nil.initialization_options.formatting.command = [ "${pkgs.nixfmt-rfc-style}/bin/nixfmt" ];
         };
