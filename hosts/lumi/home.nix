@@ -40,6 +40,7 @@
     zsh.enable = true;
     starship.enable = true;
     spotify.enable = true;
+    discord.enable = true;
     zed.enable = true;
 
     helix.enable = true;
@@ -62,7 +63,6 @@
     appcleaner
     iina
     qbittorrent
-    vesktop
     yaak
     inputs.fum.packages.${pkgs.system}.switcheroo
     rquickshare
