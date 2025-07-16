@@ -34,8 +34,7 @@ in
         buffer_font_size = 14;
         buffer_font_family = "TX-02";
 
-        vim_mode = true;
-        vim.default_mode = "helix_normal";
+        helix_mode = true;
 
         terminal.blinking = "on";
         restore_on_startup = "none";
@@ -44,6 +43,7 @@ in
           nixd.binary.path = "${pkgs.nixd}/bin/nixd";
           nil.binary.path = "${pkgs.nil}/bin/nil";
           nil.initialization_options.formatting.command = [ "${pkgs.nixfmt-rfc-style}/bin/nixfmt" ];
+          rust-analyzer.initialization_options.cargo.targetDir = "./ignored";
         };
       };
 
@@ -54,13 +54,6 @@ in
           bindings = {
             tab = "editor::ContextMenuNext";
             shift-tab = "editor::ContextMenuPrevious";
-          };
-        }
-        # https://github.com/zed-industries/zed/issues/34111
-        {
-          context = "vim_mode == helix_normal && !menu";
-          bindings = {
-            ";" = "editor::Cancel";
           };
         }
       ];
