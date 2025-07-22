@@ -121,11 +121,32 @@
       finder.ShowPathbar = true;
 
       CustomUserPreferences = {
-        NSGlobalDomain.AppleIconAppearanceTheme = "ClearAutomatic"; # liquid glass!!!
+        NSGlobalDomain.AppleIconAppearanceTheme = "RegularDark";
+
         # "com.apple.SoftwareUpdate" = {
         #   "MajorOSUserNotificationDate" = "2030-02-07 23:22:47 +0000";
         #   "UserNotificationDate" = "2030-02-07 23:22:47 +0000";
         # };
+
+        # until https://github.com/nix-darwin/nix-darwin/pull/1431 gets merged
+        "com.apple.dock" = {
+          persistent-others = [
+            {
+              "tile-data" = {
+                "file-data" = {
+                  "_CFURLString" = "/Users/${config.my.username}/Downloads";
+                  "_CFURLStringType" = 0;
+                };
+                "arrangement" = 3; # sort by date modified
+                "displayas" = 0; # stack
+                "showas" = 0;
+              };
+              "tile-type" = "directory-tile";
+            }
+          ];
+
+          showAppExposeGestureEnabled = 1;
+        };
       };
     };
 
