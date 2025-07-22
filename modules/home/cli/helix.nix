@@ -35,7 +35,7 @@ with lib;
           line-number = "relative";
           cursor-shape.insert = "bar";
           lsp.display-messages = true;
-          # lsp.display-inlay-hints = true; looks weird :(
+          lsp.display-inlay-hints = true; # looks weird :(
           end-of-line-diagnostics = "hint";
           inline-diagnostics.cursor-line = "warning";
           soft-wrap.enable = true;
@@ -65,12 +65,6 @@ with lib;
             ];
           };
         };
-
-        # for next release
-        # keys.normal.space = {
-        #   e = "file_browser_in_current_directory";
-        #   E = "file_browser_in_current_buffer_directory";
-        # };
 
         # i like shift+x to reduce the selection by one line for when i overshoot
         # https://github.com/helix-editor/helix/discussions/6943#discussioncomment-5787797
@@ -137,7 +131,6 @@ with lib;
               "ruff"
             ];
           };
-
       };
     };
   };
