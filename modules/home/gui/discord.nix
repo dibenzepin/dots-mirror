@@ -10,11 +10,10 @@
     programs.vesktop = {
       enable = true;
       vencord = {
-        useSystem = true;
         settings = {
-          autoUpdate = false;
-          autoUpdateNotification = false;
-          notifyAboutUpdates = false;
+          # autoUpdate = false;
+          # autoUpdateNotification = false;
+          # notifyAboutUpdates = false;
           enabledThemes = [ "EmojiReplace.theme.css" ];
         };
         themes = {
