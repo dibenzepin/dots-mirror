@@ -33,7 +33,7 @@ got a flash drive and a nice PC that needs some Linux love?
     ```sh
     $ nixos-generate-config --root /mnt
     ```
-1.  Edit `/mnt/configuration.nix` to look something like:
+1.  Edit `/mnt/etc/nixos/configuration.nix` to look something like:
     ```nix
     fileSystems = {
       "/".options = [ "compress=zstd" ];
@@ -55,14 +55,14 @@ got a flash drive and a nice PC that needs some Linux love?
     ];
 
     users.mutableUsers = false;
-    users.defaultShell = pkgs.zsh;
+    users.defaultUserShell = pkgs.zsh;
     users.users.fumnanya = {
         isNormalUser = true;
         extraGroups = [ "wheel" ];
         password = "f";
     };
 
-    networking.hostname = "antikythera";
+    networking.hostName = "antikythera";
     networking.networkmanager.enable = true;
 
     programs.zsh.enable = true;
