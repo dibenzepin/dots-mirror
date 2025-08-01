@@ -7,6 +7,7 @@
     systems.url = "github:nix-systems/default";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     fum.url = "git+https://codeberg.org/fumnanya/flakes";
+    colmena.url = "github:zhaofengli/colmena";
 
     lix.url = "https://git.lix.systems/lix-project/lix/archive/main.tar.gz";
     lix.flake = false;
@@ -83,6 +84,7 @@
       nix-darwin,
       mac-app-util,
       nix-homebrew,
+      colmena,
       ...
     }@inputs:
     let
@@ -149,7 +151,6 @@
         ];
       };
 
-      # antikythera nixos
       nixosConfigurations.antikythera = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
@@ -171,6 +172,42 @@
             home-manager.users.fumnanya = ./hosts/antikythera/home.nix;
           }
         ];
+      };
+
+      colmenaHive = colmena.lib.makeHive {
+        meta = {
+          nixpkgs = import nixpkgs { system = "x86_64-linux"; };
+
+          specialArgs = {
+            inherit nixpkgs inputs;
+          };
+        };
+
+        bastion = {
+          deployment = {
+            targetHost = "10.10.0.104";
+            targetUser = "colmena";
+            buildOnTarget = true;
+          };
+
+          imports = [
+            ./hosts/bastion/configuration.nix
+
+            lix-module.nixosModules.default
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.sharedModules = [
+                catppuccin.homeModules.catppuccin
+                spicetify-nix.homeManagerModules.spicetify
+              ];
+              home-manager.extraSpecialArgs = { inherit nixpkgs inputs; };
+
+              home-manager.users.fumnanya = ./hosts/bastion/home.nix;
+            }
+          ];
+        };
       };
     };
 }
