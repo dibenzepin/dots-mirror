@@ -20,6 +20,7 @@ you might also be interested in my [packages](https://codeberg.org/fumnanya/flak
 - [`hosts/`](./hosts) &mdash; per-machine configurations
   - [`hosts/antikythera/`](./hosts/noctis) &mdash; **antikythera**: Lenovo ThinkPad T480s (Intel i7-8650U)
   - [`hosts/lumi`](./hosts/lumi) &mdash; **lumi**: Apple MacBook Air (M1)
+  - [`hosts/bastion`](./hosts/bastion) &mdash; **bastion**: Hewlett-Packard EliteBook 8460p (Intel i5-2520M)
 - [`modules/`](./modules) &mdash; modules used by system configurations
   - [`modules/common`](./modules/common) &mdash; modules used by both NixOS and macOS
   - [`modules/nixos`](./modules/nixos) &mdash; NixOS-specific modules

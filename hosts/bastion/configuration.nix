@@ -44,6 +44,8 @@
   networking.hostName = "bastion";
   networking.networkmanager.enable = true;
   services.resolved.enable = true; # mdns
+  services.tailscale.enable = true;
+
   time.timeZone = "Africa/Lagos";
 
   services.openssh = {
@@ -133,6 +135,51 @@
 
   # ghostty et al.
   environment.enableAllTerminfo = true;
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      lix = prev.lix.overrideAttrs {
+        doCheck = false;
+        doInstallCheck = false;
+      };
+    })
+  ];
+
+  systemd.tmpfiles.rules = [
+    "d /var/lib/speeds 0777 - - -"
+  ];
+
+  systemd.timers = {
+    speedtest = {
+      wantedBy = [ "timers.target" ];
+      timerConfig = {
+        OnBootSec = "1m";
+        OnUnitActiveSec = "15m";
+        RandomizedDelaySec = "2m";
+        Unit = "speedtest.service";
+        Persistent = true;
+      };
+    };
+  };
+
+  systemd.services = {
+    speedtest = {
+      path = [
+        pkgs.fast-cli
+        pkgs.ookla-speedtest
+      ];
+      script = ''
+        fastdate=$(date -u '+%Y-%m-%dT%H:%M:%S.000')
+        fast -u --json > "/var/lib/speeds/fast-$fastdate.json"
+
+        ookladate=$(date -u '+%Y-%m-%dT%H:%M:%S.000')
+        HOME=/var/lib/speeds speedtest -f json-pretty --accept-license --accept-gdpr > "/var/lib/speeds/ookla-$ookladate.json"
+      '';
+      serviceConfig = {
+        Type = "oneshot";
+      };
+    };
+  };
 
   # environment.systemPackages = with pkgs; [
   #   dnsutils # dig, nslookup

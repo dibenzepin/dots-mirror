@@ -185,7 +185,7 @@
 
         bastion = {
           deployment = {
-            targetHost = "10.10.0.104";
+            targetHost = "bastion";
             targetUser = "colmena";
             buildOnTarget = true;
           };

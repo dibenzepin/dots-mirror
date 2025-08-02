@@ -97,12 +97,13 @@
 
     helix.enable = true;
     helix.langs = [
-      "nix"
       "python"
     ];
   };
 
   home.packages = with pkgs; [
+    neofetch
+    btop
     trash-cli
   ];
 }
