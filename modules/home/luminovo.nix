@@ -40,6 +40,7 @@
         extensions = [ "helm" ];
         userSettings = {
           languages.YAML.format_on_save = "off"; # todo: remove when devcontainer is made
+          lsp.yaml-language-server.settings.yaml.customTags = [ "!reference sequence" ];
           file_types = {
             "Helm" = [
               "**/templates/**/*.tpl"
