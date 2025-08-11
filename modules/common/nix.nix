@@ -24,12 +24,10 @@
         substituters = [
           "https://cache.lix.systems"
           "https://colmena.cachix.org"
-          "https://deploy-rs.cachix.org"
         ];
         trusted-public-keys = [
           "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
           "colmena.cachix.org-1:7BzpDnjjH8ki2CT3f6GdOk7QAzPOl+1t3LvTLXqYcSg="
-          "deploy-rs.cachix.org-1:xfNobmiwF/vzvK1gpfediPwpdIP0rpDV2rYqx40zdSI="
         ];
       };
 

@@ -45,6 +45,7 @@
   networking.networkmanager.enable = true;
   services.resolved.enable = true; # mdns
   services.tailscale.enable = true;
+  services.tailscale.extraSetFlags = [ "--ssh" ];
 
   time.timeZone = "Africa/Lagos";
 
@@ -177,6 +178,7 @@
       '';
       serviceConfig = {
         Type = "oneshot";
+        TimeoutSec = 120;
       };
     };
   };

@@ -65,6 +65,7 @@
     qbittorrent
     yaak
     inputs.fum.packages.${pkgs.system}.switcheroo
+    inputs.colmena.packages.${pkgs.system}.colmena
     rquickshare
     # tableplus
     # bitwarden-desktop # replaced with app store version
