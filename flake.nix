@@ -3,10 +3,10 @@
 
   inputs = {
     # https://github.com/tgirlcloud/lix-diff/issues/1
-    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
+    nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz";
+    nixpkgs-yaak.url = "github:dibenzepin/nixpkgs/yaak-update";
     systems.url = "github:nix-systems/default";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    fum.url = "git+https://codeberg.org/fumnanya/flakes";
     colmena.url = "github:zhaofengli/colmena";
 
     lix.url = "https://git.lix.systems/lix-project/lix/archive/main.tar.gz";
@@ -16,6 +16,9 @@
     lix-module.inputs.lix.follows = "lix";
     lix-module.inputs.nixpkgs.follows = "nixpkgs";
     lix-module.inputs.flake-utils.follows = "flake-utils";
+
+    fum.url = "git+https://codeberg.org/fumnanya/flakes";
+    fum.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-darwin.url = "github:nix-darwin/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
