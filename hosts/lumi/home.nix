@@ -67,6 +67,8 @@
     inputs.fum.packages.${pkgs.system}.switcheroo
     inputs.colmena.packages.${pkgs.system}.colmena
     rquickshare
+    prismlauncher
+    code-cursor
     # tableplus
     # bitwarden-desktop # replaced with app store version
   ];
