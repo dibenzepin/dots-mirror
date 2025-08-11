@@ -30,7 +30,7 @@ with lib;
       enable = true;
       defaultEditor = true;
 
-      settings = {
+      settings = rec {
         editor = {
           line-number = "relative";
           cursor-shape.insert = "bar";
@@ -66,23 +66,29 @@ with lib;
           };
         };
 
-        # i like shift+x to reduce the selection by one line for when i overshoot
-        # https://github.com/helix-editor/helix/discussions/6943#discussioncomment-5787797
         keys.normal = {
+          # i like shift+x to reduce the selection by one line for when i overshoot
+          # https://github.com/helix-editor/helix/discussions/6943#discussioncomment-5787797
           X = [
             "extend_line_up"
             "extend_to_line_bounds"
           ];
           A-x = "extend_to_line_bounds";
+        }
+        # the usual darwin niceties
+        // lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
+          Cmd-s = ":write";
+
+          # ghostty intercepts these by default so disabling...
+          # Cmd-a = "select_all";
+          # Cmd-c = "yank_to_clipboard";
+          # Cmd-v = "replace_selections_with_clipboard";
+          # Cmd-z = "undo";
+          # Cmd-Z = "redo";
         };
 
-        keys.select = {
-          X = [
-            "extend_line_up"
-            "extend_to_line_bounds"
-          ];
-          A-x = "extend_to_line_bounds";
-        };
+        # the same
+        keys.select = keys.normal;
 
         # git gud
         keys.insert = {
