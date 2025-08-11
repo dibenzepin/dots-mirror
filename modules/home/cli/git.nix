@@ -16,12 +16,30 @@
         user.name = "fumnanya";
         user.email = "fmowete@outlook.com";
         ui.paginate = "never";
-        # templates.git_push_bookmark = ''"fumnanya/push-" ++ change_id.short()'';
+        git.push-new-bookmarks = true;
         signing = {
           backend = "ssh";
           behavior = "own";
           key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBGPBbDGOYi1I65IKGnD1R2SYF83FDRZSAblkvI0AKY2";
         };
+
+        # stolen from https://radicle.xyz/2025/08/14/jujutsu-with-radicle
+        aliases = {
+          tug = [
+            "bookmark"
+            "move"
+            "--from"
+            "closest_bookmark(@)"
+            "--to"
+            "closest_pushable(@)"
+          ];
+        };
+        revset-aliases = {
+          "closest_bookmark(to)" = "heads(::to & bookmarks())";
+          "closest_pushable(to)" =
+            "heads(::to & mutable() & ~description(exact:\"\") & (~empty() | merges()))";
+        };
+        git.write-change-id-header = true;
       };
     };
 
