@@ -26,40 +26,34 @@
   # Set sudo to use touch id
   security.pam.services.sudo_local.touchIdAuth = true;
 
-  homebrew =
-    # stolen from https://github.com/nix-darwin/nix-darwin/issues/935#issuecomment-2096813988
-    let
-      mkGreedy = caskName: {
-        name = caskName;
-        greedy = true;
-      };
-    in
-    {
-      enable = true;
-      onActivation = {
-        cleanup = "zap";
-        upgrade = true;
-      };
-      # so that nix-darwin knows about the taps nix-homebrew brings in
-      taps = builtins.attrNames config.nix-homebrew.taps;
-      brews = [
-        "mas" # stop uninstalling it lol
-      ];
-      casks = map mkGreedy [
-        "orbstack"
-        "keepingyouawake"
-        "zen"
-        "cloudflare-warp"
-        "lulu"
-        "ghostty@tip"
-        "calibre"
-        # "kdeconnect" # go and automate it
-      ];
-      masApps = {
-        Bitwarden = 1352778147;
-        Telegram = 747648890;
-      };
+  homebrew = {
+    enable = true;
+    onActivation = {
+      cleanup = "zap";
+      autoUpdate = true;
+      upgrade = true;
     };
+    # so that nix-darwin knows about the taps nix-homebrew brings in
+    taps = builtins.attrNames config.nix-homebrew.taps;
+    brews = [
+      "mas" # stop uninstalling it lol
+    ];
+    greedyCasks = true;
+    casks = [
+      "orbstack"
+      "keepingyouawake"
+      "zen"
+      "cloudflare-warp"
+      "lulu"
+      "ghostty@tip"
+      "calibre"
+      # "kdeconnect" # go and automate it
+    ];
+    masApps = {
+      Bitwarden = 1352778147;
+      Telegram = 747648890;
+    };
+  };
 
   my.nix.enable = true;
   my.fonts = {
@@ -169,11 +163,6 @@
   ];
 
   system.activationScripts = {
-    # preActivation.text = ''
-    # homebrew doesn't understand that there's updates sometimes
-    # rm -r /opt/homebrew/Caskroom/*
-    # '';
-
     postActivation.text = ''
       # Following line should allow us to avoid a logout/login cycle
       # /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
