@@ -39,11 +39,18 @@ in
         terminal.blinking = "on";
         restore_on_startup = "none";
 
+        inlay_hints.enabled = true;
+        diagnostics.inline.enabled = true;
+
         lsp = {
           nixd.binary.path = "${pkgs.nixd}/bin/nixd";
           nil.binary.path = "${pkgs.nil}/bin/nil";
           nil.initialization_options.formatting.command = [ "${pkgs.nixfmt-rfc-style}/bin/nixfmt" ];
-          rust-analyzer.initialization_options.cargo.targetDir = "./ignored";
+
+          # rust-analyzer.initialization_options = {
+          #   cargo.targetDir = true;
+          #   cargo.allTargets = true;
+          # };
         };
       };
 
