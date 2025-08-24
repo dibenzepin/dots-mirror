@@ -11,7 +11,7 @@ got a shiny macbook and want to manage it declaratively?
        ```
 1.  Get this repo and link it into `/etc/nix/nix-darwin`:
     ```sh
-    $ sudo ln -s ~/dots /etc/nix/nix-darwin
+    $ sudo ln -s ~/dots /etc/nix-darwin
     ```
 1.  Switch into a config:
     ```sh

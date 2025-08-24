@@ -42,7 +42,7 @@
     casks = [
       "orbstack"
       "keepingyouawake"
-      "zen"
+      "zen@twilight"
       "cloudflare-warp"
       "lulu"
       "ghostty@tip"
@@ -96,7 +96,7 @@
           app = "/System/Applications/Mail.app";
         }
         {
-          app = "/Applications/Zen.app";
+          app = "/Applications/Twilight.app";
         }
         {
           app = "/Users/${config.my.username}/Applications/Home Manager Trampolines/Spotify.app";
