@@ -74,7 +74,12 @@
           jj = {
             ignore_timeout = true;
             description = "The current jj status";
-            detect_folders = [ ".jj" ];
+            when = "jj --ignore-working-copy root";
+            shell = [
+              "sh"
+              "--norc"
+              "--noprofile"
+            ];
             symbol = "🥋 ";
             command = ''
               jj log --revisions @ --no-graph --color always --limit 1 --template '
