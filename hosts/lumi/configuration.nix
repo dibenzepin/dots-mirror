@@ -47,6 +47,7 @@
       "lulu"
       "ghostty@tip"
       "calibre"
+      "tailscale-app"
       # "kdeconnect" # go and automate it
     ];
     masApps = {
