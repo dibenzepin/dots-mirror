@@ -6,8 +6,8 @@ you might also be interested in my [packages](https://codeberg.org/fumnanya/flak
 
 ||
 |:-:|
-|![a terminal showing neofetch output with ascii art, and a popup asking for touch id to run a command](./sample.png)|
-|![a terminal showing the contents of this repository open in kitty](./sample2.png)|
+|![a desktop with two ghostty windows: one showing neofetch output with ascii art, and another showing some packages that are about to updated](./sample.png)|
+|![a ghostty window showing the contents of this repository open in helix](./sample2.png)|
 
 ## to use
 
@@ -38,6 +38,7 @@ you might also be interested in my [packages](https://codeberg.org/fumnanya/flak
 - add celluloid options `hw-dec=auto`
 - setup [fingerprint](https://github.com/ahbnr/nixos-06cb-009a-fingerprint-sensor/blob/24.11/SETUP-24.11.md)
 - figure out how to add this: [Set Word-wrap on as default in DBeaver - Super User](https://superuser.com/questions/1714584/set-word-wrap-on-as-default-in-dbeaver)
+- write down the whole full disk access and developer tools thing
 
 ## acknowledgements
 

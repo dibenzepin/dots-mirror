@@ -68,8 +68,8 @@
     inputs.colmena.packages.${pkgs.system}.colmena
     rquickshare
     prismlauncher
+    jetbrains.rust-rover
     code-cursor
-    # tableplus
     # bitwarden-desktop # replaced with app store version
   ];
 

@@ -109,9 +109,6 @@
           app = "/Users/${config.my.username}/Applications/Home Manager Trampolines/Zed.app";
         }
       ];
-      dock.persistent-others = [
-        "/Users/${config.my.username}/Downloads"
-      ];
 
       finder.ShowPathbar = true;
 
