@@ -196,7 +196,6 @@
           imports = [
             ./hosts/bastion/configuration.nix
 
-            lix-module.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

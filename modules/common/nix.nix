@@ -25,6 +25,10 @@
           "https://cache.lix.systems"
           "https://colmena.cachix.org"
         ];
+        trusted-substituters = [
+          "https://cache.lix.systems"
+          "https://colmena.cachix.org"
+        ];
         trusted-public-keys = [
           "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
           "colmena.cachix.org-1:7BzpDnjjH8ki2CT3f6GdOk7QAzPOl+1t3LvTLXqYcSg="
@@ -34,7 +38,7 @@
       optimise.automatic = true;
       gc = {
         automatic = true;
-        options = "--delete-older-than 1w";
+        # options = "--delete-older-than 1w";
       };
 
       # disable channels, nix-shell was complaining: https://github.com/nix-darwin/nix-darwin/issues/145
@@ -48,6 +52,7 @@
       extraOptions = ''
         bash-prompt-prefix = (nix:$name)\040
         builders-use-substitutes = true
+        always-allow-substitutes = true
       '';
     };
 

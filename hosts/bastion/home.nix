@@ -94,11 +94,7 @@
     atuin.enable = true;
     zsh.enable = true;
     starship.enable = true;
-
     helix.enable = true;
-    helix.langs = [
-      "python"
-    ];
   };
 
   home.packages = with pkgs; [

@@ -37,12 +37,23 @@
   ################### boot ###################
 
   boot.loader.systemd-boot.enable = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # https://bbs.archlinux.org/viewtopic.php?pid=1974165#p1974165
+  # https://wiki.gentoo.org/wiki/Iwlwifi
+  # https://askubuntu.com/questions/1283313/unstable-wifi-connection-on-ubuntu-20-04
+  boot.extraModprobeConfig = ''
+    options iwlmvm power_scheme=1
+    options iwlwifi power_save=0
+  '';
 
   ################ networking ################
 
   networking.hostName = "bastion";
   networking.networkmanager.enable = true;
+  # please stop making me power-cycle the computer:
+  # https://www.reddit.com/r/linux4noobs/comments/11am5rd/can_i_force_networkmanager_to_keep_trying_to/j9suyfu/
+  # https://www.linuxquestions.org/questions/slackware-14/networkmanager-increase-autoconnect-retries-4175689763/
+  networking.networkmanager.settings.main.autoconnect-retries-default = 10000;
   services.resolved.enable = true; # mdns
   services.tailscale.enable = true;
   services.tailscale.extraSetFlags = [ "--ssh" ];
@@ -85,6 +96,7 @@
         extraGroups = [
           "wheel"
           "networkmanager"
+          "media"
         ];
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIv4sj7bHdEikPlNoBOhMCYy96KKBK3sG/lhmxq3s3O3"
@@ -104,6 +116,7 @@
     };
 
     groups.colmena = { };
+    groups.media = { }; # tired of wrangling permissions for /media
   };
 
   security.sudo = {
@@ -137,21 +150,53 @@
   # ghostty et al.
   environment.enableAllTerminfo = true;
 
+  nix.package = pkgs.lixPackageSets.stable.lix;
+
   nixpkgs.overlays = [
+    # lix
     (final: prev: {
-      lix = prev.lix.overrideAttrs {
-        doCheck = false;
-        doInstallCheck = false;
-      };
+      inherit (prev.lixPackageSets.stable)
+        nixpkgs-review
+        nix-eval-jobs
+        nix-fast-build
+        colmena
+        ;
     })
   ];
 
+  services.qbittorrent = {
+    enable = true;
+    openFirewall = true;
+    group = "media";
+    serverConfig = {
+      LegalNotice.Accepted = true;
+      BitTorrent.Session = {
+        DefaultSavePath = "/media/torrents";
+        QueueingSystemEnabled = false;
+        FinishedTorrentExportDirectory = "/media/torrents/files";
+      };
+      Preferences = {
+        # https://wiki.archlinux.org/title/QBittorrent#Allow_access_without_username_&_password
+        WebUI = {
+          AuthSubnetWhitelist = "100.64.0.0/10, 10.10.0.0/24, 192.168.1.0/24";
+          AuthSubnetWhitelistEnabled = true;
+          UseUPnP = false;
+          LocalHostAuth = false;
+        };
+        General.StatusbarExternalIPDisplayed = true;
+      };
+    };
+  };
+  systemd.services.qbittorrent.serviceConfig.UMask = "0002"; # default is 022, but i want to give write perms to :media
+
   systemd.tmpfiles.rules = [
-    "d /var/lib/speeds 0777 - - -"
+    "d /var/lib/speeds 0777 - - -" # for the speedtests
+    "d /media 0777 - media -"
   ];
 
   systemd.timers = {
     speedtest = {
+      enable = false;
       wantedBy = [ "timers.target" ];
       timerConfig = {
         OnBootSec = "1m";
