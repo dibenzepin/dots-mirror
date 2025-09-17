@@ -70,7 +70,7 @@
     prismlauncher
     jetbrains.rust-rover
     code-cursor
-    # bitwarden-desktop # replaced with app store version
+    halloy
   ];
 
   home.sessionVariables = {

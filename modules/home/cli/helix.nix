@@ -39,6 +39,7 @@ with lib;
           end-of-line-diagnostics = "hint";
           inline-diagnostics.cursor-line = "warning";
           soft-wrap.enable = true;
+          true-color = true;
 
           # stolen from evil-helix
           # https://github.com/usagi-flow/evil-helix/blob/1c52cc8a70929de70fa8586f3193f00690aa1c75/helix-view/src/editor.rs#L510

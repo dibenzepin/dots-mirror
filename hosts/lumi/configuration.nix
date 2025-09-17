@@ -48,6 +48,7 @@
       "ghostty@tip"
       "calibre"
       "tailscale-app"
+      "motrix"
       # "kdeconnect" # go and automate it
     ];
     masApps = {
