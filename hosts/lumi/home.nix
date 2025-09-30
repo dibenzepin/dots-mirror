@@ -38,10 +38,12 @@
     neofetch.enable = true;
     atuin.enable = true;
     zsh.enable = true;
-    starship.enable = true;
     spotify.enable = true;
     discord.enable = true;
     zed.enable = true;
+
+    starship.enable = true;
+    starship.colour = "green";
 
     helix.enable = true;
     helix.langs = [

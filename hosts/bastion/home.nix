@@ -95,8 +95,10 @@
   my = {
     atuin.enable = true;
     zsh.enable = true;
-    starship.enable = true;
     helix.enable = true;
+
+    starship.enable = true;
+    starship.colour = "#fab387";
   };
 
   home.packages = with pkgs; [

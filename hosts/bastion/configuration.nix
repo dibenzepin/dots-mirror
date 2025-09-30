@@ -56,6 +56,7 @@
   networking.networkmanager.settings.main.autoconnect-retries-default = 10000;
   services.resolved.enable = true; # mdns
   services.tailscale.enable = true;
+  services.tailscale.useRoutingFeatures = "both";
   services.tailscale.extraSetFlags = [
     "--ssh"
     "--advertise-exit-node"

@@ -1,11 +1,20 @@
 { lib, config, ... }:
-
+let
+  cfg = config.my.starship;
+in
+with lib;
 {
   options = {
-    my.starship.enable = lib.mkEnableOption "starship with home-manager";
+    my.starship = {
+      enable = mkEnableOption "starship with home-manager";
+      colour = mkOption {
+        type = types.str;
+        default = "";
+      };
+    };
   };
 
-  config = lib.mkIf config.my.starship.enable {
+  config = mkIf cfg.enable {
     programs.starship = {
       enable = true;
 
@@ -21,7 +30,7 @@
         };
         hostname = {
           ssh_only = false;
-          format = "[$hostname](bold green): ";
+          format = "[$hostname](bold ${cfg.colour}): ";
         };
         username = {
           show_always = true;
