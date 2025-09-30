@@ -56,7 +56,10 @@
   networking.networkmanager.settings.main.autoconnect-retries-default = 10000;
   services.resolved.enable = true; # mdns
   services.tailscale.enable = true;
-  services.tailscale.extraSetFlags = [ "--ssh" ];
+  services.tailscale.extraSetFlags = [
+    "--ssh"
+    "--advertise-exit-node"
+  ];
 
   time.timeZone = "Africa/Lagos";
 
