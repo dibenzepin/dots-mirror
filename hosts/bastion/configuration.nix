@@ -147,9 +147,6 @@
   my.zsh.enable = true;
   my.helix.enable = true;
 
-  # ghostty et al.
-  environment.enableAllTerminfo = true;
-
   nix.package = pkgs.lixPackageSets.stable.lix;
 
   nixpkgs.overlays = [
@@ -196,7 +193,7 @@
 
   systemd.timers = {
     speedtest = {
-      enable = false;
+      enable = true;
       wantedBy = [ "timers.target" ];
       timerConfig = {
         OnBootSec = "1m";
