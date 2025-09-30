@@ -228,13 +228,14 @@
     };
   };
 
-  # environment.systemPackages = with pkgs; [
-  #   dnsutils # dig, nslookup
-  #   pciutils # lspci
-  #   usbutils # lsusb
-  #   inetutils # whois
-  #   file
-  # ];
+  environment.systemPackages = with pkgs; [
+    #   dnsutils # dig, nslookup
+    #   pciutils # lspci
+    #   usbutils # lsusb
+    #   inetutils # whois
+    file
+    ghostty.terminfo
+  ];
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
