@@ -14,6 +14,7 @@
         command_timeout = 1000;
         nix_shell.symbol = "❄️ "; # there's two spaces after by default
         scala.symbol = " "; # default is ugly
+        nodejs.symbol = " "; # default is unreadable
         character = {
           success_symbol = "[➜](bold green)";
           error_symbol = "[✖](bold red)";
