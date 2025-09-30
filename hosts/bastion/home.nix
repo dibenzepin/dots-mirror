@@ -81,6 +81,7 @@
   # programs.home-manager.enable = true;
 
   programs.zoxide.enable = true;
+  programs.btop.enable = true;
 
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
@@ -100,7 +101,6 @@
 
   home.packages = with pkgs; [
     neofetch
-    btop
     trash-cli
   ];
 }
