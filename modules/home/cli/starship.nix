@@ -13,6 +13,7 @@
         add_newline = false;
         command_timeout = 1000;
         nix_shell.symbol = "❄️ "; # there's two spaces after by default
+        scala.symbol = " "; # default is ugly
         character = {
           success_symbol = "[➜](bold green)";
           error_symbol = "[✖](bold red)";
@@ -23,7 +24,7 @@
         };
         username = {
           show_always = true;
-          format = "[$user](bold lavender)[@](bold yellow)";
+          format = "[$user](bold #b4befe)[@](bold yellow)"; # normally bold lavender, but that comes from catppuccin.starship, which is disabled on bastion
         };
       };
     };

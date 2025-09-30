@@ -196,6 +196,7 @@
           imports = [
             ./hosts/bastion/configuration.nix
 
+            catppuccin.nixosModules.catppuccin
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

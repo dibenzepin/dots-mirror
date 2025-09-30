@@ -85,8 +85,9 @@
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
 
-  # catppuccin.enable = true;
-  # catppuccin.flavor = "mocha";
+  catppuccin.enable = true;
+  catppuccin.flavor = "mocha";
+  catppuccin.starship.enable = false;
 
   my.username = "fumnanya";
 
