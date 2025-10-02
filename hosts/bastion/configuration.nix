@@ -197,7 +197,7 @@
 
   systemd.timers = {
     speedtest = {
-      enable = true;
+      enable = false;
       wantedBy = [ "timers.target" ];
       timerConfig = {
         OnBootSec = "1m";
@@ -212,8 +212,8 @@
   systemd.services = {
     speedtest = {
       path = [
-        pkgs.fast-cli
-        pkgs.ookla-speedtest
+        # pkgs.fast-cli
+        # pkgs.ookla-speedtest
       ];
       script = ''
         fastdate=$(date -u '+%Y-%m-%dT%H:%M:%S.000')
