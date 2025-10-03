@@ -26,6 +26,13 @@
   # Set sudo to use touch id
   security.pam.services.sudo_local.touchIdAuth = true;
 
+  # nix remote builder for linux, see https://wiki.nixos.org/wiki/NixOS_virtual_machines_on_macOS#linux-builder
+  # and https://nixcademy.com/posts/macos-linux-builder/
+  # nix.linux-builder.enable = true;
+  # nix.linux-builder.ephemeral = true;
+  # nix.linux-builder.package =
+  #   inputs.nixpkgs-linux-builder.legacyPackages.${pkgs.system}.darwin.linux-builder;
+
   homebrew = {
     enable = true;
     onActivation = {
