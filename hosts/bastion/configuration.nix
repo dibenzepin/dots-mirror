@@ -60,6 +60,7 @@
   services.tailscale.extraSetFlags = [
     "--ssh"
     "--advertise-exit-node"
+    "--operator=fumnanya"
   ];
 
   time.timeZone = "Africa/Lagos";
