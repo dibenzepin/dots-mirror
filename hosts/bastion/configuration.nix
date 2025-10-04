@@ -166,6 +166,8 @@
     })
   ];
 
+  catppuccin.enable = true;
+
   programs.mosh.enable = true;
 
   services.qbittorrent = {

@@ -34,7 +34,7 @@ with lib;
         };
         username = {
           show_always = true;
-          format = "[$user](bold #b4befe)[@](bold yellow)"; # normally bold lavender, but that comes from catppuccin.starship, which is disabled on bastion
+          format = "[$user](bold lavender)[@](bold yellow)";
         };
       };
     };

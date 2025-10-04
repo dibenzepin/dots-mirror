@@ -88,7 +88,6 @@
 
   catppuccin.enable = true;
   catppuccin.flavor = "mocha";
-  catppuccin.starship.enable = false;
 
   my.username = "fumnanya";
 
@@ -98,7 +97,7 @@
     helix.enable = true;
 
     starship.enable = true;
-    starship.colour = "#fab387";
+    starship.colour = "peach";
   };
 
   home.packages = with pkgs; [
