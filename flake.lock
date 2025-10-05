@@ -283,11 +283,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1759588493,
-        "narHash": "sha256-FCbmgtH6x2CcZCSh2JiIasc9FVbtvANQFPdP7w5yXG4=",
+        "lastModified": 1759660082,
+        "narHash": "sha256-pzb+EMkqBTpwEUt37+XitaOAy+vX8nFymEaeYhf64ew=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "6ada5780e74aea6131b4fa1ebb9d5a50268f6512",
+        "rev": "eaac30e616071ceec1a4eafe1e109beed7774b8a",
         "type": "github"
       },
       "original": {
@@ -299,11 +299,11 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1759588432,
-        "narHash": "sha256-FaWoO6mREjukde/TReXShA9Yscuv/JEXMOROQZ/Mq7A=",
+        "lastModified": 1759659297,
+        "narHash": "sha256-LPscaf34wZsJF2Rjvm4nAV2bkRi81EeS0OVJ+7Cwisc=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "9b66eb2f5fea603631f252deaad827f6ccf67cf2",
+        "rev": "8797ef67962432f10a99b4eab51a50d6fecb302c",
         "type": "github"
       },
       "original": {
@@ -368,11 +368,11 @@
     "lix": {
       "flake": false,
       "locked": {
-        "lastModified": 1759360048,
-        "narHash": "sha256-Rmq98EchbKygPo+2g0nDsZ7QNMLe+loiMbflV5VKDzc=",
-        "rev": "f1ef994f120a723839a6d837cc2b33914a30a4db",
+        "lastModified": 1759604812,
+        "narHash": "sha256-+s8tzcZ4tf6Z2hjrtPwr0hrDE64U2cVBwr3r+l+DLrQ=",
+        "rev": "dc99a5ea1fe35389382bc5ecf47893d3953ffad9",
         "type": "tarball",
-        "url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/f1ef994f120a723839a6d837cc2b33914a30a4db.tar.gz?rev=f1ef994f120a723839a6d837cc2b33914a30a4db"
+        "url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/dc99a5ea1fe35389382bc5ecf47893d3953ffad9.tar.gz?rev=dc99a5ea1fe35389382bc5ecf47893d3953ffad9"
       },
       "original": {
         "type": "tarball",
@@ -631,10 +631,10 @@
     "nixpkgs_2": {
       "locked": {
         "lastModified": 315532800,
-        "narHash": "sha256-YwoXN6fthkakCFD7nXPcUK+rkNr6ZTNTuF8zdGaxZo0=",
-        "rev": "dc704e6102e76aad573f63b74c742cd96f8f1e6c",
+        "narHash": "sha256-jfaFRzLnOyHd6A+lZZkHedOHlVuKlP9XRybHH/UVGG0=",
+        "rev": "0832d1b3a08fe4c695507a075d547ebfa818dfa0",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixpkgs/nixpkgs-25.11pre870318.dc704e6102e7/nixexprs.tar.xz?rev=dc704e6102e76aad573f63b74c742cd96f8f1e6c"
+        "url": "https://releases.nixos.org/nixpkgs/nixpkgs-25.11pre871291.0832d1b3a08f/nixexprs.tar.xz?rev=0832d1b3a08fe4c695507a075d547ebfa818dfa0"
       },
       "original": {
         "type": "tarball",
@@ -680,11 +680,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1759444170,
-        "narHash": "sha256-b5ShONncU4Gf39QtaL5OySC9G2o612rTE/TCwx3kMeM=",
+        "lastModified": 1759638324,
+        "narHash": "sha256-bj0L3n2UWE/DjqFjsydWsSzO74+dqUA4tiOX4At6LbM=",
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "rev": "e13267e8f3eb1664329fcb78a43b38b985f96f6f",
+        "rev": "c39a58510e55c4970e57176ab14b722a978e5f01",
         "type": "github"
       },
       "original": {
