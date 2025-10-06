@@ -37,6 +37,7 @@ in
         helix_mode = true;
 
         terminal.blinking = "on";
+        terminal.font_family = "FiraCode Nerd Font Mono";
         restore_on_startup = "none";
 
         inlay_hints.enabled = true;
