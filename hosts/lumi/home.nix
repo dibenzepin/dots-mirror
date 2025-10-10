@@ -49,7 +49,7 @@
     helix.langs = [
       "rust"
       "nix"
-      "python"
+      # "python"
     ];
 
     luminovo.enable = true;
@@ -60,7 +60,6 @@
 
   home.packages = with pkgs; [
     mosh
-    aldente
     dbeaver-bin
     appcleaner
     iina
@@ -69,7 +68,6 @@
     inputs.fum.packages.${pkgs.system}.switcheroo
     inputs.colmena.packages.${pkgs.system}.colmena
     rquickshare
-    prismlauncher
     jetbrains.rust-rover
     code-cursor
     halloy

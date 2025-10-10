@@ -165,6 +165,15 @@
         doCheck = false;
         doInstallCheck = false;
       };
+
+      # temp workaround for https://github.com/NixOS/nixpkgs/issues/450516
+      spotify = prev.spotify.overrideAttrs {
+        version = "1.2.71.421";
+        src = prev.fetchurl {
+          url = "https://web.archive.org/web/20250912003756/https://download.scdn.co/SpotifyARM64.dmg";
+          hash = "sha256-fTyACxbyIgg7EwIgnNvNerJGUwAVLP2bg0TMnOegWeQ=";
+        };
+      };
     })
   ];
 
