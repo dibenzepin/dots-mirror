@@ -30,18 +30,22 @@ in
       # right now i'm just doing this to see how it's like
       # to revert back to the tried and tested mode, check https://codeberg.org/fumnanya/dots/commit/d5f4affd964a95deaceff92f87487608ea3dca3c
       userSettings = {
+        helix_mode = true;
+
         ui_font_size = 15;
         buffer_font_size = 14;
         buffer_font_family = "TX-02";
-
-        helix_mode = true;
-
         terminal.blinking = "on";
         terminal.font_family = "FiraCode Nerd Font Mono";
+        terminal.font_size = 13;
+
         restore_on_startup = "none";
 
         inlay_hints.enabled = true;
         diagnostics.inline.enabled = true;
+
+        agent.play_sound_when_agent_done = true;
+        show_edit_predictions = false;
 
         lsp = {
           nixd.binary.path = "${pkgs.nixd}/bin/nixd";
