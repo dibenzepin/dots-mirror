@@ -47,11 +47,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1760084311,
-        "narHash": "sha256-YpNNtvA8v28Gd3/PHXCABuBWOzR0K8CyQPga13LxBH0=",
+        "lastModified": 1760468693,
+        "narHash": "sha256-JtXWEvA09PLiBOcNws3eUa6WSj/j1aDc1isWXka6ctk=",
         "owner": "catppuccin",
         "repo": "nix",
-        "rev": "fa3a9d5f80ebfe7f4974bc1939f558690cc56359",
+        "rev": "2b289e5837767dd9239e4469d6ba69ca4f98038b",
         "type": "github"
       },
       "original": {
@@ -129,11 +129,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1760099924,
-        "narHash": "sha256-tgJmsU0+p7Qw/aUdMr6lxx7yXgSSTDY3ez39DYbYw10=",
+        "lastModified": 1760548798,
+        "narHash": "sha256-LbqqHQklp58hKCO6IMcslsqX0mR32775PG3Z+k2GcwU=",
         "owner": "nix-community",
         "repo": "flake-firefox-nightly",
-        "rev": "e86b596020445213c45264ebbb0cdebf4650bcbe",
+        "rev": "fdd8c18c8d3497d267c0750ef08678d32a2dd753",
         "type": "github"
       },
       "original": {
@@ -247,11 +247,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1760122718,
-        "narHash": "sha256-Ujnm0Qd8JIbHgfeyDq+4doAPov2Ygyuh8yK3E6d/TLU=",
+        "lastModified": 1760563032,
+        "narHash": "sha256-DK+GmvvF71JC7ha8DBgK1sLvzrTWO+wvwcwQxIw/X+k=",
         "ref": "refs/heads/main",
-        "rev": "540b3c812f8c62b74615f141db92d05be4d898a6",
-        "revCount": 21,
+        "rev": "9621492be28036ac7488eac8d59521608212de87",
+        "revCount": 22,
         "type": "git",
         "url": "https://codeberg.org/fumnanya/flakes"
       },
@@ -267,11 +267,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1760103600,
-        "narHash": "sha256-R4cltQFceN3POiPhBu7aTKsrwqTiwo6zjzmitrHD80E=",
+        "lastModified": 1760500983,
+        "narHash": "sha256-zfY4F4CpeUjTGgecIJZ+M7vFpwLc0Gm9epM/iMQd4w8=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "bcccb01d0a353c028cc8cb3254cac7ebae32929e",
+        "rev": "c53e65ec92f38d30e3c14f8d628ab55d462947aa",
         "type": "github"
       },
       "original": {
@@ -283,11 +283,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1760121442,
-        "narHash": "sha256-nzP1N6z95xbJMUYOL5KgfcUPd5uo6op0rPhlaTAmu54=",
+        "lastModified": 1760558797,
+        "narHash": "sha256-qedNNU/rDSZpFZ8qBnXK4M02wYg6WWw3dQfe+baxVNY=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "6963c41902f01b34068735270fa2813b1f98a3e1",
+        "rev": "b2007ebb06fea0ae0b6da3ec9c76661efec6e94e",
         "type": "github"
       },
       "original": {
@@ -299,11 +299,11 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1760122438,
-        "narHash": "sha256-CNEGc18dk+4OdNuSpE9aTGWGUar/t/CSBycMlB0GHLw=",
+        "lastModified": 1760552532,
+        "narHash": "sha256-OYimRihaGqNkk4rUFb3CVIWSj3AKYZOIpW6ZxDe4l0w=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "d0d6b0aad43c58a9ff051bdd6e874515e19dfed0",
+        "rev": "db0ac99bc2e63ee6f9613eaf23ad8790cb99a6c5",
         "type": "github"
       },
       "original": {
@@ -368,11 +368,11 @@
     "lix": {
       "flake": false,
       "locked": {
-        "lastModified": 1760112834,
-        "narHash": "sha256-Am06oG6RuYx7jtMicsq0EgcP8ODCo9A/9aVu2VfynSc=",
-        "rev": "2f16cf601431a21a20c26aa790139ef0c4796cb5",
+        "lastModified": 1760552848,
+        "narHash": "sha256-ibkmGcXZUpSSMMePfD+CFML5BFUHKVycSwh2FPRx2qg=",
+        "rev": "cac395ffbccbd0ebdbd6c7aa46f003a0be212112",
         "type": "tarball",
-        "url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/2f16cf601431a21a20c26aa790139ef0c4796cb5.tar.gz?rev=2f16cf601431a21a20c26aa790139ef0c4796cb5"
+        "url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/cac395ffbccbd0ebdbd6c7aa46f003a0be212112.tar.gz?rev=cac395ffbccbd0ebdbd6c7aa46f003a0be212112"
       },
       "original": {
         "type": "tarball",
@@ -393,11 +393,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1756511062,
-        "narHash": "sha256-IgD1JR7scSEwlK/YAbmrcTWpAYT30LPldCUHdzXkaMs=",
-        "rev": "3f09a5eb772e02d98bb8878ab687d5b721f00d16",
+        "lastModified": 1759851320,
+        "narHash": "sha256-n5dRAIC3/78drQtFxmQRrBLd6TKfotUnX7GWu0mAcSg=",
+        "rev": "7c31a18259b8358ac196cf803a26967c0fa1d3e4",
         "type": "tarball",
-        "url": "https://git.lix.systems/api/v1/repos/lix-project/nixos-module/archive/3f09a5eb772e02d98bb8878ab687d5b721f00d16.tar.gz?rev=3f09a5eb772e02d98bb8878ab687d5b721f00d16"
+        "url": "https://git.lix.systems/api/v1/repos/lix-project/nixos-module/archive/7c31a18259b8358ac196cf803a26967c0fa1d3e4.tar.gz?rev=7c31a18259b8358ac196cf803a26967c0fa1d3e4"
       },
       "original": {
         "type": "tarball",
@@ -440,11 +440,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758805352,
-        "narHash": "sha256-BHdc43Lkayd+72W/NXRKHzX5AZ+28F3xaUs3a88/Uew=",
+        "lastModified": 1760338583,
+        "narHash": "sha256-IGwy02SH5K2hzIFrKMRsCmyvwOwWxrcquiv4DbKL1S4=",
         "owner": "nix-darwin",
         "repo": "nix-darwin",
-        "rev": "c48e963a5558eb1c3827d59d21c5193622a1477c",
+        "rev": "9a9ab01072f78823ca627ae5e895e40d493c3ecf",
         "type": "github"
       },
       "original": {
@@ -631,10 +631,10 @@
     "nixpkgs_2": {
       "locked": {
         "lastModified": 315532800,
-        "narHash": "sha256-TArz2xcD1fDUu8lJA5xL5pPsTmyBRrU9265ya3WztpI=",
-        "rev": "2dad7af78a183b6c486702c18af8a9544f298377",
+        "narHash": "sha256-sV6pJNzFkiPc6j9Bi9JuHBnWdVhtKB/mHgVmMPvDFlk=",
+        "rev": "82c2e0d6dde50b17ae366d2aa36f224dc19af469",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixpkgs/nixpkgs-25.11pre874800.2dad7af78a18/nixexprs.tar.xz?rev=2dad7af78a183b6c486702c18af8a9544f298377"
+        "url": "https://releases.nixos.org/nixpkgs/nixpkgs-25.11pre877938.82c2e0d6dde5/nixexprs.tar.xz?rev=82c2e0d6dde50b17ae366d2aa36f224dc19af469"
       },
       "original": {
         "type": "tarball",
@@ -680,11 +680,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1759638324,
-        "narHash": "sha256-bj0L3n2UWE/DjqFjsydWsSzO74+dqUA4tiOX4At6LbM=",
+        "lastModified": 1760243311,
+        "narHash": "sha256-LNrok211+WWlMGWqpGPpnGcnWhyo5SfvMv62uDiLzoI=",
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "rev": "c39a58510e55c4970e57176ab14b722a978e5f01",
+        "rev": "93f1d45e48191a0b24c5c15e5cf369566ff75be9",
         "type": "github"
       },
       "original": {
