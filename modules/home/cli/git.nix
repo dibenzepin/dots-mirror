@@ -109,25 +109,26 @@
     # bat complains about not seeing catppuccin mocha
     programs.bat.enable = true;
 
+    programs.delta.enable = true;
+    programs.delta.options.line-numbers = true;
+    programs.delta.enableGitIntegration = true;
+
     programs.git = {
       enable = true;
-      userName = "fumnanya";
-      userEmail = "fmowete@outlook.com";
-      aliases = {
-        sw = "switch";
-        st = "status";
-        br = "branch";
-        ci = "commit";
-      };
-      delta.enable = true;
-      delta.options = {
-        line-numbers = true;
-      };
       signing = {
         key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILj80AhtIADDRd2rz66ejlDD4P80I5p9zpxNwcqFsOhz";
         format = "ssh";
       };
-      extraConfig = {
+      settings = {
+        user.name = "fumnanya";
+        user.email = "fmowete@outlook.com";
+        alias = {
+          sw = "switch";
+          st = "status";
+          br = "branch";
+          ci = "commit";
+        };
+
         init.defaultBranch = "main";
         pull.rebase = true;
         push.autoSetupRemote = true;
