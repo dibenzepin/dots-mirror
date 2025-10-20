@@ -172,7 +172,6 @@
 
   services.qbittorrent = {
     enable = true;
-    openFirewall = true;
     group = "media";
     serverConfig = {
       LegalNotice.Accepted = true;
@@ -184,7 +183,7 @@
       Preferences = {
         # https://wiki.archlinux.org/title/QBittorrent#Allow_access_without_username_&_password
         WebUI = {
-          AuthSubnetWhitelist = "100.64.0.0/10, 10.10.0.0/24, 192.168.1.0/24, 2c0f:2a80:a4f:1008::/64";
+          AuthSubnetWhitelist = "100.64.0.0/10, 10.10.0.0/24, 192.168.1.0/24, fddc:fae9:c63b:8::/64";
           AuthSubnetWhitelistEnabled = true;
           UseUPnP = false;
           LocalHostAuth = false;
