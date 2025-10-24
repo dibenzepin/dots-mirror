@@ -110,7 +110,7 @@
 
       # strictly for deployments
       colmena = {
-        group = "colmena";
+        group = "users";
         useDefaultShell = true;
         isSystemUser = true;
         openssh.authorizedKeys.keys = [
@@ -120,14 +120,13 @@
       };
     };
 
-    groups.colmena = { };
     groups.media = { }; # tired of wrangling permissions for /media
   };
 
   security.sudo = {
     extraRules = [
       {
-        groups = [ "colmena" ];
+        users = [ "colmena" ];
         commands = [
           {
             command = "/run/current-system/sw/bin/nix-store --no-gc-warning --realise /nix/store/*";
