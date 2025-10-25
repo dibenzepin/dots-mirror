@@ -64,7 +64,7 @@
     appcleaner
     iina
     qbittorrent
-    inputs.nixpkgs-yaak.legacyPackages.${pkgs.system}.yaak
+    yaak
     inputs.fum.packages.${pkgs.system}.switcheroo
     inputs.colmena.packages.${pkgs.system}.colmena
     rquickshare

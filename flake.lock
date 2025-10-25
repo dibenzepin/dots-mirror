@@ -612,22 +612,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-yaak": {
-      "locked": {
-        "lastModified": 1752430577,
-        "narHash": "sha256-tQLlBKmitwOvR96bNs8Y93V4x25lDvQZsuVOO0Qoj/U=",
-        "owner": "dibenzepin",
-        "repo": "nixpkgs",
-        "rev": "89479fdc3db2853721c4b52796393352f184a97a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "dibenzepin",
-        "ref": "yaak-update",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 315532800,
@@ -664,7 +648,6 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-linux-builder": "nixpkgs-linux-builder",
-        "nixpkgs-yaak": "nixpkgs-yaak",
         "spicetify-nix": "spicetify-nix",
         "systems": "systems",
         "treefmt-nix": "treefmt-nix"

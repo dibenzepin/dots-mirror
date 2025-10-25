@@ -4,7 +4,6 @@
   inputs = {
     # https://github.com/tgirlcloud/lix-diff/issues/1
     nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz";
-    nixpkgs-yaak.url = "github:dibenzepin/nixpkgs/yaak-update";
     nixpkgs-linux-builder.url = "github:nixos/nixpkgs/bf32c404263862fdbeb6e5f87a4bcbc6a01af565";
     systems.url = "github:nix-systems/default";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
