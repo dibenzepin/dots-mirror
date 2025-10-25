@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   options = {
@@ -54,5 +59,9 @@
         };
       };
     };
+
+    # do i like it? no
+    # does the helm extension only look on PATH and doesn't allow you to specify a location? yes
+    home.packages = [ pkgs.helm-ls ];
   };
 }
