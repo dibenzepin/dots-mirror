@@ -13,6 +13,7 @@
 
   config = lib.mkIf config.my.nix.enable {
     nixpkgs.config.allowUnfree = true;
+    nixpkgs.flake.source = inputs.nixpkgs;
 
     nix = {
       settings = {
@@ -44,10 +45,7 @@
       # disable channels, nix-shell was complaining: https://github.com/nix-darwin/nix-darwin/issues/145
       channel.enable = false;
 
-      registry = {
-        fum.flake = inputs.fum; # my custom registry
-        nixpkgs.flake = inputs.nixpkgs;
-      };
+      registry.fum.flake = inputs.fum; # my custom registry
 
       extraOptions = ''
         bash-prompt-prefix = (nix:$name)\040
