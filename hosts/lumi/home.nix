@@ -63,7 +63,7 @@
     dbeaver-bin
     appcleaner
     iina
-    qbittorrent
+    # qbittorrent
     yaak
     inputs.fum.packages.${pkgs.system}.switcheroo
     inputs.colmena.packages.${pkgs.system}.colmena

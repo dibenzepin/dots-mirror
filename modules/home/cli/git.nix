@@ -105,10 +105,6 @@
         };
     };
 
-    # delta pulls in bat
-    # bat complains about not seeing catppuccin mocha
-    programs.bat.enable = true;
-
     programs.delta.enable = true;
     programs.delta.options.line-numbers = true;
     programs.delta.enableGitIntegration = true;

@@ -9,6 +9,9 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     colmena.url = "github:zhaofengli/colmena";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    mac-app-util.url = "github:hraban/mac-app-util/link-contents"; # TODO: check this branch
+    apple-emoji.url = "github:samuelngs/apple-emoji-linux";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
 
     lix.url = "https://git.lix.systems/lix-project/lix/archive/main.tar.gz";
     lix.flake = false;
@@ -30,11 +33,6 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    mac-app-util.url = "github:hraban/mac-app-util/link-contents"; # TODO: check this branch
-    mac-app-util.inputs.nixpkgs.follows = "nixpkgs";
-    mac-app-util.inputs.flake-utils.follows = "flake-utils";
-    mac-app-util.inputs.systems.follows = "systems";
-
     flake-utils.url = "github:numtide/flake-utils";
     flake-utils.inputs.systems.follows = "systems";
 
@@ -45,9 +43,6 @@
     distro-grub-themes.inputs.nixpkgs.follows = "nixpkgs";
     distro-grub-themes.inputs.flake-utils.follows = "flake-utils";
 
-    treefmt-nix.url = "github:numtide/treefmt-nix";
-    treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
-
     firefox-nightly.url = "github:nix-community/flake-firefox-nightly";
     firefox-nightly.inputs.nixpkgs.follows = "nixpkgs";
     firefox-nightly.inputs.lib-aggregate.inputs.flake-utils.follows = "flake-utils";
@@ -55,10 +50,6 @@
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
     spicetify-nix.inputs.systems.follows = "systems";
-
-    apple-emoji.url = "github:samuelngs/apple-emoji-linux";
-    apple-emoji.inputs.nixpkgs.follows = "nixpkgs";
-    apple-emoji.inputs.treefmt-nix.follows = "treefmt-nix";
 
     # homebrew casks
     homebrew-core.url = "github:homebrew/homebrew-core";
