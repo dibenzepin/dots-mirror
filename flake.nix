@@ -58,9 +58,6 @@
     homebrew-cask.url = "github:homebrew/homebrew-cask";
     homebrew-cask.flake = false;
 
-    homebrew-garden.url = "github:garden-io/homebrew-garden";
-    homebrew-garden.flake = false;
-
     homebrew-kde.url = "github:KDE/homebrew-kde";
     homebrew-kde.flake = false;
   };
@@ -141,11 +138,10 @@
               user = "fum";
 
               # Optional: Declarative tap management
-              taps = with inputs; {
-                "homebrew/homebrew-core" = homebrew-core;
-                "homebrew/homebrew-cask" = homebrew-cask;
-                "garden-io/homebrew-garden" = homebrew-garden;
-                "KDE/homebrew-kde" = homebrew-kde;
+              taps = {
+                "homebrew/homebrew-core" = inputs.homebrew-core;
+                "homebrew/homebrew-cask" = inputs.homebrew-cask;
+                "KDE/homebrew-kde" = inputs.homebrew-kde;
               };
 
               # Optional: Enable fully-declarative tap management

@@ -328,22 +328,6 @@
         "type": "github"
       }
     },
-    "homebrew-garden": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1759843865,
-        "narHash": "sha256-D8eMUPu69esYtObl7NQDMgMGU+6xr6XKpxPb7zIA90c=",
-        "owner": "garden-io",
-        "repo": "homebrew-garden",
-        "rev": "c0475d8146328461bef982063f1ba274bd003186",
-        "type": "github"
-      },
-      "original": {
-        "owner": "garden-io",
-        "repo": "homebrew-garden",
-        "type": "github"
-      }
-    },
     "homebrew-kde": {
       "flake": false,
       "locked": {
@@ -695,7 +679,6 @@
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
-        "homebrew-garden": "homebrew-garden",
         "homebrew-kde": "homebrew-kde",
         "lix": "lix",
         "lix-module": "lix-module",
