@@ -72,7 +72,6 @@
         )
         // {
           jj = {
-            ignore_timeout = true;
             description = "The current jj status";
             when = "jj --ignore-working-copy root";
             shell = [
