@@ -193,6 +193,29 @@
   };
   systemd.services.qbittorrent.serviceConfig.UMask = "0002"; # default is 022, but i want to give write perms to :media
 
+  hardware.graphics.enable = true;
+  hardware.graphics.extraPackages = [
+    pkgs.intel-ocl
+    pkgs.intel-vaapi-driver
+    pkgs.libva-vdpau-driver
+  ];
+
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "i965";
+  };
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
+  };
+
+  services.jellyfin.enable = true;
+  services.jellyfin.group = "media";
+  systemd.services.jellyfin.environment.LIBVA_DRIVER_NAME = "i965";
+  users.users.jellyfin.extraGroups = [
+    "video"
+    "render"
+  ];
+
   systemd.tmpfiles.rules = [
     "d /var/lib/speeds 0777 - - -" # for the speedtests
     "d /media 0777 - media -"
