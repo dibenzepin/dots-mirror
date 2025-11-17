@@ -165,6 +165,13 @@
         doCheck = false;
         doInstallCheck = false;
       };
+
+      # https://github.com/NixOS/nixpkgs/pull/462589
+      fish = prev.fish.overrideAttrs {
+        doCheck = false;
+        doInstallCheck = false;
+      };
+
     })
   ];
 
