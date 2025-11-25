@@ -58,10 +58,11 @@
       "motrix"
       # "kdeconnect" # go and automate it
     ];
-    masApps = {
-      Bitwarden = 1352778147;
-      Telegram = 747648890;
-    };
+    # mas be having some issues, disabling for now: https://github.com/mas-cli/mas/issues/1029
+    # masApps = {
+    #   Bitwarden = 1352778147;
+    #   Telegram = 747648890;
+    # };
   };
 
   my.nix.enable = true;
