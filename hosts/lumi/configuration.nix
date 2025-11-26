@@ -56,6 +56,7 @@
       "calibre"
       "tailscale-app"
       "motrix"
+      "zed"
       # "kdeconnect" # go and automate it
     ];
     # mas be having some issues, disabling for now: https://github.com/mas-cli/mas/issues/1029
@@ -115,7 +116,7 @@
           app = "/Applications/Ghostty.app";
         }
         {
-          app = "/Users/${config.my.username}/Applications/Home Manager Trampolines/Zed.app";
+          app = "/Applications/Zed.app";
         }
       ];
 

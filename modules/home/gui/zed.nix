@@ -6,11 +6,16 @@
 }:
 let
   cfg = config.my.zed;
+  nixExtensionTools = [
+    pkgs.nixd
+    pkgs.nil
+    pkgs.nixfmt-rfc-style
+  ];
 in
 {
   options = {
     my.zed = {
-      enable = lib.mkEnableOption "zed with extra packages, but not home-manager managed";
+      enable = lib.mkEnableOption "home-manager managed zed with extra packages (except on macos where it's bring-your-own-zed) ";
     };
   };
 
@@ -18,13 +23,7 @@ in
     programs.zed-editor = {
       enable = true;
 
-      # we don't need them in here...
-      # ...but just so that the gc doesn't think they're unneeded
-      extraPackages = with pkgs; [
-        nixd
-        nil
-        nixfmt-rfc-style
-      ];
+      package = if pkgs.stdenv.isDarwin then null else pkgs.zed-editor;
 
       # currently this is in a weird state, with https://github.com/nix-community/home-manager/issues/6835#issuecomment-2951299487
       # right now i'm just doing this to see how it's like
@@ -40,6 +39,7 @@ in
         terminal.font_size = 13;
 
         restore_on_startup = "none";
+        auto_update = false;
 
         inlay_hints.enabled = true;
         diagnostics.inline.enabled = true;
@@ -70,5 +70,11 @@ in
         }
       ];
     };
+
+    # # we don't need them in here...
+    # # ...but just so that the gc doesn't think they're unneeded
+    # ...on macOS we can't use extraPackages because we're bringing our own, so just add it to the home env
+    programs.zed-editor.extraPackages = lib.mkIf (!pkgs.stdenv.isDarwin) nixExtensionTools;
+    home.packages = lib.mkIf pkgs.stdenv.isDarwin nixExtensionTools;
   };
 }
