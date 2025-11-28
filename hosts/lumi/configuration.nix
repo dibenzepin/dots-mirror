@@ -168,12 +168,17 @@
         doInstallCheck = false;
       };
 
-      # https://github.com/NixOS/nixpkgs/pull/462589
-      fish = prev.fish.overrideAttrs {
+      aws-sdk-cpp = prev.aws-sdk-cpp.overrideAttrs {
         doCheck = false;
         doInstallCheck = false;
       };
 
+      spotify = prev.spotify.overrideAttrs {
+        src = prev.fetchurl {
+          url = "https://web.archive.org/web/20251029235406/https://download.scdn.co/SpotifyARM64.dmg";
+          hash = "sha256-0gwoptqLBJBM0qJQ+dGAZdCD6WXzDJEs0BfOxz7f2nQ=";
+        };
+      };
     })
   ];
 

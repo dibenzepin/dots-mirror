@@ -46,6 +46,8 @@
         userSettings = {
           languages.YAML.format_on_save = "off"; # todo: remove when devcontainer is made
           lsp.yaml-language-server.settings.yaml.customTags = [ "!reference sequence" ];
+          # https://www.reddit.com/r/ZedEditor/comments/1krqxzc/the_eslint_configuration_does_not_find_the/mtn8e12/
+          lsp.eslint.settings.workingDirectory.mode = "location";
           file_types = {
             "Helm" = [
               "**/templates/**/*.tpl"
