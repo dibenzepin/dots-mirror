@@ -17,9 +17,9 @@ with lib;
   config = mkIf cfg.enable {
     programs.starship = {
       enable = true;
+      enableTransience = true;
 
       settings = {
-        add_newline = false;
         command_timeout = 1000;
         nix_shell.symbol = "❄️ "; # there's two spaces after by default
         scala.symbol = " "; # default is ugly
@@ -39,15 +39,8 @@ with lib;
       };
     };
 
-    programs.zsh.initContent = ''
-      ############################## extra starship zsh config ##############################
-
-      # add a blank line between prompts because starship's add_newline is annoying on first open
-      precmd() { precmd() { echo "" } }
-      alias clear='precmd() { precmd() { echo "" } } && clear'
-      alias reset='precmd() { precmd() { echo "" } } && reset'
-
-      ############################ end extra starship zsh config ############################
-    '';
+    programs.fish.functions = {
+      starship_transient_prompt_func = "starship module character";
+    };
   };
 }

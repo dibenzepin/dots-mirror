@@ -92,12 +92,12 @@
 
   users = {
     mutableUsers = false;
-    defaultUserShell = pkgs.zsh;
 
     users = {
       ${config.my.username} = {
         isNormalUser = true;
         password = "f";
+        shell = pkgs.fish;
         extraGroups = [
           "wheel"
           "networkmanager"
@@ -148,7 +148,6 @@
   ################### programs ###################
 
   my.nix.enable = true;
-  my.zsh.enable = true;
   my.helix.enable = true;
 
   nix.package = pkgs.lixPackageSets.stable.lix;
@@ -167,6 +166,7 @@
 
   catppuccin.enable = true;
 
+  programs.fish.enable = true;
   programs.mosh.enable = true;
 
   services.qbittorrent = {

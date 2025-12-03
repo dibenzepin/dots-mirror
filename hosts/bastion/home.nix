@@ -82,6 +82,7 @@
 
   programs.zoxide.enable = true;
   programs.btop.enable = true;
+  programs.fish.enable = true;
 
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
@@ -93,7 +94,6 @@
 
   my = {
     atuin.enable = true;
-    zsh.enable = true;
     helix.enable = true;
 
     starship.enable = true;
