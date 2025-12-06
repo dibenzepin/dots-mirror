@@ -33,9 +33,9 @@ in
 
         ui_font_size = 15;
         buffer_font_size = 14;
-        buffer_font_family = "TX-02";
+        buffer_font_family = "Google Sans Code";
         terminal.blinking = "on";
-        terminal.font_family = "FiraCode Nerd Font Mono";
+        terminal.font_family = "Google Sans Code";
         terminal.font_size = 13;
 
         restore_on_startup = "none";

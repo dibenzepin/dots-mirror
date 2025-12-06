@@ -70,15 +70,13 @@
   my.fonts = {
     enable = true;
 
-    packages =
-      with pkgs.nerd-fonts;
-      [
-        fira-code
-        code-new-roman
-      ]
-      ++ (with pkgs; [
-        inter
-      ]);
+    packages = [
+      pkgs.nerd-fonts.fira-code
+      pkgs.nerd-fonts.code-new-roman
+
+      pkgs.inter
+      pkgs.googlesans-code
+    ];
   };
 
   system = {

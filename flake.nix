@@ -19,7 +19,6 @@
     lix-module.url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
     lix-module.inputs.lix.follows = "lix";
     lix-module.inputs.nixpkgs.follows = "nixpkgs";
-    lix-module.inputs.flake-utils.follows = "flake-utils";
 
     fum.url = "git+https://codeberg.org/fumnanya/flakes";
     fum.inputs.nixpkgs.follows = "nixpkgs";
