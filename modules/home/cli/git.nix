@@ -16,7 +16,6 @@
         user.name = "fumnanya";
         user.email = "fmowete@outlook.com";
         ui.paginate = "never";
-        git.push-new-bookmarks = true;
         signing = {
           backend = "ssh";
           behavior = "own";
