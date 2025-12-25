@@ -7,9 +7,15 @@ with lib;
   options = {
     my.starship = {
       enable = mkEnableOption "starship with home-manager";
-      colour = mkOption {
+
+      # by default, assume catppuccin is also loaded and use its colours
+      hostColour = mkOption {
         type = types.str;
-        default = "";
+        default = "green";
+      };
+      userColour = mkOption {
+        type = types.str;
+        default = "lavender";
       };
     };
   };
@@ -31,11 +37,11 @@ with lib;
         };
         hostname = {
           ssh_only = false;
-          format = "[$hostname](bold ${cfg.colour}): ";
+          format = "[$hostname](bold ${cfg.hostColour}): ";
         };
         username = {
           show_always = true;
-          format = "[$user](bold lavender)[@](bold yellow)";
+          format = "[$user](bold ${cfg.userColour})[@](bold yellow)";
         };
       };
     };

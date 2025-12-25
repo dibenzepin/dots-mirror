@@ -4,7 +4,6 @@
   inputs = {
     # https://github.com/tgirlcloud/lix-diff/issues/1
     nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz";
-    nixpkgs-linux-builder.url = "github:nixos/nixpkgs/bf32c404263862fdbeb6e5f87a4bcbc6a01af565";
     systems.url = "github:nix-systems/default";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     colmena.url = "github:zhaofengli/colmena";
@@ -25,9 +24,6 @@
 
     nix-darwin.url = "github:nix-darwin/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-
-    nix-rosetta-builder.url = "github:cpick/nix-rosetta-builder";
-    nix-rosetta-builder.inputs.nixpkgs.follows = "nixpkgs";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -77,7 +73,6 @@
       mac-app-util,
       nix-homebrew,
       colmena,
-      nix-rosetta-builder,
       ...
     }@inputs:
     let
@@ -100,15 +95,6 @@
 
           lix-module.nixosModules.default
           mac-app-util.darwinModules.default
-
-          # to activate this the first time you need to do a little song-and-dance,
-          # see commented out `nix.linux-builder.enable` in configuration.nix
-          # as well as https://github.com/cpick/nix-rosetta-builder/issues/40
-          nix-rosetta-builder.darwinModules.default
-          {
-            # see available options in module.nix's `options.nix-rosetta-builder`
-            nix-rosetta-builder.onDemand = true;
-          }
 
           home-manager.darwinModules.home-manager
           {

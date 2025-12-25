@@ -56,7 +56,7 @@
       "calibre"
       "tailscale-app"
       "motrix"
-      "zed"
+      "zed@preview"
       # "kdeconnect" # go and automate it
     ];
     # mas be having some issues, disabling for now: https://github.com/mas-cli/mas/issues/1029
@@ -114,7 +114,7 @@
           app = "/Applications/Ghostty.app";
         }
         {
-          app = "/Applications/Zed.app";
+          app = "/Applications/Zed Preview.app";
         }
       ];
 
@@ -169,13 +169,6 @@
       aws-sdk-cpp = prev.aws-sdk-cpp.overrideAttrs {
         doCheck = false;
         doInstallCheck = false;
-      };
-
-      spotify = prev.spotify.overrideAttrs {
-        src = prev.fetchurl {
-          url = "https://web.archive.org/web/20251029235406/https://download.scdn.co/SpotifyARM64.dmg";
-          hash = "sha256-0gwoptqLBJBM0qJQ+dGAZdCD6WXzDJEs0BfOxz7f2nQ=";
-        };
       };
     })
   ];

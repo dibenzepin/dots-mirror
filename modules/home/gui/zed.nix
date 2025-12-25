@@ -24,6 +24,7 @@ in
       enable = true;
 
       package = if pkgs.stdenv.isDarwin then null else pkgs.zed-editor;
+      extensions = [ "nix" ];
 
       # currently this is in a weird state, with https://github.com/nix-community/home-manager/issues/6835#issuecomment-2951299487
       # right now i'm just doing this to see how it's like
@@ -38,7 +39,7 @@ in
         terminal.font_family = "Google Sans Code";
         terminal.font_size = 13;
 
-        restore_on_startup = "none";
+        restore_on_startup = "launchpad";
         auto_update = false;
 
         inlay_hints.enabled = true;

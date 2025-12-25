@@ -89,6 +89,7 @@
 
   catppuccin.enable = true;
   catppuccin.flavor = "mocha";
+  catppuccin.starship.enable = false; # IFD, see https://github.com/catppuccin/nix/issues/392#issue-2706734348
 
   my.username = "fumnanya";
 
@@ -97,7 +98,9 @@
     helix.enable = true;
 
     starship.enable = true;
-    starship.colour = "peach";
+    # since we have catppuccin.starship turned off...
+    starship.userColour = "#fab387"; # `peach`
+    starship.hostColour = "#b4befe"; # `lavender`
   };
 
   home.packages = with pkgs; [

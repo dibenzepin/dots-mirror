@@ -165,6 +165,7 @@
   ];
 
   catppuccin.enable = true;
+  catppuccin.tty.enable = false; # IFD, see https://github.com/catppuccin/nix/issues/392#issue-2706734348
 
   programs.fish.enable = true;
   programs.mosh.enable = true;
