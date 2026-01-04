@@ -27,8 +27,8 @@ with lib;
 
       settings = {
         command_timeout = 1000;
-        # it appears only kitty has "correct behaviour"
-        # nix_shell.symbol = "❄️ "; # there's two spaces after by default
+        # it appears only kitty, ghostty have "correct behaviour"
+        nix_shell.symbol = "❄️ "; # there's two spaces after by default
         scala.symbol = " "; # default is ugly
         nodejs.symbol = " "; # default is unreadable
         character = {

@@ -12,16 +12,6 @@ with lib;
   options = {
     my.helix = {
       enable = mkEnableOption "home-manager managed helix";
-      langs = mkOption {
-        type = types.listOf (
-          types.enum [
-            "python"
-            "rust"
-            "nix"
-          ]
-        );
-        default = [ ];
-      };
     };
   };
 
@@ -100,27 +90,22 @@ with lib;
         };
       };
 
-      extraPackages =
-        with pkgs;
-        lib.optionals (elem "python" cfg.langs) [
-          ruff
-          basedpyright
-        ]
-        ++ lib.optionals (elem "nix" cfg.langs) [
-          nil
-          nixd
-          nixfmt-rfc-style
-        ];
+      extraPackages = with pkgs; [
+        ruff
+        basedpyright
+        nil
+        nixd
+        nixfmt-rfc-style
+      ];
 
       languages = {
         language-server = {
-          rust-analyzer.config.check.command = mkIf (elem "rust" cfg.langs) "clippy";
-          basedpyright.config.basedpyright.analysis.typeCheckingMode =
-            mkIf (elem "python" cfg.langs) "strict";
+          rust-analyzer.config.check.command = "clippy";
+          basedpyright.config.basedpyright.analysis.typeCheckingMode = "strict";
         };
 
-        language =
-          lib.optional (elem "nix" cfg.langs) {
+        language = [
+          {
             name = "nix";
             auto-format = true;
             language-servers = [
@@ -130,14 +115,15 @@ with lib;
             formatter.command = "nixfmt";
           }
 
-          ++ lib.optional (elem "python" cfg.langs) {
+          {
             name = "python";
             auto-format = true;
             language-servers = [
               "basedpyright"
               "ruff"
             ];
-          };
+          }
+        ];
       };
     };
   };

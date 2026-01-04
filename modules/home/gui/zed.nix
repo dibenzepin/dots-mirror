@@ -24,7 +24,10 @@ in
       enable = true;
 
       package = if pkgs.stdenv.isDarwin then null else pkgs.zed-editor;
-      extensions = [ "nix" ];
+      extensions = [
+        "nix"
+        "toml"
+      ];
 
       # currently this is in a weird state, with https://github.com/nix-community/home-manager/issues/6835#issuecomment-2951299487
       # right now i'm just doing this to see how it's like

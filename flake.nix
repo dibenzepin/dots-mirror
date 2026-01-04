@@ -93,7 +93,7 @@
         modules = [
           ./hosts/lumi/configuration.nix
 
-          lix-module.nixosModules.default
+          lix-module.darwinModules.default
           mac-app-util.darwinModules.default
 
           home-manager.darwinModules.home-manager

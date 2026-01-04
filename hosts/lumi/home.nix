@@ -42,13 +42,7 @@
     discord.enable = true;
     zed.enable = true;
     starship.enable = true;
-
     helix.enable = true;
-    helix.langs = [
-      "rust"
-      "nix"
-      # "python"
-    ];
 
     luminovo.enable = true;
 

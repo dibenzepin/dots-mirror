@@ -98,13 +98,7 @@
     zsh.enable = true;
     starship.enable = true;
     spotify.enable = true;
-
     helix.enable = true;
-    helix.langs = [
-      "rust"
-      "nix"
-      "python"
-    ];
 
     firefox.enable = true;
     firefox.package = inputs.firefox-nightly.packages.${pkgs.system}.firefox-nightly-bin;
