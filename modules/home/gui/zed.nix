@@ -9,7 +9,7 @@ let
   nixExtensionTools = [
     pkgs.nixd
     pkgs.nil
-    pkgs.nixfmt-rfc-style
+    pkgs.nixfmt
   ];
 in
 {
@@ -54,7 +54,7 @@ in
         lsp = {
           nixd.binary.path = "${pkgs.nixd}/bin/nixd";
           nil.binary.path = "${pkgs.nil}/bin/nil";
-          nil.initialization_options.formatting.command = [ "${pkgs.nixfmt-rfc-style}/bin/nixfmt" ];
+          nil.initialization_options.formatting.command = [ "${pkgs.nixfmt}/bin/nixfmt" ];
 
           # rust-analyzer.initialization_options = {
           #   cargo.targetDir = true;

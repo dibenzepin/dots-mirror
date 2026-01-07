@@ -95,7 +95,7 @@ with lib;
         basedpyright
         nil
         nixd
-        nixfmt-rfc-style
+        nixfmt
       ];
 
       languages = {
