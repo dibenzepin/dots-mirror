@@ -34,13 +34,17 @@ in
       # to revert back to the tried and tested mode, check https://codeberg.org/fumnanya/dots/commit/d5f4affd964a95deaceff92f87487608ea3dca3c
       userSettings = {
         helix_mode = true;
+        which_key.enabled = true;
+        which_key.delay_ms = 0;
 
         ui_font_size = 15;
         buffer_font_size = 14;
         buffer_font_family = "Google Sans Code";
+
         terminal.blinking = "on";
         terminal.font_family = "Google Sans Code";
         terminal.font_size = 13;
+        terminal.option_as_meta = true;
 
         restore_on_startup = "launchpad";
         auto_update = false;
