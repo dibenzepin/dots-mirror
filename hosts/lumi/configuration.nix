@@ -169,6 +169,23 @@
         doCheck = false;
         doInstallCheck = false;
       };
+
+      # stolen from https://github.com/NixOS/nixpkgs/issues/484618#issuecomment-3827163603
+      vesktop = prev.vesktop.overrideAttrs (old: {
+        buildPhase = ''
+          runHook preBuild
+
+          pnpm build
+          pnpm exec electron-builder \
+            --dir \
+            -c.asarUnpack="**/*.node" \
+            -c.electronDist=${if prev.stdenv.hostPlatform.isDarwin then "." else "electron-dist"} \
+            -c.electronVersion=${prev.electron.version} \
+            ${if prev.stdenv.hostPlatform.isDarwin then "-c.mac.identity=null" else ""}
+
+          runHook postBuild
+        '';
+      });
     })
   ];
 
