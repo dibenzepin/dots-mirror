@@ -101,7 +101,8 @@
     helix.enable = true;
 
     firefox.enable = true;
-    firefox.package = inputs.firefox-nightly.packages.${pkgs.system}.firefox-nightly-bin;
+    firefox.package =
+      inputs.firefox-nightly.packages.${pkgs.stdenv.hostPlatform.system}.firefox-nightly-bin;
 
     # replace with https://nix-community.github.io/home-manager/options.xhtml#opt-xdg.autostart.entries
     autostart.enable = true;

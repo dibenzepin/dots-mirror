@@ -47,7 +47,7 @@
     luminovo.enable = true;
 
     # firefox.enable = true;
-    # firefox.package = inputs.firefox-nightly.packages.${pkgs.system}.firefox-nightly-bin;
+    # firefox.package = inputs.firefox-nightly.packages.${pkgs.stdenv.hostPlatform.system}.firefox-nightly-bin;
   };
 
   home.packages = with pkgs; [
@@ -57,8 +57,8 @@
     iina
     qbittorrent
     yaak
-    inputs.fum.packages.${pkgs.system}.switcheroo
-    inputs.colmena.packages.${pkgs.system}.colmena
+    inputs.fum.packages.${pkgs.stdenv.hostPlatform.system}.switcheroo
+    inputs.colmena.packages.${pkgs.stdenv.hostPlatform.system}.colmena
     # rquickshare
     # jetbrains.rust-rover
     code-cursor

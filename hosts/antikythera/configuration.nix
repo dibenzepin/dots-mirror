@@ -203,9 +203,9 @@
         nerd-fonts.fira-code
         nerd-fonts.code-new-roman
 
-        inputs.apple-emoji.packages.${pkgs.system}.default
+        inputs.apple-emoji.packages.${pkgs.stdenv.hostPlatform.system}.default
       ]
-      ++ (with inputs.fum.packages.${pkgs.system}; [
+      ++ (with inputs.fum.packages.${pkgs.stdenv.hostPlatform.system}; [
         helvetica
         helvetica-neue
       ]);

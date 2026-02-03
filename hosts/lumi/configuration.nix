@@ -31,7 +31,7 @@
   # nix.linux-builder.enable = true;
   # nix.linux-builder.ephemeral = true;
   # nix.linux-builder.package =
-  #   inputs.nixpkgs-linux-builder.legacyPackages.${pkgs.system}.darwin.linux-builder;
+  #   inputs.nixpkgs-linux-builder.legacyPackages.${pkgs.stdenv.hostPlatform.system}.darwin.linux-builder;
 
   homebrew = {
     enable = true;
