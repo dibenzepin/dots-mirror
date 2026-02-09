@@ -59,6 +59,7 @@ in
           nixd.binary.path = "${pkgs.nixd}/bin/nixd";
           nil.binary.path = "${pkgs.nil}/bin/nil";
           nil.initialization_options.formatting.command = [ "${pkgs.nixfmt}/bin/nixfmt" ];
+          nil.initialization_options.nix.flake.autoArchive = true;
 
           # rust-analyzer.initialization_options = {
           #   cargo.targetDir = true;

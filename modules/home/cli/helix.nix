@@ -102,6 +102,7 @@ with lib;
         language-server = {
           rust-analyzer.config.check.command = "clippy";
           basedpyright.config.basedpyright.analysis.typeCheckingMode = "strict";
+          nil.config.nix.flake.autoArchive = true;
         };
 
         language = [
