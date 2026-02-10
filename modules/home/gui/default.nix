@@ -7,5 +7,6 @@
     ./firefox.nix
     ./discord.nix
     ./ghostty.nix
+    ./dbeaver.nix
   ];
 }

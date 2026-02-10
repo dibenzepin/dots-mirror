@@ -29,9 +29,6 @@ you might also be interested in my [packages](https://codeberg.org/fumnanya/flak
 
 ## todo:
 
-#### macOS
-- figure out how to add this: [Set Word-wrap on as default in DBeaver - Super User](https://superuser.com/questions/1714584/set-word-wrap-on-as-default-in-dbeaver)
-
 #### NixOS
 - remove crappy gnome extensions app from launcher/gnome-shell: https://discourse.nixos.org/t/excluding-gnome-extensions-not-working-removing/50048/5
 - add auto-accent-color to nixpkgs (needs gjs dep)

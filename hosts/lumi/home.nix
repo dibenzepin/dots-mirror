@@ -43,6 +43,7 @@
     zed.enable = true;
     starship.enable = true;
     helix.enable = true;
+    dbeaver.enable = true;
 
     luminovo.enable = true;
 
@@ -52,7 +53,6 @@
 
   home.packages = with pkgs; [
     mosh
-    dbeaver-bin
     appcleaner
     iina
     qbittorrent
