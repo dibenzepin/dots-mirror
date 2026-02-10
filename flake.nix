@@ -46,6 +46,9 @@
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
     spicetify-nix.inputs.systems.follows = "systems";
 
+    ghostty-shaders.url = "github:sahaj-b/ghostty-cursor-shaders";
+    ghostty-shaders.flake = false;
+
     # homebrew casks
     homebrew-core.url = "github:homebrew/homebrew-core";
     homebrew-core.flake = false;

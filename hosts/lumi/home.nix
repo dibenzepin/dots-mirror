@@ -60,7 +60,6 @@
     inputs.fum.packages.${pkgs.stdenv.hostPlatform.system}.switcheroo
     inputs.colmena.packages.${pkgs.stdenv.hostPlatform.system}.colmena
     # rquickshare
-    # jetbrains.rust-rover
     code-cursor
     halloy
   ];
