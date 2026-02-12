@@ -14,45 +14,42 @@
   ];
 
   boot.initrd.availableKernelModules = [
-    "ehci_pci"
-    "ahci"
-    "firewire_ohci"
     "xhci_pci"
+    "nvme"
     "usbhid"
     "usb_storage"
     "sd_mod"
-    "sdhci_pci"
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/c9656236-6816-4a6e-8a25-c52a374db323";
+    device = "/dev/disk/by-uuid/af87d4ec-3373-4408-8e63-c157e6452da5";
     fsType = "btrfs";
     options = [ "subvol=root" ];
   };
 
   fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/c9656236-6816-4a6e-8a25-c52a374db323";
+    device = "/dev/disk/by-uuid/af87d4ec-3373-4408-8e63-c157e6452da5";
     fsType = "btrfs";
     options = [ "subvol=home" ];
   };
 
   fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/c9656236-6816-4a6e-8a25-c52a374db323";
+    device = "/dev/disk/by-uuid/af87d4ec-3373-4408-8e63-c157e6452da5";
     fsType = "btrfs";
     options = [ "subvol=nix" ];
   };
 
   fileSystems."/swap" = {
-    device = "/dev/disk/by-uuid/c9656236-6816-4a6e-8a25-c52a374db323";
+    device = "/dev/disk/by-uuid/af87d4ec-3373-4408-8e63-c157e6452da5";
     fsType = "btrfs";
     options = [ "subvol=swap" ];
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/A6ED-D9F5";
+    device = "/dev/disk/by-uuid/5F66-17ED";
     fsType = "vfat";
     options = [
       "fmask=0077"
@@ -61,14 +58,6 @@
   };
 
   swapDevices = [ ];
-
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp0s25.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

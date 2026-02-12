@@ -17,7 +17,7 @@
     ../../modules/common
   ];
 
-  my.username = "fumnanya";
+  my.username = "fum";
 
   ################ filesystems ################
 
@@ -37,31 +37,33 @@
   ################### boot ###################
 
   boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
-  # https://bbs.archlinux.org/viewtopic.php?pid=1974165#p1974165
-  # https://wiki.gentoo.org/wiki/Iwlwifi
-  # https://askubuntu.com/questions/1283313/unstable-wifi-connection-on-ubuntu-20-04
-  boot.extraModprobeConfig = ''
-    options iwlmvm power_scheme=1
-    options iwlwifi power_save=0
-  '';
+  services.logind.settings.Login = {
+    HandleLidSwitch = "ignore";
+    HandleLidSwitchExternalPower = "ignore";
+    HandleLidSwitchDocked = "ignore";
+  };
 
   ################ networking ################
 
   networking.hostName = "bastion";
   networking.networkmanager.enable = true;
-  # please stop making me power-cycle the computer:
-  # https://www.reddit.com/r/linux4noobs/comments/11am5rd/can_i_force_networkmanager_to_keep_trying_to/j9suyfu/
-  # https://www.linuxquestions.org/questions/slackware-14/networkmanager-increase-autoconnect-retries-4175689763/
-  networking.networkmanager.settings.main.autoconnect-retries-default = 10000;
+
+  # https://github.com/NixOS/nixos-hardware/blob/master/apple/t2/README.md
+  hardware.apple-t2.firmware.enable = true;
+
   services.resolved.enable = true; # mdns
   services.tailscale.enable = true;
   services.tailscale.useRoutingFeatures = "both";
   services.tailscale.extraSetFlags = [
     "--ssh"
     "--advertise-exit-node"
-    "--operator=fumnanya"
+    "--operator=${config.my.username}"
   ];
+
+  systemd.network.wait-online.enable = false;
+  boot.initrd.systemd.network.wait-online.enable = false;
 
   time.timeZone = "Africa/Lagos";
 
@@ -170,9 +172,14 @@
   programs.fish.enable = true;
   programs.mosh.enable = true;
 
+  systemd.tmpfiles.rules = [
+    "d /media 0777 - media -"
+  ];
+
   services.qbittorrent = {
     enable = true;
     group = "media";
+    openFirewall = true;
     serverConfig = {
       LegalNotice.Accepted = true;
       BitTorrent.Session = {
@@ -183,7 +190,9 @@
       Preferences = {
         # https://wiki.archlinux.org/title/QBittorrent#Allow_access_without_username_&_password
         WebUI = {
-          AuthSubnetWhitelist = "100.64.0.0/10, 10.10.0.0/24, 192.168.1.0/24, fddc:fae9:c63b:8::/64";
+          # local: 192.168.1.0/24, fddc:fae9:c63b:8::/64, 2605:59c1:1b10:7a08::/64 (i have no idea why we get routed to the external IP over ethernet)
+          # https://tailscale.com/docs/reference/reserved-ip-addresses
+          AuthSubnetWhitelist = "192.168.1.0/24, fddc:fae9:c63b:8::/64, 2605:59c1:1b10:7a08::/64, 100.64.0.0/10, fd7a:115c:a1e0::/48";
           AuthSubnetWhitelistEnabled = true;
           UseUPnP = false;
           LocalHostAuth = false;
@@ -196,73 +205,32 @@
 
   hardware.graphics.enable = true;
   hardware.graphics.extraPackages = [
-    pkgs.intel-ocl
-    pkgs.intel-vaapi-driver
-    pkgs.libva-vdpau-driver
+    pkgs.rocmPackages.clr.icd # opencl
   ];
 
-  environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "i965";
-  };
-
-  nixpkgs.config.packageOverrides = pkgs: {
-    intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
-  };
+  # https://wiki.archlinux.org/title/Hardware_video_acceleration#Video_decoding_corruption_or_distortion_with_AMDGPU_driver
+  # https://bugs.freedesktop.org/show_bug.cgi?id=106490
+  environment.sessionVariables.allow_rgb10_configs = "false";
 
   services.jellyfin.enable = true;
+  services.jellyfin.openFirewall = true;
   services.jellyfin.group = "media";
-  systemd.services.jellyfin.environment.LIBVA_DRIVER_NAME = "i965";
   users.users.jellyfin.extraGroups = [
     "video"
     "render"
   ];
 
-  systemd.tmpfiles.rules = [
-    "d /var/lib/speeds 0777 - - -" # for the speedtests
-    "d /media 0777 - media -"
-  ];
-
-  systemd.timers = {
-    speedtest = {
-      enable = false;
-      wantedBy = [ "timers.target" ];
-      timerConfig = {
-        OnBootSec = "1m";
-        OnUnitActiveSec = "15m";
-        RandomizedDelaySec = "2m";
-        Unit = "speedtest.service";
-        Persistent = true;
-      };
-    };
-  };
-
-  systemd.services = {
-    speedtest = {
-      path = [
-        # pkgs.fast-cli
-        # pkgs.ookla-speedtest
-      ];
-      script = ''
-        fastdate=$(date -u '+%Y-%m-%dT%H:%M:%S.000')
-        fast -u --json > "/var/lib/speeds/fast-$fastdate.json"
-
-        ookladate=$(date -u '+%Y-%m-%dT%H:%M:%S.000')
-        HOME=/var/lib/speeds speedtest -f json-pretty --accept-license --accept-gdpr > "/var/lib/speeds/ookla-$ookladate.json"
-      '';
-      serviceConfig = {
-        Type = "oneshot";
-        TimeoutSec = 120;
-      };
-    };
-  };
-
   environment.systemPackages = with pkgs; [
-    #   dnsutils # dig, nslookup
-    #   pciutils # lspci
-    #   usbutils # lsusb
-    #   inetutils # whois
+    dnsutils # dig, nslookup
+    pciutils # lspci
+    usbutils # lsusb
+    inetutils # whois
     file
     ghostty.terminfo
+    clinfo
+    radeontop
+    libva-utils
+    vulkan-tools
   ];
 
   # Enable the X11 windowing system.
@@ -336,5 +304,5 @@
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "25.11"; # Did you read the comment?
 }

@@ -3,35 +3,36 @@
 got a flash drive and a nice PC that needs some Linux love?
 
 1.  Boot it up. The easiest way to get up and running is to bootstrap a minimal install with _just_ enough to get you the config (so `nix`, `wget`, and `git` really[^2]) and then switch into it from there.
-1.  Partition your disks. You could use `parted` or `fdisk`, but I'm not skilled enough for that, so _GNOME Disks_ or _GParted_ works for me. You want:
+1.  Partition your disks. `cfdisk` works for me. You want:
     - an EFI partition (1 GB should be fine) for your boot files, and
     - a BTRFS partition where everything else lives.
+1.  Make your filesystems if need be (`mkfs.btrfs /dev/xxxx`).
 1.  Make some subvolumes in the BTRFS partition from step 2. We're stealing a lot from the [NixOS wiki entry for BTRFS](https://wiki.nixos.org/wiki/Btrfs), the [unofficial NixOS wiki entry](https://nixos.wiki/wiki/Btrfs), and the [Arch Wiki entry](wiki.archlinux.org/title/Btrfs):
     ```sh
-    $ mount /dev/nvme0n1p2 /mnt
-    $ btrfs subvolume create /mnt/root
-    $ btrfs subvolume create /mnt/home
-    $ btrfs subvolume create /mnt/nix
-    $ btrfs subvolume create /mnt/swap
-    $ unmount /mnt
+    # mount /dev/nvme0n1p2 /mnt
+    # btrfs subvolume create /mnt/root
+    # btrfs subvolume create /mnt/home
+    # btrfs subvolume create /mnt/nix
+    # btrfs subvolume create /mnt/swap
+    # unmount /mnt
     ```
 1.  Mount these subvolumes:
     ```sh
-    $ mount -o compress=zstd,subvol=root /dev/nvme0n1p2 /mnt
-    $ mkdir /mnt/{home,nix,swap,boot}
-    $ mount -o compress=zstd,subvol=home /dev/nvme0n1p2 /mnt/home
-    $ mount -o compress=zstd,noatime,subvol=nix /dev/nvme0n1p2 /mnt/nix
-    $ mount -o noatime,subvol=swap /dev/nvme0n1p2 /mnt/swap
-    $ mount -o umask=077 /dev/nvme0n1p1 /mnt/boot
+    # mount -o compress=zstd,subvol=root /dev/nvme0n1p2 /mnt
+    # mkdir /mnt/{home,nix,swap,boot}
+    # mount -o compress=zstd,subvol=home /dev/nvme0n1p2 /mnt/home
+    # mount -o compress=zstd,noatime,subvol=nix /dev/nvme0n1p2 /mnt/nix
+    # mount -o noatime,subvol=swap /dev/nvme0n1p2 /mnt/swap
+    # mount -o umask=077 /dev/nvme0n1p1 /mnt/boot
     ```
 1.  Make some swap:
     ```sh
-    $ btrfs filesystem mkswapfile --size 16g --uuid clear /mnt/swap/swapfile
-    $ swapon
+    # btrfs filesystem mkswapfile --size 16g --uuid clear /mnt/swap/swapfile
+    # swapon /mnt/swap/swapfile
     ```
 1.  Generate your configuration:
     ```sh
-    $ nixos-generate-config --root /mnt
+    # nixos-generate-config --root /mnt
     ```
 1.  Edit `/mnt/etc/nixos/configuration.nix` to look something like:
     ```nix
@@ -58,7 +59,7 @@ got a flash drive and a nice PC that needs some Linux love?
     users.defaultUserShell = pkgs.zsh;
     users.users.fumnanya = {
         isNormalUser = true;
-        extraGroups = [ "wheel" ];
+        extraGroups = [ "wheel" "networkmanager" ];
         password = "f";
     };
 
@@ -66,7 +67,6 @@ got a flash drive and a nice PC that needs some Linux love?
     networking.networkmanager.enable = true;
 
     programs.zsh.enable = true;
-    services.xserver.enable = false;
     ```
 1. Install and reboot:
     ```sh
@@ -80,5 +80,17 @@ got a flash drive and a nice PC that needs some Linux love?
     ```sh
     $ sudo ln -s ~/dots /etc/nixos
     ```
+1. If deploying remotely with colmena:
+   1. SSH in with your password (`ssh -o PreferredAuthentications=password user@ip`).
+   1. Add a public key for `root` to the configuration and rebuild:
+      ```
+      users.users.root = {
+        openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIv4sj7bHdEikPlNoBOhMCYy96KKBK3sG/lhmxq3s3O3"
+        ];
+      };
+      ```
+   1. Change/add to the colmena settings in `flake.nix` to use `root` for the first deployment--then change it to the new `colmena` user and redeploy.
+   1. SSH in (as your normal user with your public key) and clear out `/etc/nixos`.
 
 [^2]: Cloudflare WARP may or may not be needed depending on your local country's laws.

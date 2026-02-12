@@ -184,6 +184,7 @@
             ./hosts/bastion/configuration.nix
 
             catppuccin.nixosModules.catppuccin
+            nixos-hardware.nixosModules.apple-t2
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -194,7 +195,7 @@
               ];
               home-manager.extraSpecialArgs = { inherit nixpkgs inputs; };
 
-              home-manager.users.fumnanya = ./hosts/bastion/home.nix;
+              home-manager.users.fum = ./hosts/bastion/home.nix;
             }
           ];
         };

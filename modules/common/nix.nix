@@ -25,14 +25,17 @@
         substituters = [
           "https://cache.lix.systems"
           "https://colmena.cachix.org"
+          "https://cache.soopy.moe"
         ];
         trusted-substituters = [
           "https://cache.lix.systems"
           "https://colmena.cachix.org"
+          "https://cache.soopy.moe"
         ];
         trusted-public-keys = [
           "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
           "colmena.cachix.org-1:7BzpDnjjH8ki2CT3f6GdOk7QAzPOl+1t3LvTLXqYcSg="
+          "cache.soopy.moe-1:0RZVsQeR+GOh0VQI9rvnHz55nVXkFardDqfm4+afjPo="
         ];
       };
 

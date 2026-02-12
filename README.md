@@ -19,7 +19,7 @@ you might also be interested in my [packages](https://codeberg.org/fumnanya/flak
 - [`docs/`](./docs) &mdash; documentation for future-me
 - [`hosts/`](./hosts) &mdash; per-machine configurations
   - [`hosts/lumi`](./hosts/lumi) &mdash; **lumi** (work/personal computer) &mdash; Apple MacBook Air (M4)
-  - [`hosts/bastion`](./hosts/bastion) &mdash; **bastion** (home &ldquo;server&rdquo;) &mdash; Hewlett-Packard EliteBook 8460p (i5-2520M)
+  - [`hosts/bastion`](./hosts/bastion) &mdash; **bastion** (home &ldquo;server&rdquo;) &mdash; Apple MacBook Pro (i7-8850H)
   - [`hosts/antikythera/`](./hosts/antikythera) &mdash; **antikythera** (defunct personal computer) &mdash; Lenovo ThinkPad T480s (i7-8650U)
 - [`modules/`](./modules) &mdash; modules used by system configurations
   - [`modules/common`](./modules/common) &mdash; modules used by both NixOS and macOS
