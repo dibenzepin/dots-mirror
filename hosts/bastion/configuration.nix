@@ -168,6 +168,7 @@
   my.services.tailscale.hostIP = "100.98.201.74";
 
   my.services.sure.enable = true;
+  my.services.ergo.enable = true;
 
   # tired of wrangling permissions for /media
   # so that jellyfin and qbittorrent can use here

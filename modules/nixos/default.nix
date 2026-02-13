@@ -14,5 +14,6 @@
     ./podman.nix
     ./postgres.nix
     ./redis.nix
+    ./ergo.nix
   ];
 }
