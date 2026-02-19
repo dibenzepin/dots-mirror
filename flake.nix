@@ -9,7 +9,6 @@
     colmena.url = "github:zhaofengli/colmena";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     mac-app-util.url = "github:hraban/mac-app-util/link-contents"; # TODO: check this branch
-    apple-emoji.url = "github:samuelngs/apple-emoji-linux";
     treefmt-nix.url = "github:numtide/treefmt-nix";
 
     lix.url = "https://git.lix.systems/lix-project/lix/archive/main.tar.gz";
