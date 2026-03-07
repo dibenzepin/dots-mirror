@@ -35,7 +35,7 @@
   my = {
     git.enable = true;
     ghostty.enable = true;
-    neofetch.enable = true;
+    fastfetch.enable = true;
     atuin.enable = true;
     zsh.enable = true;
     spotify.enable = true;

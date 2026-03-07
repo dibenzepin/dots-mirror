@@ -96,6 +96,7 @@
   my = {
     atuin.enable = true;
     helix.enable = true;
+    fastfetch.enable = true;
 
     starship.enable = true;
     # since we have catppuccin.starship turned off...
@@ -104,7 +105,6 @@
   };
 
   home.packages = with pkgs; [
-    neofetch
     trash-cli
   ];
 }

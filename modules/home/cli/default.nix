@@ -2,7 +2,7 @@
 {
   imports = [
     ./git.nix
-    ./neofetch
+    ./fastfetch
     ./atuin.nix
     ./helix.nix
     ./zsh.nix
