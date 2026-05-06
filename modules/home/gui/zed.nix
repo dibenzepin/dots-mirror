@@ -26,7 +26,6 @@ in
       package = if pkgs.stdenv.isDarwin then null else pkgs.zed-editor;
       extensions = [
         "nix"
-        "toml"
       ];
 
       # currently this is in a weird state, with https://github.com/nix-community/home-manager/issues/6835#issuecomment-2951299487
@@ -40,6 +39,7 @@ in
         ui_font_size = 15;
         buffer_font_size = 14;
         buffer_font_family = "Google Sans Code";
+        diff_view_style = "unified";
 
         terminal.blinking = "on";
         terminal.font_family = "Google Sans Code";
@@ -52,7 +52,7 @@ in
         inlay_hints.enabled = true;
         diagnostics.inline.enabled = true;
 
-        agent.play_sound_when_agent_done = true;
+        agent.play_sound_when_agent_done = "always";
         show_edit_predictions = false;
 
         lsp = {
@@ -75,6 +75,14 @@ in
           bindings = {
             tab = "editor::ContextMenuNext";
             shift-tab = "editor::ContextMenuPrevious";
+          };
+        }
+
+        # shift-X to reduce selection by one line like helix
+        {
+          context = "Editor";
+          bindings = {
+            shift-x = "editor::SelectUp";
           };
         }
       ];
