@@ -19,7 +19,9 @@
     },
     "catppuccin": {
       "inputs": {
-        "nixpkgs": ["nixpkgs"]
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1777734189,
@@ -74,8 +76,12 @@
     },
     "distro-grub-themes": {
       "inputs": {
-        "flake-utils": ["flake-utils"],
-        "nixpkgs": ["nixpkgs"]
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1774698239,
@@ -95,14 +101,16 @@
       "inputs": {
         "flake-compat": "flake-compat_2",
         "lib-aggregate": "lib-aggregate",
-        "nixpkgs": ["nixpkgs"]
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1778076371,
-        "narHash": "sha256-ngKzHapnmhgTz/4N0waZA/pPPe4qGq8fqcCBq7cdnt8=",
+        "lastModified": 1778133638,
+        "narHash": "sha256-3gENg8xggugcL5FoOP33mRnnPLWczdPk6uGOQqll7Bg=",
         "owner": "nix-community",
         "repo": "flake-firefox-nightly",
-        "rev": "16acc2050642ddf26f0ec76dd54de154ff04fdc5",
+        "rev": "721296d2e234eef747846c1aab83fab6d13495bb",
         "type": "github"
       },
       "original": {
@@ -176,7 +184,9 @@
     },
     "flake-utils_2": {
       "inputs": {
-        "systems": ["systems"]
+        "systems": [
+          "systems"
+        ]
       },
       "locked": {
         "lastModified": 1731533236,
@@ -212,7 +222,10 @@
     },
     "flake-utils_4": {
       "inputs": {
-        "systems": ["mac-app-util", "systems"]
+        "systems": [
+          "mac-app-util",
+          "systems"
+        ]
       },
       "locked": {
         "lastModified": 1731533236,
@@ -244,7 +257,9 @@
     },
     "fum": {
       "inputs": {
-        "nixpkgs": ["nixpkgs"]
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1778105291,
@@ -278,14 +293,16 @@
     },
     "home-manager": {
       "inputs": {
-        "nixpkgs": ["nixpkgs"]
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1778009629,
-        "narHash": "sha256-nUoQtf4Zq7DRYJrfv904hjrxjAlWVP6a1pNNFKx3FCg=",
+        "lastModified": 1778110974,
+        "narHash": "sha256-7V7bW5uZSdKPRmemMQUulXRffnlnjRj5N/HGHOsOda8=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "00ed86e58bb6979a7921859fd1615d19382eac5c",
+        "rev": "75fac363324f18d2b83a30fd916e509d2a02fb0e",
         "type": "github"
       },
       "original": {
@@ -297,11 +314,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1778083009,
-        "narHash": "sha256-HVGal0mavdG2L+gnMj/g6qXn/oY69hGP30BNf067oXg=",
+        "lastModified": 1778134534,
+        "narHash": "sha256-Uvvb2ja7H6bSCf7tZzgobkVaAfeazJDeGHvLUagazkI=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "b5c1465d3252748db25ac7d45ff4822868770062",
+        "rev": "141c0d640db3a4f34d6c7973748c63be91959165",
         "type": "github"
       },
       "original": {
@@ -313,11 +330,11 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1778083000,
-        "narHash": "sha256-w5VnEYshEgK0L27pAKxpRs7U/h+oyvaR6Ghiei/k8EM=",
+        "lastModified": 1778120457,
+        "narHash": "sha256-E7Ks4pRcld8gRHJX7VLxLYa3Vqg36b5Ux5AXvxnYiWc=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "7486e521e32bd7bc0ddc8e240b8dc78482d70aff",
+        "rev": "a243c6ce50d3ee1a0a98214ebb0f2844b23a63a3",
         "type": "github"
       },
       "original": {
@@ -344,7 +361,9 @@
     },
     "lib-aggregate": {
       "inputs": {
-        "flake-utils": ["flake-utils"],
+        "flake-utils": [
+          "flake-utils"
+        ],
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
@@ -379,8 +398,12 @@
       "inputs": {
         "flake-utils": "flake-utils_3",
         "flakey-profile": "flakey-profile",
-        "lix": ["lix"],
-        "nixpkgs": ["nixpkgs"]
+        "lix": [
+          "lix"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1773460763,
@@ -419,7 +442,9 @@
     },
     "nix-darwin": {
       "inputs": {
-        "nixpkgs": ["nixpkgs"]
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1777780666,
@@ -437,7 +462,10 @@
     },
     "nix-github-actions": {
       "inputs": {
-        "nixpkgs": ["colmena", "nixpkgs"]
+        "nixpkgs": [
+          "colmena",
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1729742964,
@@ -589,8 +617,12 @@
     },
     "spicetify-nix": {
       "inputs": {
-        "nixpkgs": ["nixpkgs"],
-        "systems": ["systems"]
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "systems"
+        ]
       },
       "locked": {
         "lastModified": 1777789800,

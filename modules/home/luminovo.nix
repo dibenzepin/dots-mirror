@@ -45,6 +45,7 @@
         extensions = [
           "helm"
           "toml"
+          "sql"
         ];
         userSettings = {
           languages.YAML.format_on_save = "off";
