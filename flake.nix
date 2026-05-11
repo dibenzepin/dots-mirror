@@ -7,7 +7,6 @@
     systems.url = "github:nix-systems/default";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     colmena.url = "github:zhaofengli/colmena";
-    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     mac-app-util.url = "github:hraban/mac-app-util/link-contents"; # TODO: check this branch
     treefmt-nix.url = "github:numtide/treefmt-nix";
 
@@ -29,6 +28,10 @@
 
     flake-utils.url = "github:numtide/flake-utils";
     flake-utils.inputs.systems.follows = "systems";
+
+    # https://github.com/zhaofengli/nix-homebrew/issues/140
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    nix-homebrew.inputs.brew-src.url = "github:Homebrew/brew/5.1.11";
 
     catppuccin.url = "github:catppuccin/nix";
     catppuccin.inputs.nixpkgs.follows = "nixpkgs";
