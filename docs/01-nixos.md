@@ -8,16 +8,13 @@ got a flash drive and a nice PC that needs some Linux love?
     - a BTRFS partition where everything else lives.
 1.  Make your filesystems if need be (`mkfs.btrfs /dev/xxxx`).
 1.  Make some subvolumes in the BTRFS partition from step 2. We're stealing a lot from the [NixOS wiki entry for BTRFS](https://wiki.nixos.org/wiki/Btrfs), the [unofficial NixOS wiki entry](https://nixos.wiki/wiki/Btrfs), and the [Arch Wiki entry](wiki.archlinux.org/title/Btrfs):
-    ```sh
+    ```
     # mount /dev/nvme0n1p2 /mnt
-    # btrfs subvolume create /mnt/root
-    # btrfs subvolume create /mnt/home
-    # btrfs subvolume create /mnt/nix
-    # btrfs subvolume create /mnt/swap
-    # unmount /mnt
+    # btrfs subvolume create /mnt/{root,home,nix,swap}
+    # umount /mnt
     ```
 1.  Mount these subvolumes:
-    ```sh
+    ```
     # mount -o compress=zstd,subvol=root /dev/nvme0n1p2 /mnt
     # mkdir /mnt/{home,nix,swap,boot}
     # mount -o compress=zstd,subvol=home /dev/nvme0n1p2 /mnt/home
@@ -26,12 +23,12 @@ got a flash drive and a nice PC that needs some Linux love?
     # mount -o umask=077 /dev/nvme0n1p1 /mnt/boot
     ```
 1.  Make some swap:
-    ```sh
+    ```
     # btrfs filesystem mkswapfile --size 16g --uuid clear /mnt/swap/swapfile
     # swapon /mnt/swap/swapfile
     ```
 1.  Generate your configuration:
-    ```sh
+    ```
     # nixos-generate-config --root /mnt
     ```
 1.  Edit `/mnt/etc/nixos/configuration.nix` to look something like:
@@ -49,35 +46,37 @@ got a flash drive and a nice PC that needs some Linux love?
     services.btrfs.autoScrub.enable = true;
     swapDevices = [ { device = "/swap/swapfile"; } ];
 
-    environment.systemPackages = [
-        helix
-        wget
-        git
-    ];
-
     users.mutableUsers = false;
-    users.defaultUserShell = pkgs.zsh;
     users.users.fumnanya = {
         isNormalUser = true;
         extraGroups = [ "wheel" "networkmanager" ];
         password = "f";
     };
 
+    environment.systemPackages = [
+        helix
+        wget
+        git
+    ];
+
+    services.openssh.enable = true;
+
     networking.hostName = "antikythera";
     networking.networkmanager.enable = true;
 
     programs.zsh.enable = true;
+    users.defaultUserShell = pkgs.zsh;
     ```
 1. Install and reboot:
-    ```sh
+    ```
     $ nixos-install --no-root-password
     ```
 1.  Once rebooted, you can get this repo and then switch into a config:
-    ```sh
-    $ nixos-rebuild --flake /path/to/repo#hostname`
+    ```
+    $ nixos-rebuild --flake /path/to/repo#hostname
     ```
 1.  For ease of use with `nixos-rebuild`, symlink the expected location to your local clone:
-    ```sh
+    ```
     $ sudo ln -s ~/dots /etc/nixos
     ```
 1. If deploying remotely with colmena:

@@ -17,7 +17,7 @@
     ../../modules/common
   ];
 
-  my.username = "fum";
+  my.username = "fumnanya";
 
   ################ filesystems ################
 
@@ -46,13 +46,13 @@
     HandleLidSwitchDocked = "ignore";
   };
 
+  services.thermald.enable = true;
+  services.tlp.enable = true;
+
   ################ networking ################
 
   networking.hostName = "bastion";
   networking.networkmanager.enable = true;
-
-  # https://github.com/NixOS/nixos-hardware/blob/master/apple/t2/README.md
-  hardware.apple-t2.firmware.enable = true;
 
   services.resolved.enable = true; # mdns
   services.tailscale.enable = true;
@@ -60,7 +60,7 @@
   services.tailscale.extraSetFlags = [
     "--ssh"
     "--advertise-exit-node"
-    "--operator=${config.my.username}"
+    "--operator=${config.my.username}" # doesn't work: https://github.com/tailscale/tailscale/issues/18294
   ];
 
   systemd.network.wait-online.enable = false;
@@ -205,17 +205,24 @@
   systemd.services.qbittorrent.serviceConfig.UMask = "0002"; # default is 022, but i want to give write perms to :media
 
   hardware.graphics.enable = true;
-  hardware.graphics.extraPackages = [
-    pkgs.rocmPackages.clr.icd # opencl
+  hardware.graphics.extraPackages = with pkgs; [
+    intel-ocl
+    intel-vaapi-driver
+    libva-vdpau-driver
   ];
 
-  # https://wiki.archlinux.org/title/Hardware_video_acceleration#Video_decoding_corruption_or_distortion_with_AMDGPU_driver
-  # https://bugs.freedesktop.org/show_bug.cgi?id=106490
-  environment.sessionVariables.allow_rgb10_configs = "false";
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "i965";
+  };
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
+  };
 
   services.jellyfin.enable = true;
   services.jellyfin.openFirewall = true;
   services.jellyfin.group = "media";
+  systemd.services.jellyfin.environment.LIBVA_DRIVER_NAME = "i965";
   users.users.jellyfin.extraGroups = [
     "video"
     "render"
@@ -229,9 +236,8 @@
     file
     ghostty.terminfo
     clinfo
-    radeontop
     libva-utils
-    vulkan-tools
+    intel-gpu-tools
   ];
 
   # Enable the X11 windowing system.

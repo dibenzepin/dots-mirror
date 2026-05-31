@@ -176,6 +176,8 @@
           deployment = {
             targetHost = "bastion";
             targetUser = "colmena";
+            # targetHost = "192.168.1.149";
+            # targetUser = "root";
             buildOnTarget = true;
           };
 
@@ -183,7 +185,6 @@
             ./hosts/bastion/configuration.nix
 
             catppuccin.nixosModules.catppuccin
-            nixos-hardware.nixosModules.apple-t2
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -194,7 +195,7 @@
               ];
               home-manager.extraSpecialArgs = { inherit nixpkgs inputs; };
 
-              home-manager.users.fum = ./hosts/bastion/home.nix;
+              home-manager.users.fumnanya = ./hosts/bastion/home.nix;
             }
           ];
         };
