@@ -8,7 +8,6 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     colmena.url = "github:zhaofengli/colmena";
-    mac-app-util.url = "github:hraban/mac-app-util/link-contents"; # TODO: check this branch
     treefmt-nix.url = "github:numtide/treefmt-nix";
 
     lix.url = "https://git.lix.systems/lix-project/lix/archive/main.tar.gz";
@@ -72,7 +71,6 @@
       lix-module,
       spicetify-nix,
       nix-darwin,
-      mac-app-util,
       nix-homebrew,
       colmena,
       ...
@@ -96,14 +94,12 @@
           ./hosts/lumi/configuration.nix
 
           lix-module.darwinModules.default
-          mac-app-util.darwinModules.default
 
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.sharedModules = [
-              mac-app-util.homeManagerModules.default
               catppuccin.homeModules.catppuccin
               spicetify-nix.homeManagerModules.spicetify
             ];
