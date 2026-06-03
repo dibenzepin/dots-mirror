@@ -228,6 +228,32 @@
     "render"
   ];
 
+  services.caddy = {
+    enable = true;
+    logFormat = "level INFO";
+
+    package = pkgs.caddy.withPlugins {
+      plugins = [ "github.com/tailscale/caddy-tailscale@v0.0.0-20260106222316-bb080c4414ac" ];
+      hash = "sha256-iUQXsmUJEdOpv6uXte73RXFOhxfzwb/r9vdCTVXjP4Y=";
+    };
+
+    virtualHosts = {
+      "jellyfin:80" = {
+        extraConfig = ''
+          bind tailscale/jellyfin
+          reverse_proxy localhost:8096
+        '';
+      };
+
+      "qbittorrent:80" = {
+        extraConfig = ''
+          bind tailscale/qbittorrent
+          reverse_proxy localhost:8080
+        '';
+      };
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     dnsutils # dig, nslookup
     pciutils # lspci
