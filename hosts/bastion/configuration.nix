@@ -51,6 +51,7 @@
   networking.hostName = "bastion";
   networking.networkmanager.enable = true;
   services.resolved.enable = true; # mdns
+  # networking.firewall.logRefusedPackets = true;
 
   systemd.network.wait-online.enable = false;
   boot.initrd.systemd.network.wait-online.enable = false;
@@ -168,6 +169,7 @@
   services.tlp.enable = true;
 
   my.services.tailscale.enable = true;
+  my.services.sure.enable = true;
 
   # tired of wrangling permissions for /media
   # so that jellyfin and qbittorrent can use here

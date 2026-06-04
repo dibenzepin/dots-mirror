@@ -10,5 +10,9 @@
     ./jellyfin.nix
     ./qbittorrent.nix
     ./tailscale.nix
+    ./sure.nix
+    ./podman.nix
+    ./postgres.nix
+    ./redis.nix
   ];
 }

@@ -40,6 +40,7 @@ you might also be interested in my [packages](https://codeberg.org/fumnanya/flak
 - add the celluloid `hw-dec=auto` option
 - setup [fingerprint](https://github.com/ahbnr/nixos-06cb-009a-fingerprint-sensor/blob/24.11/SETUP-24.11.md) 
 - add `sudo touch /etc/NetworkManager/conf.d/20-connectivity-fedora.conf` to some sort of home-manager module to stop captive portal helpers from popping up: [https://unix.stackexchange.com/a/423708](https://unix.stackexchange.com/a/423708)
+- add some sort of secret management instead of using crappy passwords everywhere (user, database)
 
 ## acknowledgements
 
