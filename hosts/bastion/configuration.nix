@@ -168,6 +168,7 @@
   services.tlp.enable = true;
 
   my.services.tailscale.enable = true;
+  my.services.sure.enable = true;
 
   # tired of wrangling permissions for /media
   # so that jellyfin and qbittorrent can use here

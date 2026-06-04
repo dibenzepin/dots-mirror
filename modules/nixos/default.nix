@@ -10,5 +10,6 @@
     ./jellyfin.nix
     ./qbittorrent.nix
     ./tailscale.nix
+    ./sure.nix
   ];
 }
