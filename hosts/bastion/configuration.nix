@@ -46,22 +46,11 @@
     HandleLidSwitchDocked = "ignore";
   };
 
-  services.thermald.enable = true;
-  services.tlp.enable = true;
-
   ################ networking ################
 
   networking.hostName = "bastion";
   networking.networkmanager.enable = true;
-
   services.resolved.enable = true; # mdns
-  services.tailscale.enable = true;
-  services.tailscale.useRoutingFeatures = "both";
-  services.tailscale.extraSetFlags = [
-    "--ssh"
-    "--advertise-exit-node"
-    "--operator=${config.my.username}" # doesn't work: https://github.com/tailscale/tailscale/issues/18294
-  ];
 
   systemd.network.wait-online.enable = false;
   boot.initrd.systemd.network.wait-online.enable = false;
@@ -93,6 +82,12 @@
 
   ################### users ###################
 
+  my.colmena.enable = true;
+  my.colmena.authorizedKeys = [
+    # i'm reusing the key...meh
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIv4sj7bHdEikPlNoBOhMCYy96KKBK3sG/lhmxq3s3O3"
+  ];
+
   users = {
     mutableUsers = false;
 
@@ -110,51 +105,32 @@
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIv4sj7bHdEikPlNoBOhMCYy96KKBK3sG/lhmxq3s3O3"
         ];
       };
-
-      # strictly for deployments
-      colmena = {
-        group = "users";
-        useDefaultShell = true;
-        isSystemUser = true;
-        openssh.authorizedKeys.keys = [
-          # i'm reusing the key...meh
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIv4sj7bHdEikPlNoBOhMCYy96KKBK3sG/lhmxq3s3O3"
-        ];
-      };
     };
-
-    groups.media = { }; # tired of wrangling permissions for /media
   };
 
-  security.sudo = {
-    extraRules = [
-      {
-        users = [ "colmena" ];
-        commands = [
-          {
-            command = "/run/current-system/sw/bin/nix-store --no-gc-warning --realise /nix/store/*";
-            options = [ "NOPASSWD" ];
-          }
-          {
-            command = "/run/current-system/sw/bin/nix-env --profile /nix/var/nix/profiles/system --set /nix/store/*";
-            options = [ "NOPASSWD" ];
-          }
-          {
-            command = "/nix/store/*/bin/switch-to-configuration *";
-            options = [ "NOPASSWD" ];
-          }
-        ];
-      }
-    ];
+  ################### graphics ###################
+
+  hardware.graphics.enable = true;
+  hardware.graphics.extraPackages = with pkgs; [
+    intel-ocl
+    intel-vaapi-driver
+    libva-vdpau-driver
+  ];
+
+  environment.sessionVariables = {
+    LIBVA_DRIVER_NAME = "i965";
+  };
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
   };
 
   ################### programs ###################
 
-  my.nix.enable = true;
   my.helix.enable = true;
 
+  my.nix.enable = true;
   nix.package = pkgs.lixPackageSets.stable.lix;
-
   nixpkgs.overlays = [
     # lix
     (final: prev: {
@@ -173,87 +149,6 @@
   programs.fish.enable = true;
   programs.mosh.enable = true;
 
-  systemd.tmpfiles.rules = [
-    "d /media 0777 - media -"
-  ];
-
-  services.qbittorrent = {
-    enable = true;
-    group = "media";
-    openFirewall = true;
-    serverConfig = {
-      LegalNotice.Accepted = true;
-      BitTorrent.Session = {
-        DefaultSavePath = "/media/torrents";
-        QueueingSystemEnabled = false;
-        FinishedTorrentExportDirectory = "/media/torrents/files";
-      };
-      Preferences = {
-        # https://wiki.archlinux.org/title/QBittorrent#Allow_access_without_username_&_password
-        WebUI = {
-          # local: 192.168.1.0/24, fddc:fae9:c63b:8::/64, 2605:59c1:1b10:7a08::/64 (i have no idea why we get routed to the external IP over ethernet)
-          # https://tailscale.com/docs/reference/reserved-ip-addresses
-          AuthSubnetWhitelist = "192.168.1.0/24, fddc:fae9:c63b:8::/64, 2605:59c1:1b10:7a08::/64, 100.64.0.0/10, fd7a:115c:a1e0::/48";
-          AuthSubnetWhitelistEnabled = true;
-          UseUPnP = false;
-          LocalHostAuth = false;
-        };
-        General.StatusbarExternalIPDisplayed = true;
-      };
-    };
-  };
-  systemd.services.qbittorrent.serviceConfig.UMask = "0002"; # default is 022, but i want to give write perms to :media
-
-  hardware.graphics.enable = true;
-  hardware.graphics.extraPackages = with pkgs; [
-    intel-ocl
-    intel-vaapi-driver
-    libva-vdpau-driver
-  ];
-
-  environment.sessionVariables = {
-    LIBVA_DRIVER_NAME = "i965";
-  };
-
-  nixpkgs.config.packageOverrides = pkgs: {
-    intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
-  };
-
-  services.jellyfin.enable = true;
-  services.jellyfin.openFirewall = true;
-  services.jellyfin.group = "media";
-  systemd.services.jellyfin.environment.LIBVA_DRIVER_NAME = "i965";
-  users.users.jellyfin.extraGroups = [
-    "video"
-    "render"
-  ];
-
-  services.caddy = {
-    enable = true;
-    logFormat = "level INFO";
-
-    package = pkgs.caddy.withPlugins {
-      plugins = [ "github.com/tailscale/caddy-tailscale@v0.0.0-20260106222316-bb080c4414ac" ];
-      hash = "sha256-iUQXsmUJEdOpv6uXte73RXFOhxfzwb/r9vdCTVXjP4Y=";
-    };
-
-    virtualHosts = {
-      "jellyfin:80" = {
-        extraConfig = ''
-          bind tailscale/jellyfin
-          reverse_proxy localhost:8096
-        '';
-      };
-
-      "qbittorrent:80" = {
-        extraConfig = ''
-          bind tailscale/qbittorrent
-          reverse_proxy localhost:8080
-        '';
-      };
-    };
-  };
-
   environment.systemPackages = with pkgs; [
     dnsutils # dig, nslookup
     pciutils # lspci
@@ -264,6 +159,35 @@
     clinfo
     libva-utils
     intel-gpu-tools
+  ];
+
+  ################### services ###################
+
+  services.thermald.enable = true;
+  services.tlp.enable = true;
+
+  my.services.tailscale.enable = true;
+
+  # tired of wrangling permissions for /media
+  # so that jellyfin and qbittorrent can use here
+  users.groups.media = { };
+  systemd.tmpfiles.rules = [
+    "d /media 0777 - media -"
+  ];
+
+  my.services.jellyfin.enable = true;
+  systemd.services.jellyfin.environment.LIBVA_DRIVER_NAME = "i965";
+
+  my.services.qbittorrent.enable = true;
+  my.services.qbittorrent.whiteListIPs = [
+    # local (i have no idea why we get routed to the external IP over ethernet)
+    "192.168.1.0/24"
+    "fddc:fae9:c63b:8::/64"
+    "2605:59c1:1b10:7a08::/64"
+
+    # https://tailscale.com/docs/reference/reserved-ip-addresses
+    "100.64.0.0/10"
+    "fd7a:115c:a1e0::/48"
   ];
 
   # Enable the X11 windowing system.
