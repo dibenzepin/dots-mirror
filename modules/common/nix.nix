@@ -25,14 +25,17 @@
         substituters = [
           "https://cache.lix.systems"
           "https://colmena.cachix.org"
+          "https://catppuccin.cachix.org"
         ];
         trusted-substituters = [
           "https://cache.lix.systems"
           "https://colmena.cachix.org"
+          "https://catppuccin.cachix.org"
         ];
         trusted-public-keys = [
           "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
           "colmena.cachix.org-1:7BzpDnjjH8ki2CT3f6GdOk7QAzPOl+1t3LvTLXqYcSg="
+          "catppuccin.cachix.org-1:noG/4HkbhJb+lUAdKrph6LaozJvAeEEZj4N732IysmU="
         ];
       };
 

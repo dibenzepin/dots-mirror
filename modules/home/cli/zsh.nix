@@ -33,13 +33,12 @@
 
       plugins = [
         {
-          # workaround for https://github.com/marlonrichert/zsh-autocomplete/issues/741
           name = "zsh-autocomplete";
           src = pkgs.fetchFromGitHub {
             owner = "marlonrichert";
             repo = "zsh-autocomplete";
-            rev = "316c588a92e3444e919ca9a341fc8894c82800a2";
-            hash = "sha256-7v8dkrwhEszl8mVIMe8oJdaqK0ZZtODdWaaO1Z4Ldhk=";
+            rev = "20f6c34f20270084b21211428afb6d2534aae8e9";
+            hash = "sha256-M8gWOg/9ohkG2NiLVSGERINcmHJCfoES5IG2GBllrRo=";
           };
         }
         {
@@ -54,6 +53,11 @@
         }
         {
           # from https://github.com/direnv/direnv/issues/443#issuecomment-2380714786
+          #
+          # tried updating to 7f0a68e5fa8081554161d0d330d7f2a52683705e but some of the new settings
+          # made zsh-autocomplete fail with `command not found: _autocomplete__unambiguous` and
+          # `command not found: _autocomplete__should_add_space` when `ls *.typ` in ~/Downloads
+          # todo: look into the new settings anf fix i guess?
           name = "zsh-completion-sync";
           src = pkgs.fetchFromGitHub {
             owner = "BronzeDeer";
@@ -80,11 +84,16 @@
         AUTO_NOTIFY_TITLE="\"%command\" completed"
         AUTO_NOTIFY_BODY="Total time: %elapsed seconds, Exit code: %exit_code"
 
+        # settings for marlonrichert/zsh-autocomplete
+        zstyle ':autocomplete:*complete*:*' insert-unambiguous yes # insert common substring
+        zstyle ':completion:*:*' matcher-list 'm:{[:lower:]-}={[:upper:]_}' '+r:|[.]=**' # use prefix as substring
+        bindkey '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete # use tab/shift-tab to cycle completions
+
         # this is slow and sad :(
         # but you gotta do what you gotta do for those completions
         reload_autocomplete_and_atuin() {
           source $HOME/.zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-          
+
           # settings for marlonrichert/zsh-autocomplete
           zstyle ':autocomplete:*complete*:*' insert-unambiguous yes # insert common substring
           zstyle ':completion:*:*' matcher-list 'm:{[:lower:]-}={[:upper:]_}' '+r:|[.]=**' # use prefix as substring

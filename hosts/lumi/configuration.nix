@@ -35,6 +35,7 @@
 
   homebrew = {
     enable = true;
+    enableZshIntegration = true;
     onActivation = {
       cleanup = "zap";
       autoUpdate = true;
@@ -59,10 +60,11 @@
       "zed@preview"
       # "kdeconnect" # go and automate it
     ];
-    masApps = {
-      Bitwarden = 1352778147;
-      Telegram = 747648890;
-    };
+    # disabling until i can use https://github.com/Homebrew/brew/issues/22450
+    # masApps = {
+    #   Bitwarden = 1352778147;
+    #   Telegram = 747648890;
+    # };
   };
 
   my.nix.enable = true;
