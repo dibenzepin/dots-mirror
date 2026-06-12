@@ -28,6 +28,7 @@ you might also be interested in my [packages](https://codeberg.org/fumnanya/flak
   - [`modules/home`](./modules/home) &mdash; home-manager modules
 
 ## todo:
+- add some sort of "minimal" config that just adds in the substituters
 
 #### NixOS
 - remove crappy gnome extensions app from launcher/gnome-shell: https://discourse.nixos.org/t/excluding-gnome-extensions-not-working-removing/50048/5

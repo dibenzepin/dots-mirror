@@ -47,9 +47,6 @@
     dbeaver.enable = true;
 
     luminovo.enable = true;
-
-    # firefox.enable = true;
-    # firefox.package = inputs.firefox-nightly.packages.${pkgs.stdenv.hostPlatform.system}.firefox-nightly-bin;
   };
 
   home.packages = with pkgs; [
@@ -58,15 +55,44 @@
     iina
     qbittorrent
     yaak
+    halloy
     inputs.fum.packages.${pkgs.stdenv.hostPlatform.system}.switcheroo
     inputs.fum.packages.${pkgs.stdenv.hostPlatform.system}.mommy
     inputs.colmena.packages.${pkgs.stdenv.hostPlatform.system}.colmena
-    # rquickshare
-    halloy
   ];
 
+  # ssh stuff, to move to module i guess?
   home.sessionVariables = {
-    # SSH_AUTH_SOCK = "$HOME/.bitwarden-ssh-agent.sock";
     SSH_AUTH_SOCK = "$HOME/Library/Containers/com.bitwarden.desktop/Data/.bitwarden-ssh-agent.sock";
+  };
+
+  programs.ssh = {
+    enable = true;
+    enableDefaultConfig = false;
+
+    includes = [
+      "~/.orbstack/ssh/config"
+      "~/.ssh/luminovo.config"
+    ];
+
+    settings = {
+      "bastion" = {
+        ForwardAgent = true;
+        User = "fumnanya";
+      };
+
+      "github.com".IdentityFile = "~/.ssh/github.pub";
+      "gitlab.com".IdentityFile = "~/.ssh/gitlab.pub";
+      "codeberg.org".IdentityFile = "~/.ssh/codeberg.pub";
+    };
+  };
+
+  home.file = {
+    ".ssh/github.pub".text =
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA5CZ7h5XdWerGPC2Vk0OLT1DOjgcmsm9eK/bDgndFjZ";
+    ".ssh/gitlab.pub".text =
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO3dbeCesIctxV7gtXw9tto/90tTlYNnxgFO79rty79I";
+    ".ssh/codeberg.pub".text =
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGPTUfZcfymABkH/5l+Cw3TIYPkNXNvUU1LD6QXGvkAR";
   };
 }
