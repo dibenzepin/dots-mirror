@@ -79,6 +79,7 @@
       "bastion" = {
         ForwardAgent = true;
         User = "fumnanya";
+        IdentityFile = "~/.ssh/bastion.pub";
       };
 
       "github.com".IdentityFile = "~/.ssh/github.pub";
@@ -94,5 +95,7 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO3dbeCesIctxV7gtXw9tto/90tTlYNnxgFO79rty79I";
     ".ssh/codeberg.pub".text =
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGPTUfZcfymABkH/5l+Cw3TIYPkNXNvUU1LD6QXGvkAR";
+    ".ssh/bastion.pub".text =
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIv4sj7bHdEikPlNoBOhMCYy96KKBK3sG/lhmxq3s3O3";
   };
 }
