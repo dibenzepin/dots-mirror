@@ -33,12 +33,13 @@
 
       plugins = [
         {
+          # workaround for https://github.com/marlonrichert/zsh-autocomplete/issues/857
           name = "zsh-autocomplete";
           src = pkgs.fetchFromGitHub {
-            owner = "marlonrichert";
+            owner = "SaeGon-Heo";
             repo = "zsh-autocomplete";
-            rev = "20f6c34f20270084b21211428afb6d2534aae8e9";
-            hash = "sha256-M8gWOg/9ohkG2NiLVSGERINcmHJCfoES5IG2GBllrRo=";
+            rev = "0c321a7cfaeb3eccbaee3ada1a82c8651cec7f54";
+            hash = "sha256-MUXbgiTBoZWNULl4A0Qgl1IR5nsvB7iK0vT5wQYw1Is=";
           };
         }
         {
