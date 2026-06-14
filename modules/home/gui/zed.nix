@@ -80,7 +80,7 @@ in
 
         # shift-X to reduce selection by one line like helix
         {
-          context = "Editor";
+          context = "Editor && VimControl";
           bindings = {
             shift-x = "editor::SelectUp";
           };

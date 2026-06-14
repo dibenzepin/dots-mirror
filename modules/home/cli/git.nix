@@ -62,6 +62,7 @@
               "--noprofile"
             ];
             symbol = "🥋 ";
+            format = "at [$symbol($output )]($style)";
             command = ''
               jj log --revisions @ --no-graph --color always --limit 1 --template '
                 separate(" ",

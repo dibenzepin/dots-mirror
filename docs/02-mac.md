@@ -23,7 +23,7 @@ got a shiny macbook and want to manage it declaratively?
     $ sudo nix run nix-darwin/master#darwin-rebuild -- switch
     ```
 1. You also want to:
-    - Give your terminals (Terminal.app, Ghostty) the Full Disk Access and Developer Tools permissions
+    - Give your terminals (Terminal.app, Ghostty, Zed) the Full Disk Access and Developer Tools permissions
     - Give notification access to Script Editor by running the following command to trigger a prompt:
       ```sh
       $ osascript -e 'display notification "World" with title "Hello"'

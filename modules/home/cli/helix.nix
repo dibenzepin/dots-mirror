@@ -80,14 +80,6 @@ with lib;
 
         # the same
         keys.select = keys.normal;
-
-        # git gud
-        keys.insert = {
-          up = "no_op";
-          down = "no_op";
-          left = "no_op";
-          right = "no_op";
-        };
       };
 
       extraPackages = with pkgs; [
