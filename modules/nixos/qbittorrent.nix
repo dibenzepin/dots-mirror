@@ -18,6 +18,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    my.services.tailscale.programs.qbittorrent = "8080";
+
     services.qbittorrent = {
       enable = true;
       group = "media";
@@ -43,14 +45,5 @@ in
     };
 
     systemd.services.qbittorrent.serviceConfig.UMask = "0002"; # default is 022, but i want to give write perms to :media
-
-    services.caddy.virtualHosts = lib.mkIf config.my.services.tailscale.enable {
-      "qbittorrent:80" = {
-        extraConfig = ''
-          bind tailscale/qbittorrent
-          reverse_proxy localhost:8080
-        '';
-      };
-    };
   };
 }

@@ -1,13 +1,19 @@
 {
   lib,
   config,
-  pkgs,
   ...
 }:
 {
   options = {
     my.services.tailscale = {
-      enable = lib.mkEnableOption "tailscale + caddy for exposing things on the tailnet";
+      enable = lib.mkEnableOption "tailscale + caddy + dns for exposing things on the tailnet";
+      hostIP = lib.mkOption {
+        type = lib.types.str;
+      };
+      programs = lib.mkOption {
+        type = lib.types.attrsOf lib.types.str;
+        default = { };
+      };
     };
   };
 
@@ -20,14 +26,33 @@
       "--operator=${config.my.username}" # doesn't work: https://github.com/tailscale/tailscale/issues/18294
     ];
 
+    # make everything point to host in /etc/hosts
+    # can (should?) be replaced with https://man.archlinux.org/man/systemd.rr.5.en when nixos gets v261
+    networking.hosts = {
+      ${config.my.services.tailscale.hostIP} =
+        lib.attrNames config.my.services.tailscale.programs
+        ++ map (p: "${p}.tailscale") (lib.attrNames config.my.services.tailscale.programs);
+    };
+
+    # listen for dns requests over tailscale
+    services.resolved.settings.Resolve = {
+      Domains = [ "tailscale" ];
+      DNSStubListenerExtra = "${config.my.services.tailscale.hostIP}";
+    };
+
+    # generate caddy entries
     services.caddy = {
       enable = true;
       logFormat = "level INFO";
 
-      package = pkgs.caddy.withPlugins {
-        plugins = [ "github.com/tailscale/caddy-tailscale@v0.0.0-20260106222316-bb080c4414ac" ];
-        hash = "sha256-vC/nyCKMD2jKgbGVA5NIJP6dGXiP9z0yEA8WINgFcVc=";
-      };
+      virtualHosts = lib.mapAttrs' (
+        k: v:
+        lib.nameValuePair "http://${k} http://${k}.tailscale" {
+          extraConfig = ''
+            reverse_proxy :${v}
+          '';
+        }
+      ) config.my.services.tailscale.programs;
     };
   };
 }

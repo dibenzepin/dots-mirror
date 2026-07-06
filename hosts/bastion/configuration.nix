@@ -169,6 +169,8 @@
   services.tlp.enable = true;
 
   my.services.tailscale.enable = true;
+  my.services.tailscale.hostIP = "100.98.201.74";
+
   my.services.sure.enable = true;
 
   # tired of wrangling permissions for /media

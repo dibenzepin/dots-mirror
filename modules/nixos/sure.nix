@@ -11,6 +11,8 @@
   };
 
   config = lib.mkIf config.my.services.sure.enable {
+    my.services.tailscale.programs.sure = "3000";
+
     my.services.podman.enable = true;
     my.services.redis.enable = true;
 
@@ -105,14 +107,5 @@
       "d /var/lib/sure 0755 root root -"
       "d /var/lib/sure/app 0755 root root -"
     ];
-
-    services.caddy.virtualHosts = lib.mkIf config.my.services.tailscale.enable {
-      "sure:80" = {
-        extraConfig = ''
-          bind tailscale/sure
-          reverse_proxy localhost:3000
-        '';
-      };
-    };
   };
 }
