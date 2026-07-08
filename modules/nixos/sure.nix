@@ -23,7 +23,7 @@
         image = "ghcr.io/we-promise/sure:stable";
         extraOptions = [ "--pull=newer" ];
         volumes = [
-          "/var/lib/sure/app:/rails/storage:rw"
+          "/var/lib/sure/app:/rails/storage:U"
         ];
 
         environment = {
