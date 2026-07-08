@@ -53,9 +53,9 @@
     mosh
     appcleaner
     iina
-    qbittorrent
+    # qbittorrent
     yaak
-    halloy
+    # halloy
     inputs.fum.packages.${pkgs.stdenv.hostPlatform.system}.switcheroo
     inputs.fum.packages.${pkgs.stdenv.hostPlatform.system}.mommy
     inputs.colmena.packages.${pkgs.stdenv.hostPlatform.system}.colmena

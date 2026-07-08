@@ -66,8 +66,6 @@ in
           #   cargo.allTargets = true;
           # };
         };
-
-        languages.Nix.format_on_save = "on";
       };
 
       userKeymaps = [
