@@ -17,6 +17,7 @@ with lib;
   };
 
   config = {
-    users.users.${uname}.home = if pkgs.stdenv.isDarwin then "/Users/${uname}" else "/home/${uname}";
+    users.users.${uname}.home =
+      if pkgs.stdenv.hostPlatform.isDarwin then "/Users/${uname}" else "/home/${uname}";
   };
 }

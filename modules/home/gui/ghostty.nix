@@ -21,7 +21,7 @@
     lib.mkIf config.my.ghostty.enable {
       programs.ghostty = {
         enable = true;
-        package = if pkgs.stdenv.isDarwin then null else pkgs.ghostty;
+        package = if pkgs.stdenv.hostPlatform.isDarwin then null else pkgs.ghostty;
         settings = {
           font-family = "FiraCode Nerd Font Mono";
           working-directory = "home";

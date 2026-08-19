@@ -23,7 +23,7 @@ in
     programs.zed-editor = {
       enable = true;
 
-      package = if pkgs.stdenv.isDarwin then null else pkgs.zed-editor;
+      package = if pkgs.stdenv.hostPlatform.isDarwin then null else pkgs.zed-editor;
       extensions = [
         "nix"
       ];
@@ -91,7 +91,7 @@ in
     # # we don't need them in here...
     # # ...but just so that the gc doesn't think they're unneeded
     # ...on macOS we can't use extraPackages because we're bringing our own, so just add it to the home env
-    programs.zed-editor.extraPackages = lib.mkIf (!pkgs.stdenv.isDarwin) nixExtensionTools;
-    home.packages = lib.mkIf pkgs.stdenv.isDarwin nixExtensionTools;
+    programs.zed-editor.extraPackages = lib.mkIf (!pkgs.stdenv.hostPlatform.isDarwin) nixExtensionTools;
+    home.packages = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin nixExtensionTools;
   };
 }
