@@ -122,10 +122,6 @@
     LIBVA_DRIVER_NAME = "i965";
   };
 
-  nixpkgs.config.packageOverrides = pkgs: {
-    intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
-  };
-
   ################### programs ###################
 
   my.helix.enable = true;
