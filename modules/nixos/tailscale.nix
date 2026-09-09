@@ -30,8 +30,8 @@
     # can (should?) be replaced with https://man.archlinux.org/man/systemd.rr.5.en when nixos gets v261
     networking.hosts = {
       ${config.my.services.tailscale.hostIP} =
-        lib.attrNames config.my.services.tailscale.programs
-        ++ map (p: "${p}.tailscale") (lib.attrNames config.my.services.tailscale.programs);
+        map (p: "${p}.tailscale") (lib.attrNames config.my.services.tailscale.programs)
+        ++ lib.attrNames config.my.services.tailscale.programs;
     };
 
     # listen for dns requests over tailscale
