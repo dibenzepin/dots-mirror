@@ -53,9 +53,6 @@
 
     homebrew-cask.url = "github:homebrew/homebrew-cask";
     homebrew-cask.flake = false;
-
-    homebrew-kde.url = "github:KDE/homebrew-kde";
-    homebrew-kde.flake = false;
   };
 
   outputs =
@@ -114,9 +111,6 @@
               # Install Homebrew under the default prefix
               enable = true;
 
-              # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
-              enableRosetta = true;
-
               # User owning the Homebrew prefix
               user = "fum";
 
@@ -124,7 +118,6 @@
               taps = {
                 "homebrew/homebrew-core" = inputs.homebrew-core;
                 "homebrew/homebrew-cask" = inputs.homebrew-cask;
-                "KDE/homebrew-kde" = inputs.homebrew-kde;
               };
 
               # Optional: Enable fully-declarative tap management

@@ -58,7 +58,6 @@
       "tailscale-app"
       "motrix"
       "zed@preview"
-      # "kdeconnect" # go and automate it
     ];
     # disabling until i can use https://github.com/Homebrew/brew/issues/22450
     # masApps = {
@@ -92,12 +91,14 @@
       NSGlobalDomain.NSAutomaticInlinePredictionEnabled = false;
       NSGlobalDomain.NSAutomaticPeriodSubstitutionEnabled = false;
       NSGlobalDomain.NSAutomaticSpellingCorrectionEnabled = false;
+      NSGlobalDomain.AppleIconAppearanceTheme = "RegularDark";
 
       dock.magnification = true;
       dock.orientation = "left";
       dock.largesize = 95;
       dock.tilesize = 25;
       dock.mru-spaces = false;
+      dock.showAppExposeGestureEnabled = true;
       dock.persistent-apps = [
         {
           app = "/System/Applications/Apps.app";
@@ -118,36 +119,21 @@
           app = "/Applications/Zed Preview.app";
         }
       ];
+      dock.persistent-others = [
+        {
+          folder = {
+            path = "/Users/${config.my.username}/Downloads";
+            arrangement = "date-modified";
+            displayas = "stack";
+            showas = "automatic";
+          };
+        }
+      ];
 
       finder.ShowPathbar = true;
 
       CustomUserPreferences = {
-        NSGlobalDomain.AppleIconAppearanceTheme = "RegularDark";
-
-        # "com.apple.SoftwareUpdate" = {
-        #   "MajorOSUserNotificationDate" = "2030-02-07 23:22:47 +0000";
-        #   "UserNotificationDate" = "2030-02-07 23:22:47 +0000";
-        # };
-
-        # until https://github.com/nix-darwin/nix-darwin/pull/1431 gets merged
-        "com.apple.dock" = {
-          persistent-others = [
-            {
-              "tile-data" = {
-                "file-data" = {
-                  "_CFURLString" = "/Users/${config.my.username}/Downloads";
-                  "_CFURLStringType" = 0;
-                };
-                "arrangement" = 3; # sort by date modified
-                "displayas" = 0; # stack
-                "showas" = 0;
-              };
-              "tile-type" = "directory-tile";
-            }
-          ];
-
-          showAppExposeGestureEnabled = 1;
-        };
+        NSGlobalDomain.NSGlassTintAmount = 0;
       };
     };
 
