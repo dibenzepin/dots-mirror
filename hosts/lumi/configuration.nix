@@ -45,6 +45,7 @@
     taps = builtins.attrNames config.nix-homebrew.taps;
     brews = [
       "mas" # stop uninstalling it lol
+      "sofka"
     ];
     greedyCasks = true;
     casks = [
@@ -156,11 +157,6 @@
       aws-sdk-cpp = prev.aws-sdk-cpp.overrideAttrs {
         doCheck = false;
         doInstallCheck = false;
-      };
-
-      # https://github.com/NixOS/nixpkgs/issues/507531
-      direnv = prev.direnv.overrideAttrs {
-        doCheck = false;
       };
     })
   ];
