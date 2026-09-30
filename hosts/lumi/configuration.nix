@@ -52,7 +52,6 @@
       "orbstack"
       "keepingyouawake"
       "zen@twilight"
-      "cloudflare-warp"
       "lulu"
       "ghostty@tip"
       "calibre"
