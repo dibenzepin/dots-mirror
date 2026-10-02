@@ -180,6 +180,7 @@
   systemd.services.jellyfin.environment.LIBVA_DRIVER_NAME = "i965";
 
   my.services.qbittorrent.enable = true;
+  my.services.qbittorrent.interface = "enp0s25";
   my.services.qbittorrent.whiteListIPs = [
     # local (i have no idea why we get routed to the external IP over ethernet)
     "192.168.1.0/24"

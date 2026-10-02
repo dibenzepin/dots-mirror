@@ -14,6 +14,10 @@ in
         type = lib.types.listOf lib.types.str;
         default = [ ];
       };
+      interface = lib.mkOption {
+        type = lib.types.str;
+        default = "";
+      };
     };
   };
 
@@ -30,6 +34,8 @@ in
           DefaultSavePath = cfg.savePath;
           QueueingSystemEnabled = false;
           FinishedTorrentExportDirectory = "${cfg.savePath}/files";
+          Interface = cfg.interface;
+          InterfaceName = cfg.interface;
         };
         Preferences = {
           # https://wiki.archlinux.org/title/QBittorrent#Allow_access_without_username_&_password
